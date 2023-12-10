@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import Stack from '@mui/material/Stack';
-import classes from './Header.module.scss';
 
 const LANG = {
   rus: 'RUS',
@@ -66,7 +65,6 @@ function Header() {
     <AppBar position="static">
       <Toolbar>
         <Link
-          className={classes.header_link}
           href="/"
           color="inherit"
           underline="none"
