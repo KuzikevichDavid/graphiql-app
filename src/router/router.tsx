@@ -14,15 +14,15 @@ const routes: RouteObject[] = [
         index: true,
         element: <WelcomePage />,
       },
+      {
+        path: Routes.SignUp,
+        element: <SignUpPage />,
+      },
+      {
+        path: Routes.SignIn,
+        element: <SignInPage />,
+      },
     ],
-  },
-  {
-    path: Routes.SignUp,
-    element: <SignUpPage />,
-  },
-  {
-    path: Routes.SignIn,
-    element: <SignInPage />,
   },
 ];
 
