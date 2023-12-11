@@ -1,8 +1,8 @@
-import { useContext, useMemo, useState } from "react";
-import loadLocale from "../../localization/loader";
-import { Locales } from "../../localization/types";
-import LocalizationContext from "./LocalizationContex";
-import { LocalizationContextType } from "./types";
+import { useContext, useMemo, useState } from 'react';
+import loadLocale from '../../localization/loader';
+import { Locales } from '../../localization/types';
+import LocalizationContext from './LocalizationContex';
+import { LocalizationContextType } from './types';
 
 interface PropType {
   children: React.ReactNode;

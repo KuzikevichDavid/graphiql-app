@@ -1,4 +1,4 @@
-import { LocaleData, Locales } from "../../localization/types";
+import { LocaleData, Locales } from '../../localization/types';
 
 export interface LocalizationContextType {
   locale: Locales;
