@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { LocaleData } from './types';
+import loadLocale from './loader';
+import { LocaleData, Locales } from './types';
 
 function objectsHaveSameKeys(...objects: object[]) {
   const startValue: string[] = [];
@@ -20,5 +21,24 @@ describe('Localization loader tests', () => {
 
     const result = objectsHaveSameKeys(...filesData);
     expect(result).toStrictEqual(true);
+  });
+
+  it('Is load concrete file', async () => {
+    const locale: Locales = 'ru';
+
+    const file = await loadLocale(locale);
+
+    expect(file).toMatchObject({
+      lang: 'Русский',
+      welcome: 'Добро пожаловать!',
+    });
+  });
+
+  it('Throw on load not exist file', async () => {
+    const fakeFile = 'fake';
+
+    await expect(async () => {
+      await loadLocale(fakeFile);
+    }).rejects.toThrowError();
   });
 });
