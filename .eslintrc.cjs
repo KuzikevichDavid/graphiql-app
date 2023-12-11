@@ -73,6 +73,3 @@ module.exports = {
     },
   ],
 };
-/* eslint-disable @typescript-eslint/no-misused-promises */
-// /* eslint-disable jsx-a11y/label-has-associated-control */
-// /* eslint-disable react/jsx-props-no-spreading */
