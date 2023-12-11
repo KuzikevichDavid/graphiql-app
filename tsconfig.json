@@ -23,5 +23,6 @@
     "types": ["vitest/globals"]
   },
   "include": ["vite.config.ts", ".prettierrc.cjs", ".eslintrc.cjs", "src"],
+  "exclude": ["**/*.test.ts", "**/*.test.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
