@@ -52,6 +52,9 @@ module.exports = {
     "@typescript-eslint/no-var-requires": "off",
     "prettier/prettier": "error",
     "comma-dangle": ["error", "only-multiline"],
+    "@typescript-eslint/no-misused-promises": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "react/jsx-props-no-spreading": "off",
   },
   overrides: [
     {
@@ -70,3 +73,6 @@ module.exports = {
     },
   ],
 };
+/* eslint-disable @typescript-eslint/no-misused-promises */
+// /* eslint-disable jsx-a11y/label-has-associated-control */
+// /* eslint-disable react/jsx-props-no-spreading */
