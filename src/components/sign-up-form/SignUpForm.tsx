@@ -15,7 +15,7 @@ function SignUpForm() {
   const {
     handleSubmit,
     register,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormData>({
     resolver: yupResolver(signUpSchema),
   });
@@ -83,8 +83,13 @@ function SignUpForm() {
         <div style={{ color: "red" }}>{errors.termsCheck.message}</div>
       )}
 
-      <Button type="submit" variant="contained" color="primary">
-        Submit
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        disabled={!isValid}
+      >
+        Sign up
       </Button>
     </form>
   );
