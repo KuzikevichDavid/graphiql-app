@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { TextField, Button } from "@mui/material";
 import { yupResolver } from "@hookform/resolvers/yup";
 import signInSchema from "../../validation-schemas/signInSchema";
+import StyledForm from "../../ui/StyledForm";
 
 interface SignInFormData {
   email: string;
@@ -22,16 +23,7 @@ function SignInForm() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        maxWidth: "420px",
-        width: "100%",
-        gap: "20px",
-      }}
-    >
+    <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <TextField
         id="email"
         label="Email"
@@ -60,7 +52,7 @@ function SignInForm() {
       >
         Sign In
       </Button>
-    </form>
+    </StyledForm>
   );
 }
 

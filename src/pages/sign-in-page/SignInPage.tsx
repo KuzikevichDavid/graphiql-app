@@ -6,7 +6,7 @@ function SignInPage() {
       style={{
         display: "flex",
         flexDirection: "column",
-        alignContent: "center",
+        alignItems: "center",
       }}
     >
       <h1>Sign in</h1>

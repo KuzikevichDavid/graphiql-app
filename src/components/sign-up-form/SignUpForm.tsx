@@ -2,6 +2,7 @@ import { TextField, FormControlLabel, Checkbox, Button } from "@mui/material";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import signUpSchema from "../../validation-schemas/signUpSchema";
+import StyledForm from "../../ui/StyledForm";
 
 interface FormData {
   email: string;
@@ -24,22 +25,14 @@ function SignUpForm() {
     console.log(data);
   };
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        maxWidth: "420px",
-        width: "100%",
-        gap: "20px",
-      }}
-    >
+    <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <TextField
         id="username"
         label="Username"
         {...register("username")}
         error={!!errors.username}
         helperText={errors.username?.message}
+        fullWidth
       />
 
       <TextField
@@ -49,6 +42,7 @@ function SignUpForm() {
         {...register("password")}
         error={!!errors.password}
         helperText={errors.password?.message}
+        fullWidth
       />
 
       <TextField
@@ -58,6 +52,7 @@ function SignUpForm() {
         {...register("confirmPassword")}
         error={!!errors.confirmPassword}
         helperText={errors.confirmPassword?.message}
+        fullWidth
       />
 
       <TextField
@@ -67,6 +62,7 @@ function SignUpForm() {
         {...register("email")}
         error={!!errors.email}
         helperText={errors.email?.message}
+        fullWidth
       />
 
       <FormControlLabel
@@ -91,7 +87,7 @@ function SignUpForm() {
       >
         Sign up
       </Button>
-    </form>
+    </StyledForm>
   );
 }
 
