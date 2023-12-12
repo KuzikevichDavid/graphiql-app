@@ -12,7 +12,7 @@ function SignInForm() {
   const {
     handleSubmit,
     register,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<SignInFormData>({
     resolver: yupResolver(signInSchema),
   });
@@ -52,7 +52,12 @@ function SignInForm() {
         fullWidth
       />
 
-      <Button type="submit" variant="contained" color="primary">
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        disabled={!isValid}
+      >
         Sign In
       </Button>
     </form>
