@@ -2,18 +2,14 @@ import { LoginOutlined } from '@mui/icons-material';
 import { AppBar, IconButton, Toolbar, Link, Typography } from '@mui/material';
 import { useState } from 'react';
 import Stack from '@mui/material/Stack';
-import LangSwitch from '../../styles/MUI/langSwitch';
-
-const LANG = {
-  rus: 'RUS',
-  eng: 'ENG',
-};
+import LangSwitch from './styled';
+import { LANG } from '@/constants/language';
 
 function Header() {
-  const [lang, setLanguage] = useState(LANG.eng);
+  const [language, setLanguage] = useState<string>(LANG.eng);
 
   const changeLanguage = () => {
-    if (lang === LANG.rus) {
+    if (language === LANG.rus) {
       setLanguage(LANG.eng);
     } else {
       setLanguage(LANG.rus);
@@ -36,13 +32,14 @@ function Header() {
           <LoginOutlined />
         </IconButton>
         <Stack direction="row" spacing={1} alignItems="center">
-          <Typography>Eng</Typography>
+          <Typography>{LANG.eng}</Typography>
           <LangSwitch
-            checked={lang !== LANG.eng}
+            aria-label="Switch between languages"
+            checked={language !== LANG.eng}
             onChange={changeLanguage}
             inputProps={{ 'aria-label': 'ant design' }}
           />
-          <Typography>Rus</Typography>
+          <Typography>{LANG.rus}</Typography>
         </Stack>
       </Toolbar>
     </AppBar>
