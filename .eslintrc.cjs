@@ -57,6 +57,9 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     'prettier/prettier': 'error',
     'comma-dangle': ['error', 'only-multiline'],
+    '@typescript-eslint/no-misused-promises': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
   overrides: [
     {
