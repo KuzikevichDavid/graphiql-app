@@ -5,6 +5,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:import/recommended',
     'prettier',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
@@ -18,18 +19,12 @@ module.exports = {
     project: ['./tsconfig.json', './tsconfig.node.json'],
     tsconfigRootDir: __dirname,
   },
-  settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
-    },
-  },
   plugins: [
     '@typescript-eslint',
     'react',
     'react-hooks',
     'react-refresh',
+    'import',
     'prettier',
   ],
   extends: [
@@ -42,6 +37,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:prettier/recommended',
+    'plugin:import/typescript',
     'prettier',
   ],
   rules: {
@@ -78,4 +74,16 @@ module.exports = {
       },
     },
   ],
+  settings: {
+    react: {
+      pragma: 'React',
+      version: 'detect',
+    },
+    'import/resolver': {
+      typescript: true,
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
 };
