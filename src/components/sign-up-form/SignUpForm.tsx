@@ -22,6 +22,7 @@ function SignUpForm() {
   });
 
   const onSubmit = (data: FormData) => {
+    // eslint-disable-next-line no-console
     console.log(data);
   };
   return (
@@ -38,7 +39,7 @@ function SignUpForm() {
       <TextField
         id="password"
         label="Password"
-        type="text"
+        type="password"
         {...register("password")}
         error={!!errors.password}
         helperText={errors.password?.message}
