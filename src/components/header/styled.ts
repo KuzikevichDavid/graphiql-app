@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 
-const LangSwitch = styled(Switch)(({ theme }) => ({
+const LanguageSwitch = styled(Switch)(({ theme }) => ({
   width: 28,
   height: 16,
   padding: 0,
@@ -42,4 +42,4 @@ const LangSwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default LangSwitch;
+export default LanguageSwitch;

@@ -3,7 +3,7 @@ import { AppBar, IconButton, Toolbar, Link, Typography } from '@mui/material';
 import { useState } from 'react';
 import Stack from '@mui/material/Stack';
 import { LANG } from '@/constants/language';
-import LangSwitch from './styled';
+import LanguageSwitch from './styled';
 
 function Header() {
   const [language, setLanguage] = useState<string>(LANG.eng);
@@ -33,7 +33,7 @@ function Header() {
         </IconButton>
         <Stack direction="row" spacing={1} alignItems="center">
           <Typography>{LANG.eng}</Typography>
-          <LangSwitch
+          <LanguageSwitch
             aria-label="Switch between languages"
             checked={language !== LANG.eng}
             onChange={changeLanguage}

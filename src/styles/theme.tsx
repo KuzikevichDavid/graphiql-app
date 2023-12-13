@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { createTheme } from '@mui/material';
+import { createTheme, Theme } from '@mui/material';
 import {
   Link as RouterLink,
   LinkProps as RouterLinkProps,
@@ -15,7 +15,7 @@ const LinkBehavior = React.forwardRef<
   return <RouterLink ref={ref} to={href} {...other} />;
 });
 
-const theme = createTheme({
+const theme: Theme = createTheme({
   palette: {
     primary: {
       main: '#673ab7',
