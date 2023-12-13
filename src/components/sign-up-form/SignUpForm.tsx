@@ -1,8 +1,8 @@
-import { TextField, FormControlLabel, Checkbox, Button } from "@mui/material";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import signUpSchema from "./signUpSchema";
-import { StyledForm } from "../styled";
+import { TextField, FormControlLabel, Checkbox, Button } from '@mui/material';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+import signUpSchema from './signUpSchema';
+import { StyledForm } from '../styled';
 
 interface FormData {
   email: string;
@@ -30,7 +30,7 @@ function SignUpForm() {
       <TextField
         id="username"
         label="Username"
-        {...register("username")}
+        {...register('username')}
         error={!!errors.username}
         helperText={errors.username?.message}
         fullWidth
@@ -40,7 +40,7 @@ function SignUpForm() {
         id="password"
         label="Password"
         type="password"
-        {...register("password")}
+        {...register('password')}
         error={!!errors.password}
         helperText={errors.password?.message}
         fullWidth
@@ -50,7 +50,7 @@ function SignUpForm() {
         id="confirmPassword"
         label="Confirm Password"
         type="password"
-        {...register("confirmPassword")}
+        {...register('confirmPassword')}
         error={!!errors.confirmPassword}
         helperText={errors.confirmPassword?.message}
         fullWidth
@@ -60,7 +60,7 @@ function SignUpForm() {
         id="email"
         label="Email"
         type="email"
-        {...register("email")}
+        {...register('email')}
         error={!!errors.email}
         helperText={errors.email?.message}
         fullWidth
@@ -70,14 +70,14 @@ function SignUpForm() {
         control={
           <Checkbox
             id="termsCheck"
-            {...register("termsCheck")}
+            {...register('termsCheck')}
             color="primary"
           />
         }
         label="Agree to the Terms of Use"
       />
       {errors.termsCheck && (
-        <div style={{ color: "red" }}>{errors.termsCheck.message}</div>
+        <div style={{ color: 'red' }}>{errors.termsCheck.message}</div>
       )}
 
       <Button type="submit" variant="contained" color="primary">

@@ -1,8 +1,8 @@
-import { useForm } from "react-hook-form";
-import { TextField, Button } from "@mui/material";
-import { yupResolver } from "@hookform/resolvers/yup";
-import signInSchema from "../../pages/sign-in-page/signInSchema";
-import { StyledForm } from "../styled";
+import { useForm } from 'react-hook-form';
+import { TextField, Button } from '@mui/material';
+import { yupResolver } from '@hookform/resolvers/yup';
+import signInSchema from '../../pages/sign-in-page/signInSchema';
+import { StyledForm } from '../styled';
 
 interface SignInFormData {
   email: string;
@@ -29,7 +29,7 @@ function SignInForm() {
         id="email"
         label="Email"
         type="email"
-        {...register("email")}
+        {...register('email')}
         error={!!errors.email}
         helperText={errors.email?.message}
         fullWidth
@@ -39,7 +39,7 @@ function SignInForm() {
         id="password"
         label="Password"
         type="password"
-        {...register("password")}
+        {...register('password')}
         error={!!errors.password}
         helperText={errors.password?.message}
         fullWidth

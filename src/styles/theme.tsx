@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { createTheme, Theme } from '@mui/material';
 import {
   Link as RouterLink,

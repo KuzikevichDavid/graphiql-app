@@ -1,12 +1,11 @@
-import SignInForm from "../../components/sign-in-form/SignInForm";
-import { StyledMain } from "../../components/styled";
+import SignInForm from '../../components/sign-in-form/SignInForm';
 
 function SignInPage() {
   return (
-    <StyledMain>
+    <>
       <h1>Sign in</h1>
       <SignInForm />
-    </StyledMain>
+    </>
   );
 }
 
