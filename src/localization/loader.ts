@@ -1,7 +1,9 @@
 import { LocaleData, Locales } from './types';
 
 const localesExt = '.json';
-const localesFiles = import.meta.glob('./locales/*.json');
+const localesFiles = import.meta.glob<boolean, string, LocaleData>(
+  './locales/*.json'
+);
 
 const loadLocale = async (locale: Locales = 'en') => {
   const localeName = `${locale}${localesExt}`;
@@ -9,7 +11,7 @@ const loadLocale = async (locale: Locales = 'en') => {
     filePath.includes(localeName)
   );
   if (localePath) {
-    return localesFiles[localePath]() as Promise<LocaleData>;
+    return localesFiles[localePath]();
   }
   throw new Error('Locale file not found');
 };
