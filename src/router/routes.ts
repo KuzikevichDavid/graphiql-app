@@ -1,7 +1,7 @@
 enum Routes {
-  Home = "/",
-  SignUp = "/signup",
-  SignIn = "/signin",
+  Home = '/',
+  SignUp = '/signup',
+  SignIn = '/signin',
 }
 
 export default Routes;
