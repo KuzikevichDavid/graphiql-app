@@ -1,17 +1,12 @@
 import SignUpForm from "../../components/sign-up-form/SignUpForm";
+import { StyledMain } from "../../components/styled";
 
 function SignUpPage() {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <StyledMain>
       <h1>Sign Up</h1>
       <SignUpForm />
-    </div>
+    </StyledMain>
   );
 }
 

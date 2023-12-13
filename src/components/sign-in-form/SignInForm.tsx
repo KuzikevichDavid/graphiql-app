@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import { TextField, Button } from "@mui/material";
 import { yupResolver } from "@hookform/resolvers/yup";
-import signInSchema from "../../validation-schemas/signInSchema";
-import StyledForm from "../../ui/StyledForm";
+import signInSchema from "../../pages/sign-in-page/signInSchema";
+import { StyledForm } from "../styled";
 
 interface SignInFormData {
   email: string;
@@ -13,7 +13,7 @@ function SignInForm() {
   const {
     handleSubmit,
     register,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm<SignInFormData>({
     resolver: yupResolver(signInSchema),
   });
@@ -44,12 +44,7 @@ function SignInForm() {
         fullWidth
       />
 
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        disabled={!isValid}
-      >
+      <Button type="submit" variant="contained" color="primary">
         Sign In
       </Button>
     </StyledForm>

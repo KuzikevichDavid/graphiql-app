@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const StyledForm = styled("form")({
+export const StyledForm = styled("form")({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -9,4 +9,8 @@ const StyledForm = styled("form")({
   gap: "20px",
 });
 
-export default StyledForm;
+export const StyledMain = styled("main")({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+});

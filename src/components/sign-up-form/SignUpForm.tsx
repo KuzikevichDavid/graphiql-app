@@ -1,8 +1,8 @@
 import { TextField, FormControlLabel, Checkbox, Button } from "@mui/material";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import signUpSchema from "../../validation-schemas/signUpSchema";
-import StyledForm from "../../ui/StyledForm";
+import signUpSchema from "./signUpSchema";
+import { StyledForm } from "../styled";
 
 interface FormData {
   email: string;
@@ -16,7 +16,7 @@ function SignUpForm() {
   const {
     handleSubmit,
     register,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm<FormData>({
     resolver: yupResolver(signUpSchema),
   });
@@ -38,7 +38,7 @@ function SignUpForm() {
       <TextField
         id="password"
         label="Password"
-        type="password"
+        type="text"
         {...register("password")}
         error={!!errors.password}
         helperText={errors.password?.message}
@@ -79,12 +79,7 @@ function SignUpForm() {
         <div style={{ color: "red" }}>{errors.termsCheck.message}</div>
       )}
 
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        disabled={!isValid}
-      >
+      <Button type="submit" variant="contained" color="primary">
         Sign up
       </Button>
     </StyledForm>

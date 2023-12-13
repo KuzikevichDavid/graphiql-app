@@ -1,17 +1,12 @@
 import SignInForm from "../../components/sign-in-form/SignInForm";
+import { StyledMain } from "../../components/styled";
 
 function SignInPage() {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <StyledMain>
       <h1>Sign in</h1>
       <SignInForm />
-    </div>
+    </StyledMain>
   );
 }
 
