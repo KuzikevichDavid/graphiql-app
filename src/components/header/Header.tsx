@@ -2,8 +2,8 @@ import { LoginOutlined } from '@mui/icons-material';
 import { AppBar, IconButton, Toolbar, Link, Typography } from '@mui/material';
 import { useState } from 'react';
 import Stack from '@mui/material/Stack';
-import LangSwitch from './styled';
 import { LANG } from '@/constants/language';
+import LangSwitch from './styled';
 
 function Header() {
   const [language, setLanguage] = useState<string>(LANG.eng);
