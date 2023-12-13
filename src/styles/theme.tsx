@@ -39,6 +39,9 @@ const theme = createTheme({
       },
     },
     MuiIconButton: {
+      defaultProps: {
+        LinkComponent: LinkBehavior,
+      },
       styleOverrides: {
         root: {
           textDecoration: 'none',
