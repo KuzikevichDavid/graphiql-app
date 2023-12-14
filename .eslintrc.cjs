@@ -55,6 +55,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-var-requires': 'off',
+    'comma-dangle': ['error', 'only-multiline'],
     'prettier/prettier': 'error',
     'comma-dangle': ['error', 'only-multiline'],
     '@typescript-eslint/no-misused-promises': 'off',
