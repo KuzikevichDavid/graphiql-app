@@ -5,6 +5,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:import/recommended',
     'prettier',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
@@ -23,6 +24,7 @@ module.exports = {
     'react',
     'react-hooks',
     'react-refresh',
+    'import',
     'prettier',
   ],
   extends: [
@@ -35,6 +37,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:prettier/recommended',
+    'plugin:import/typescript',
     'prettier',
   ],
   rules: {
@@ -53,6 +56,11 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-var-requires': 'off',
     'comma-dangle': ['error', 'only-multiline'],
+    'prettier/prettier': 'error',
+    'comma-dangle': ['error', 'only-multiline'],
+    '@typescript-eslint/no-misused-promises': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
   overrides: [
     {
@@ -70,4 +78,16 @@ module.exports = {
       },
     },
   ],
+  settings: {
+    react: {
+      pragma: 'React',
+      version: 'detect',
+    },
+    'import/resolver': {
+      typescript: true,
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
 };

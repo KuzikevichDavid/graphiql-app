@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import * as path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,6 +9,11 @@ export default defineConfig({
   esbuild: {
     supported: {
       'top-level-await': true, // browsers can handle top-level-await features
+    },
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
     },
   },
   test: {
