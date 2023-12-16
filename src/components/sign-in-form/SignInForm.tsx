@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { TextField, Button } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { signInWithEmail } from '@/services/supabaseAuth';
 import signInSchema from '../../pages/sign-in-page/signInSchema';
 import { StyledForm } from '../styled';
 
@@ -18,9 +19,10 @@ function SignInForm() {
     resolver: yupResolver(signInSchema),
   });
 
-  const onSubmit = (data: SignInFormData) => {
+  const onSubmit = async (data: SignInFormData) => {
     // eslint-disable-next-line no-console
     console.log(data);
+    await signInWithEmail(data.email, data.password);
   };
 
   return (
