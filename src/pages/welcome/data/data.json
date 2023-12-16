@@ -1,0 +1,43 @@
+{
+  "data": [
+    {
+      "image": {
+        "src": "string",
+        "altLocaleIndex": "DavidImage"
+      },
+      "nameLocaleIndex": "DavidName",
+      "quickBioLocaleIndex": "DavidBio",
+      "positionLocaleIndex": "developer",
+      "contacts": {
+        "gitHub": "https://github.com/KuzikevichDavid",
+        "email": "wliorjroo@gmail.com"
+      }
+    },
+    {
+      "image": {
+        "src": "string",
+        "altLocaleIndex": "IliyaImage"
+      },
+      "nameLocaleIndex": "IliyaName",
+      "quickBioLocaleIndex": "IliyaBio",
+      "positionLocaleIndex": "developer",
+      "contacts": {
+        "gitHub": "https://github.com/raNYnight",
+        "email": "rany4ka@gmail.com"
+      }
+    },
+    {
+      "image": {
+        "src": "string",
+        "altLocaleIndex": "VladImage"
+      },
+      "nameLocaleIndex": "VladName",
+      "quickBioLocaleIndex": "VladBio",
+      "positionLocaleIndex": "developer",
+      "contacts": {
+        "gitHub": "https://github.com/vladklen",
+        "email": "Vlad6097944@gmail.com"
+      }
+    }
+  ]
+}
