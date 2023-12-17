@@ -22,10 +22,7 @@ function SignInPage() {
       <SignInForm />
 
       <div className="text-center">
-        You do not have an account ?
-        <Link href="/sign-up" className="underline">
-          Sign up
-        </Link>
+        You do not have an account ?<Link href="/signup">Sign up</Link>
       </div>
     </>
   );

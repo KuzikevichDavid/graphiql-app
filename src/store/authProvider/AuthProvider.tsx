@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Session } from '@/types/auth-types';
 import { ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +18,6 @@ function AuthProvider({ children }: AuthProviderProps): ReactNode {
   const dispatch = useAppDispatch();
 
   const isLoggedInSession: boolean = useAppSelector(selectIsLoggedInSession);
-  console.log('isLoggedInSession', isLoggedInSession);
 
   const getLoggedInDataOrRedirect = () => {
     const localSessionData: Session | null = selectLocalSessionData();

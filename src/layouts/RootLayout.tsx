@@ -1,12 +1,10 @@
-import { Outlet } from 'react-router-dom';
-import Header from '@/components/header/Header';
 import { StyledMain } from '@/components/styled';
 import AuthProvider from '@/store/authProvider/AuthProvider';
+import { Outlet } from 'react-router-dom';
 
 function RootLayout() {
   return (
     <AuthProvider>
-      <Header />
       <StyledMain>
         <Outlet />
       </StyledMain>

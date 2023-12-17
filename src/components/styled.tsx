@@ -20,3 +20,10 @@ export const StyledErrorMessage = styled('p')({
   border: '1px solid red',
   padding: '5px',
 });
+
+export const StyledSuccessfullMessage = styled('p')({
+  color: 'green',
+  backgroundColor: 'lightgreen',
+  border: '1px solid green',
+  padding: '5px',
+});
