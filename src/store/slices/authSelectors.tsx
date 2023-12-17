@@ -3,9 +3,16 @@ import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
 export const selectLocalSessionData = (): Session | null => {
-  const localSessionDataString: string | null = localStorage.getItem(
-    `sb-${process.env.NEXT_PUBLIC_SUPABASE_REFRENCE_ID}-auth-token`
-  );
+  const pattern = /^sb-(.+)-auth-token$/;
+  let localSessionDataString = null;
+
+  for (let i = 0; i < localStorage.length; i += 1) {
+    const key = localStorage.key(i);
+    if (key && pattern.test(key)) {
+      localSessionDataString = localStorage.getItem(key);
+      break;
+    }
+  }
 
   if (!localSessionDataString) return null;
 

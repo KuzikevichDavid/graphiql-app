@@ -45,5 +45,5 @@ export const signOut =
 
 export const setSessionFromLocalSessionData =
   (localSessionData: Session) => (dispatch: Dispatch) => {
-    dispatch(actions.setLoggedInUserWithLocalData({ localSessionData }));
+    dispatch(actions.signInWithLocalData({ localSessionData }));
   };

@@ -65,7 +65,7 @@ export const authSlice = createSlice({
 
       state.signOutStatus = RequestStatus.FAILED;
     },
-    setLoggedInUserWithLocalData: (
+    signInWithLocalData: (
       state: AuthState,
       { payload }: PayloadAction<{ localSessionData: Session }>
     ) => {

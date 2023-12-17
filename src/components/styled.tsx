@@ -14,3 +14,9 @@ export const StyledMain = styled('main')({
   flexDirection: 'column',
   alignItems: 'center',
 });
+
+export const StyledErrorMessage = styled('p')({
+  color: 'red',
+  border: '1px solid red',
+  padding: '5px',
+});
