@@ -1,27 +1,45 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable import/prefer-default-export */
+import {
+  AuthOutput,
+  CustomError,
+  Session,
+  SignInData,
+  SignUpData,
+} from '@/types/auth-types';
 import supabase from './supabase';
 
-export async function signInWithEmail(email: string, password: string) {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
-  if (error) {
-    console.log(error.message);
-    throw new Error(error.message);
+export class AuthSupabase implements AuthOutput {
+  async signIn({ email, password }: SignInData): Promise<{
+    session: Session | null;
+    error: CustomError | null;
+  }> {
+    const {
+      data: { session },
+      error,
+    } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    const transformedSession: Session | null = session as Session;
+    return Promise.resolve({ session: transformedSession, error });
   }
-  console.log(data);
-  return data;
-}
 
-export async function signUpNewUser(email: string, password: string) {
-  const { data, error } = await supabase.auth.signUp({
+  async signUp({
     email,
     password,
-  });
-  if (error) {
-    console.log(error.message);
-    throw new Error(error.message);
+  }: SignUpData): Promise<{ error: CustomError | null }> {
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+    });
+
+    return Promise.resolve({ error });
   }
-  console.log(data);
-  return data;
+
+  async signOut(): Promise<{ error: CustomError | null }> {
+    const { error } = await supabase.auth.signOut();
+
+    return Promise.resolve({ error });
+  }
 }

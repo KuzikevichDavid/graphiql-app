@@ -1,28 +1,28 @@
-import { useForm } from 'react-hook-form';
-import { TextField, Button } from '@mui/material';
+import { signIn } from '@/store/slices/authActions';
+import { useAppDispatch } from '@/store/store';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { signInWithEmail } from '@/services/supabaseAuth';
+import { Button, TextField } from '@mui/material';
+import { useForm } from 'react-hook-form';
+import { SignInData } from '@/types/auth-types';
 import signInSchema from '../../pages/sign-in-page/signInSchema';
 import { StyledForm } from '../styled';
 
-interface SignInFormData {
-  email: string;
-  password: string;
-}
-
 function SignInForm() {
+  const dispatch = useAppDispatch();
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<SignInFormData>({
+  } = useForm<SignInData>({
     resolver: yupResolver(signInSchema),
   });
 
-  const onSubmit = async (data: SignInFormData) => {
+  const onSubmit = async (data: SignInData) => {
     // eslint-disable-next-line no-console
     console.log(data);
-    await signInWithEmail(data.email, data.password);
+    const { email, password } = data;
+
+    await dispatch(signIn({ email, password }));
   };
 
   return (
