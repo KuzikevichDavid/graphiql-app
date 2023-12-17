@@ -1,4 +1,4 @@
-import { AuthSupabase } from '@/services/supabaseAuth';
+import AuthSupabase from '@/services/supabaseAuth';
 import { AppOutputs } from '@/types/auth-types';
 import {
   Action,
@@ -11,7 +11,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { authSlice } from './slices/authSlice';
 
 export const appOutputs: AppOutputs = {
-  authOutput: new AuthSupabase(),
+  auth: new AuthSupabase(),
 };
 
 const rootReducer = combineReducers({

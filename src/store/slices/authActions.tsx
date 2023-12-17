@@ -1,7 +1,7 @@
-import { AuthSupabase } from '@/services/supabaseAuth';
+import AuthSupabase from '@/services/supabaseAuth';
 import {
-  AuthCallTypes,
-  AuthOutput,
+  Auth,
+  AuthStatusTypes,
   CustomError,
   Session,
   SignUpData,
@@ -13,44 +13,32 @@ const { actions } = authSlice;
 
 export const signIn =
   (signUpData: SignUpData) =>
-  async (
-    dispatch: Dispatch,
-    _: unknown,
-    { authOutput }: { authOutput: AuthSupabase }
-  ) => {
-    dispatch(actions.startCall({ callType: AuthCallTypes.SIGN_IN }));
+  async (dispatch: Dispatch, _: unknown, { auth }: { auth: AuthSupabase }) => {
+    dispatch(actions.startCall({ callType: AuthStatusTypes.SIGN_IN }));
 
     const signInInfo: { session: Session | null; error: CustomError | null } =
-      await authOutput.signIn(signUpData);
+      await auth.signIn(signUpData);
 
     dispatch(actions.signIn(signInInfo));
   };
 
 export const signUp =
   (signUpData: SignUpData) =>
-  async (
-    dispatch: Dispatch,
-    _: unknown,
-    { authOutput }: { authOutput: AuthOutput }
-  ) => {
-    dispatch(actions.startCall({ callType: AuthCallTypes.SIGN_UP }));
+  async (dispatch: Dispatch, _: unknown, { auth }: { auth: Auth }) => {
+    dispatch(actions.startCall({ callType: AuthStatusTypes.SIGN_UP }));
 
     const signUpInfo: { error: CustomError | null } =
-      await authOutput.signUp(signUpData);
+      await auth.signUp(signUpData);
 
     dispatch(actions.signUp(signUpInfo));
   };
 
 export const signOut =
   () =>
-  async (
-    dispatch: Dispatch,
-    _: unknown,
-    { authOutput }: { authOutput: AuthOutput }
-  ) => {
-    dispatch(actions.startCall({ callType: AuthCallTypes.SIGN_OUT }));
+  async (dispatch: Dispatch, _: unknown, { auth }: { auth: Auth }) => {
+    dispatch(actions.startCall({ callType: AuthStatusTypes.SIGN_OUT }));
 
-    const signOutRo: { error: CustomError | null } = await authOutput.signOut();
+    const signOutRo: { error: CustomError | null } = await auth.signOut();
 
     dispatch(actions.signOut(signOutRo));
   };

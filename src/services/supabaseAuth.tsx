@@ -1,7 +1,5 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable import/prefer-default-export */
 import {
-  AuthOutput,
+  Auth,
   CustomError,
   Session,
   SignInData,
@@ -9,7 +7,7 @@ import {
 } from '@/types/auth-types';
 import supabase from './supabase';
 
-export class AuthSupabase implements AuthOutput {
+class AuthSupabase implements Auth {
   async signIn({ email, password }: SignInData): Promise<{
     session: Session | null;
     error: CustomError | null;
@@ -43,3 +41,5 @@ export class AuthSupabase implements AuthOutput {
     return Promise.resolve({ error });
   }
 }
+
+export default AuthSupabase;

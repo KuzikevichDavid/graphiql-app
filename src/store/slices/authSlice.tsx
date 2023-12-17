@@ -1,9 +1,8 @@
-/* eslint-disable no-param-reassign */
 import {
   AuthState,
   RequestStatus,
   CustomError,
-  AuthCallTypes,
+  AuthStatusTypes,
   Session,
 } from '@/types/auth-types';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
@@ -24,7 +23,7 @@ export const authSlice = createSlice({
   reducers: {
     startCall: (
       state: AuthState,
-      { payload }: PayloadAction<{ callType: AuthCallTypes }>
+      { payload }: PayloadAction<{ callType: AuthStatusTypes }>
     ) => {
       state[payload.callType] = RequestStatus.LOADING;
     },

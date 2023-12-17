@@ -1,5 +1,5 @@
 export interface AppOutputs {
-  authOutput: AuthOutput;
+  auth: Auth;
 }
 
 export interface CustomError {
@@ -22,7 +22,6 @@ export enum RequestStatus {
 
 export interface User {
   id: string;
-  // username: string;
   email: string;
 }
 
@@ -36,7 +35,7 @@ export interface AuthState {
   signOutStatus: RequestStatus;
 }
 
-export enum AuthCallTypes {
+export enum AuthStatusTypes {
   SIGN_IN = 'signInStatus',
   SIGN_UP = 'signUpStatus',
   SIGN_OUT = 'signOutStatus',
@@ -52,7 +51,7 @@ export interface SignUpData {
   password: string;
 }
 
-export interface AuthOutput {
+export interface Auth {
   signIn(
     signInDto: SignInData
   ): Promise<{ session: Session | null; error: CustomError | null }>;
