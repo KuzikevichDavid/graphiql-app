@@ -19,10 +19,10 @@ function NotFoundPage() {
     >
       <Container maxWidth="md">
         <Grid container spacing={2}>
-          <Grid xs={6}>
+          <Grid item xs={6}>
             <Typography variant="h2">{NOT_FOUND_TITLES.title}</Typography>
           </Grid>
-          <Grid xs={6}>
+          <Grid item xs={6}>
             <img
               src={notFoundImage}
               alt="source not found"
@@ -30,7 +30,13 @@ function NotFoundPage() {
               height={250}
             />
           </Grid>
-          <Grid xs={12} container alignItems="center" justifyContent="center">
+          <Grid
+            item
+            xs={12}
+            container
+            alignItems="center"
+            justifyContent="center"
+          >
             <Link href="/">
               <Button variant="contained">{NOT_FOUND_TITLES.button}</Button>
             </Link>
