@@ -44,8 +44,6 @@ function SignUpForm() {
   });
 
   const onSubmit = async (data: FormData) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
     await dispatch(signUp(data));
   };
 

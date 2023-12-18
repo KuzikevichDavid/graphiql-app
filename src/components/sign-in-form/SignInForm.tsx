@@ -22,11 +22,9 @@ function SignInForm() {
   });
   const signInError: CustomError | null = useAppSelector(selectSignInError);
   const signInStatus: RequestStatus = useAppSelector(selectSignInStatus);
-  const onSubmit = async (data: SignInData) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
-    const { email, password } = data;
 
+  const onSubmit = async (data: SignInData) => {
+    const { email, password } = data;
     await dispatch(signIn({ email, password }));
   };
 
