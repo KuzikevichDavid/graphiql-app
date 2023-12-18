@@ -3,7 +3,7 @@ import loadLocale from '../../localization/loader';
 import { Locales } from '../../localization/types';
 import { LocalizationContextType } from './types';
 
-const defaultLocale: Locales = 'en';
+const defaultLocale: Locales = Locales.en;
 
 const defaultLocaleData = await loadLocale(defaultLocale);
 
