@@ -2,7 +2,7 @@
   "data": [
     {
       "image": {
-        "src": "string",
+        "src": "./teamImages/avatar-david.png",
         "altLocaleIndex": "DavidImage"
       },
       "nameLocaleIndex": "DavidName",

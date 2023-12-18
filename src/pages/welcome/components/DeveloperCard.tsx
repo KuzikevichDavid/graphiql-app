@@ -13,6 +13,7 @@ import {
   CardActions,
   IconButton,
   Collapse,
+  Container,
 } from '@mui/material';
 import { useContext, useState } from 'react';
 import { DeveloperData } from '../data/types';
@@ -30,53 +31,55 @@ function DeveloperCard({ data }: PropType) {
   };
 
   return (
-    <Card sx={{ width: 320 }}>
-      <CardMedia
-        sx={{ height: 140 }}
-        image={localeData[data.image.src]}
-        title={localeData[data.image.altLocaleIndex]}
-      />
-      <CardContent>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          color="primary.main"
-        >
-          {localeData[data.nameLocaleIndex]}
-        </Typography>
-        <Typography gutterBottom variant="h6" paragraph>
-          {localeData.position}:
+    <Container sx={{ width: 320 }}>
+      <Card sx={{ width: 320 }}>
+        <CardMedia
+          sx={{ height: 300 }}
+          image={data.image.src}
+          title={localeData[data.image.altLocaleIndex]}
+        />
+        <CardContent>
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            color="primary.main"
+          >
+            {localeData[data.nameLocaleIndex]}
+          </Typography>
+          <Typography gutterBottom variant="h6" paragraph>
+            {localeData.position}:
+          </Typography>
           <Typography color="text.primary">
             {localeData[data.positionLocaleIndex]}
           </Typography>
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton href={data.contacts.gitHub} color="inherit">
-          <GitHub />
-        </IconButton>
-        <IconButton href={data.contacts.email} color="inherit">
-          <Email />
-        </IconButton>
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>{localeData.bioTitle}:</Typography>
-          <Typography paragraph variant="body2" color="text.secondary">
-            {localeData[data.quickBioLocaleIndex]}
-          </Typography>
         </CardContent>
-      </Collapse>
-    </Card>
+        <CardActions disableSpacing>
+          <IconButton href={data.contacts.gitHub} color="inherit">
+            <GitHub />
+          </IconButton>
+          <IconButton href={`mailto:${data.contacts.email}`} color="inherit">
+            <Email />
+          </IconButton>
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph>{localeData.bioTitle}:</Typography>
+            <Typography paragraph variant="body2" color="text.secondary">
+              {localeData[data.quickBioLocaleIndex]}
+            </Typography>
+          </CardContent>
+        </Collapse>
+      </Card>
+    </Container>
   );
 }
 

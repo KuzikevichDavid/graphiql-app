@@ -18,10 +18,12 @@ const handleExpandClick = ({
   }),
 });
 
-const styledComponent = styled(({ expand, ...other }: ExpandMoreProps) => {
-  return <IconButton {...other} />;
-});
+const createStyledComponent = styled(
+  ({ expand, ...other }: ExpandMoreProps) => {
+    return <IconButton {...other} />;
+  }
+);
 
-const ExpandMore = styledComponent(handleExpandClick);
+const ExpandMore = createStyledComponent(handleExpandClick);
 
 export default ExpandMore;
