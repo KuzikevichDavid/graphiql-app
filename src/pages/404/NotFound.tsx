@@ -2,7 +2,7 @@ import { Box, Button, Container, Typography, Link } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import notFoundImage from '@/assets/images/404.png';
 
-const TITLES = {
+const NOT_FOUND_TITLES = {
   title: `The page you’re looking for doesn’t exist.`,
   button: `Back Home`,
 };
@@ -20,7 +20,7 @@ function NotFoundPage() {
       <Container maxWidth="md">
         <Grid container spacing={2}>
           <Grid xs={6}>
-            <Typography variant="h2">{TITLES.title}</Typography>
+            <Typography variant="h2">{NOT_FOUND_TITLES.title}</Typography>
           </Grid>
           <Grid xs={6}>
             <img
@@ -32,7 +32,7 @@ function NotFoundPage() {
           </Grid>
           <Grid xs={12} container alignItems="center" justifyContent="center">
             <Link href="/">
-              <Button variant="contained">{TITLES.button}</Button>
+              <Button variant="contained">{NOT_FOUND_TITLES.button}</Button>
             </Link>
           </Grid>
         </Grid>
@@ -41,4 +41,4 @@ function NotFoundPage() {
   );
 }
 
-export default NotFoundPage;
+export { NOT_FOUND_TITLES, NotFoundPage };
