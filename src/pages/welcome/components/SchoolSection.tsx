@@ -1,5 +1,6 @@
 import RSSchoolIcon from '@/components/icons/RSSchoolIcon';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
+import theme from '@/styles/theme';
 import { Box, Container, Typography, IconButton } from '@mui/material';
 import { useContext } from 'react';
 import { flexRowWrap } from './styles/styles';
@@ -35,6 +36,10 @@ function SchoolSection() {
               sx={{
                 width: '100%',
                 height: '100%',
+                color: 'black',
+                '&:hover': {
+                  color: theme.palette.secondary.main,
+                },
               }}
             />
           </IconButton>

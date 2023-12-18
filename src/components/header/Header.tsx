@@ -1,46 +1,31 @@
 import { LoginOutlined } from '@mui/icons-material';
-import { AppBar, IconButton, Toolbar, Link, Typography } from '@mui/material';
-import { useState } from 'react';
-import Stack from '@mui/material/Stack';
-import { LANG } from '@/constants/language';
-import LanguageSwitch from './styled';
+import { AppBar, IconButton, Toolbar, Link, Container } from '@mui/material';
+import { useContext } from 'react';
+import LocalizationContext from '@/contexts/localization/LocalizationContext';
+import Routes from '@/router/routes';
+import SelectLang from './SelectLang';
 
 function Header() {
-  const [language, setLanguage] = useState<string>(LANG.eng);
+  const { localeData } = useContext(LocalizationContext);
 
-  const changeLanguage = () => {
-    if (language === LANG.rus) {
-      setLanguage(LANG.eng);
-    } else {
-      setLanguage(LANG.rus);
-    }
-  };
   return (
     <AppBar position="static">
       <Toolbar>
-        <Link
-          href="/"
-          color="inherit"
-          underline="none"
-          variant="h4"
-          sx={{ flexGrow: 1 }}
-        >
-          Header Test
-        </Link>
+        <Container sx={{ flexGrow: 1 }}>
+          <Link
+            href={Routes.Home}
+            color="inherit"
+            underline="none"
+            variant="h4"
+          >
+            {localeData.welcomePage}
+          </Link>
+        </Container>
 
-        <IconButton href="/signin" color="inherit">
+        <IconButton href={Routes.SignIn} color="inherit">
           <LoginOutlined />
         </IconButton>
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Typography>{LANG.eng}</Typography>
-          <LanguageSwitch
-            aria-label="Switch between languages"
-            checked={language !== LANG.eng}
-            onChange={changeLanguage}
-            inputProps={{ 'aria-label': 'ant design' }}
-          />
-          <Typography>{LANG.rus}</Typography>
-        </Stack>
+        <SelectLang />
       </Toolbar>
     </AppBar>
   );
