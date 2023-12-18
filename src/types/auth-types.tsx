@@ -35,7 +35,7 @@ export interface AuthState {
   signOutStatus: RequestStatus;
 }
 
-export enum AuthStatusTypes {
+export enum AuthStatus {
   SIGN_IN = 'signInStatus',
   SIGN_UP = 'signUpStatus',
   SIGN_OUT = 'signOutStatus',

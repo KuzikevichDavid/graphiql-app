@@ -2,7 +2,7 @@ import {
   AuthState,
   RequestStatus,
   CustomError,
-  AuthStatusTypes,
+  AuthStatus,
   Session,
 } from '@/types/auth-types';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
@@ -21,9 +21,9 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    startCall: (
+    startAuth: (
       state: AuthState,
-      { payload }: PayloadAction<{ callType: AuthStatusTypes }>
+      { payload }: PayloadAction<{ callType: AuthStatus }>
     ) => {
       state[payload.callType] = RequestStatus.LOADING;
     },

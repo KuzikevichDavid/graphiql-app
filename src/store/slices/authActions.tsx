@@ -1,7 +1,7 @@
 import AuthSupabase from '@/services/supabaseAuth';
 import {
   Auth,
-  AuthStatusTypes,
+  AuthStatus,
   CustomError,
   Session,
   SignUpData,
@@ -14,7 +14,7 @@ const { actions } = authSlice;
 export const signIn =
   (signUpData: SignUpData) =>
   async (dispatch: Dispatch, _: unknown, { auth }: { auth: AuthSupabase }) => {
-    dispatch(actions.startCall({ callType: AuthStatusTypes.SIGN_IN }));
+    dispatch(actions.startAuth({ callType: AuthStatus.SIGN_IN }));
 
     const signInInfo: { session: Session | null; error: CustomError | null } =
       await auth.signIn(signUpData);
@@ -25,7 +25,7 @@ export const signIn =
 export const signUp =
   (signUpData: SignUpData) =>
   async (dispatch: Dispatch, _: unknown, { auth }: { auth: Auth }) => {
-    dispatch(actions.startCall({ callType: AuthStatusTypes.SIGN_UP }));
+    dispatch(actions.startAuth({ callType: AuthStatus.SIGN_UP }));
 
     const signUpInfo: { error: CustomError | null } =
       await auth.signUp(signUpData);
@@ -36,7 +36,7 @@ export const signUp =
 export const signOut =
   () =>
   async (dispatch: Dispatch, _: unknown, { auth }: { auth: Auth }) => {
-    dispatch(actions.startCall({ callType: AuthStatusTypes.SIGN_OUT }));
+    dispatch(actions.startAuth({ callType: AuthStatus.SIGN_OUT }));
 
     const signOutRo: { error: CustomError | null } = await auth.signOut();
 

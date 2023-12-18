@@ -1,12 +1,23 @@
-import { LoginOutlined } from '@mui/icons-material';
-import { AppBar, IconButton, Toolbar, Link, Typography } from '@mui/material';
-import { useState } from 'react';
-import Stack from '@mui/material/Stack';
 import { LANG } from '@/constants/language';
+import { signOut } from '@/store/slices/authActions';
+import { useAppDispatch } from '@/store/store';
+import { LoginOutlined } from '@mui/icons-material';
+import { AppBar, IconButton, Link, Toolbar, Typography } from '@mui/material';
+import Stack from '@mui/material/Stack';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import LanguageSwitch from './styled';
 
 function Header() {
   const [language, setLanguage] = useState<string>(LANG.eng);
+
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const onSignOut = async () => {
+    await dispatch(signOut());
+    navigate('/signin');
+  };
 
   const changeLanguage = () => {
     if (language === LANG.rus) {
@@ -25,10 +36,10 @@ function Header() {
           variant="h4"
           sx={{ flexGrow: 1 }}
         >
-          Header Test
+          G R A P H I Q L A P P
         </Link>
 
-        <IconButton href="/signin" color="inherit">
+        <IconButton onClick={onSignOut} color="inherit">
           <LoginOutlined />
         </IconButton>
         <Stack direction="row" spacing={1} alignItems="center">
