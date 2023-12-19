@@ -1,4 +1,4 @@
-import PurposeSection from './components/PurposeSection';
+import PurposeSection from './components/purposeSection/PurposeSection';
 import SchoolSection from './components/SchoolSection';
 import TeamSection from './components/TeamSection';
 
