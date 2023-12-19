@@ -29,7 +29,6 @@ describe('NotFoundPage tests', () => {
         <RouterProvider router={router} />
       </LocalizationContext.Provider>
     );
-    console.log(wrapper);
     const page = wrapper.getByTestId(dataTestId.notFound);
     expect(page).toBeInTheDocument();
 
