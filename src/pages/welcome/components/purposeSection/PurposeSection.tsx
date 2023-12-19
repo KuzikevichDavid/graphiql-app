@@ -8,7 +8,20 @@ import SignButtons from './SignButtons';
 function PurposeSection() {
   const { localeData } = useContext(LocalizationContext);
   return (
-    <Box component="section" sx={{ ...greySection, position: 'relative' }}>
+    <Box
+      component="section"
+      sx={{ ...greySection, display: 'flex', flexDirection: 'column' }}
+    >
+      <Container
+        sx={{
+          alignSelf: 'flex-end',
+          width: important('auto'),
+          marginRight: 0,
+          marginTop: 1,
+        }}
+      >
+        <SignButtons />
+      </Container>
       <Container
         sx={{
           textAlign: 'center',
@@ -38,17 +51,6 @@ function PurposeSection() {
             </Container>
           </Container>
         </Box>
-        <Container
-          sx={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            marginTop: 1,
-            width: important('auto'),
-          }}
-        >
-          <SignButtons />
-        </Container>
       </Container>
     </Box>
   );

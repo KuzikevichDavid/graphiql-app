@@ -16,7 +16,7 @@ import {
   Container,
 } from '@mui/material';
 import { useContext, useState } from 'react';
-import { DeveloperData } from '../data/types';
+import { DeveloperData } from '@/pages/welcome/data/types';
 
 interface PropType {
   data: DeveloperData;
@@ -32,9 +32,9 @@ function DeveloperCard({ data }: PropType) {
 
   return (
     <Container sx={{ width: 320 }}>
-      <Card sx={{ width: 320 }}>
+      <Card sx={{ width: 290 }}>
         <CardMedia
-          sx={{ height: 300 }}
+          sx={{ height: 290 }}
           image={data.image.src}
           title={localeData[data.image.altLocaleIndex]}
         />
