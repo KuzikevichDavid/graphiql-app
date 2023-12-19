@@ -1,5 +1,5 @@
 import { RouteObject, createBrowserRouter } from 'react-router-dom';
-import { NotFoundPage } from '@/pages/404/NotFound';
+import NotFoundPage from '@/pages/404/NotFound';
 import RootLayout from '../layouts/RootLayout';
 import Routes from './routes';
 import WelcomePage from '../pages/welcome/WelcomePage';

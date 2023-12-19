@@ -1,15 +1,16 @@
 import { Box, Button, Container, Typography, Link } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import notFoundImage from '@/assets/images/404.png';
-
-const NOT_FOUND_TITLES = {
-  title: `The page you’re looking for doesn’t exist.`,
-  button: `Back Home`,
-};
+import { useContext } from 'react';
+import LocalizationContext from '@/contexts/localization/LocalizationContext';
+import dataTestId from '@/tests/data-test';
 
 function NotFoundPage() {
+  const { localeData } = useContext(LocalizationContext);
+
   return (
     <Box
+      data-testid={dataTestId.notFound}
       sx={{
         display: 'flex',
         justifyContent: 'center',
@@ -20,7 +21,7 @@ function NotFoundPage() {
       <Container maxWidth="md">
         <Grid container spacing={2}>
           <Grid item xs={6}>
-            <Typography variant="h2">{NOT_FOUND_TITLES.title}</Typography>
+            <Typography variant="h2">{localeData.notFound_Title}</Typography>
           </Grid>
           <Grid item xs={6}>
             <img
@@ -38,7 +39,7 @@ function NotFoundPage() {
             justifyContent="center"
           >
             <Link href="/">
-              <Button variant="contained">{NOT_FOUND_TITLES.button}</Button>
+              <Button variant="contained">{localeData.notFound_Button}</Button>
             </Link>
           </Grid>
         </Grid>
@@ -47,4 +48,4 @@ function NotFoundPage() {
   );
 }
 
-export { NOT_FOUND_TITLES, NotFoundPage };
+export default NotFoundPage;
