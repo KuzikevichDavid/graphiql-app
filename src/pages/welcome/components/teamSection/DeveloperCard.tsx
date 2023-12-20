@@ -1,4 +1,4 @@
-import ExpandMore from '@/components/cardActions/ExpandMore.tsx/ExpandMore';
+import ExpandMore from '@/components/cardActions/expand/ExpandMore';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
 import {
   GitHub,
@@ -17,6 +17,7 @@ import {
 } from '@mui/material';
 import { useContext, useState } from 'react';
 import { DeveloperData } from '@/pages/welcome/data/types';
+import testIds from '@/utils/testUtils/constants/testIds';
 
 interface PropType {
   data: DeveloperData;
@@ -66,6 +67,7 @@ function DeveloperCard({ data }: PropType) {
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="show more"
+            data-testid={testIds.expandMore}
           >
             <ExpandMoreIcon />
           </ExpandMore>
@@ -73,7 +75,12 @@ function DeveloperCard({ data }: PropType) {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph>{localeData.bioTitle}:</Typography>
-            <Typography paragraph variant="body2" color="text.secondary">
+            <Typography
+              paragraph
+              variant="body2"
+              color="text.secondary"
+              data-testid={testIds.expandMoreData}
+            >
               {localeData[data.quickBioLocaleIndex]}
             </Typography>
           </CardContent>

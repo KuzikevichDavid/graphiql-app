@@ -2,6 +2,7 @@ import LocalizationContext from '@/contexts/localization/LocalizationContext';
 import { Box, Container, Typography } from '@mui/material';
 import { useContext } from 'react';
 import developersData from '@/pages/welcome/data/data.json';
+import testIds from '@/utils/testUtils/constants/testIds';
 import DeveloperCard from './DeveloperCard';
 import { DeveloperData } from '../../data/types';
 import { greySection, flexRowWrap } from '../styles/styles';
@@ -36,6 +37,7 @@ function TeamSection() {
           paddingTop: '10px',
           paddingBottom: '10px',
         }}
+        data-testid={testIds.teamSection}
       >
         {developersData.data.map((value: DeveloperData) => {
           return <DeveloperCard data={value} key={value.nameLocaleIndex} />;

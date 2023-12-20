@@ -24,7 +24,7 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text'],
       all: true,
-      exclude: ['**/index.ts', '**/types.ts', '**/*.d.ts'],
+      exclude: ['**/index.ts', '**/types.ts', '**/*.d.ts', '*.cjs'],
       watermarks: {
         lines: [50, 80],
         functions: [50, 80],

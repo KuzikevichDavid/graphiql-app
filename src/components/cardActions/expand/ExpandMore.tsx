@@ -1,3 +1,4 @@
+import testIds from '@/utils/testUtils/constants/testIds';
 import { IconButtonProps, IconButton, styled, Theme } from '@mui/material';
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -20,7 +21,7 @@ const handleExpandClick = ({
 
 const createStyledComponent = styled(
   ({ expand, ...other }: ExpandMoreProps) => {
-    return <IconButton {...other} />;
+    return <IconButton {...other} data-testid={testIds.expandMore} />;
   }
 );
 

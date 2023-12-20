@@ -24,7 +24,7 @@ describe('JSX element with content', () => {
   });
 
   it('Wrapped render with initial entrie', async () => {
-    const route = 'route';
+    const route = '/route';
 
     wrappedRender(<FakeElement />, { initialEntries: [route] });
 
