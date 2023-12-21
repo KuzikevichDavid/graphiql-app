@@ -2,6 +2,7 @@ export enum Locales {
   ru = 'ru',
   en = 'en',
 }
+
 export enum Lang {
   ru = 'Русский',
   en = 'English',

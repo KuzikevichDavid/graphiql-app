@@ -10,6 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import React, { useContext } from 'react';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
 import Routes from '@/router/routes';
+import testIds from '@/utils/testUtils/constants/testIds';
 
 interface Page {
   href: string;
@@ -43,6 +44,7 @@ function BurgerMenu() {
           aria-haspopup="true"
           onClick={handleOpenNavMenu}
           color="inherit"
+          data-testid={testIds.burgerMenuMobile}
         >
           <MenuIcon />
         </IconButton>
@@ -60,16 +62,24 @@ function BurgerMenu() {
           }}
           open={Boolean(anchorElNav)}
           onClose={handleCloseNavMenu}
+          data-testid={testIds.burgerMenuMobileItems}
         >
           {pages.map((page) => (
-            <MenuItem key={page.href} onClick={handleCloseNavMenu}>
+            <MenuItem
+              key={page.href}
+              onClick={handleCloseNavMenu}
+              data-testid={testIds.burgerMenuMobileItem}
+            >
               <Typography textAlign="center">{page.title}</Typography>
             </MenuItem>
           ))}
         </Menu>
       </Box>
 
-      <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+      <Box
+        sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
+        data-testid={testIds.burgerMenuDesktop}
+      >
         {pages.map((page) => (
           <Link
             href={page.href}

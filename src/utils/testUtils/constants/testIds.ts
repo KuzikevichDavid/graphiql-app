@@ -4,6 +4,10 @@ const testIds: Readonly<Record<string, string>> = {
   teamSection: 'teamSectionId',
   expandMore: 'expandMoreId',
   expandMoreData: 'expandMoreDataId',
+  burgerMenuDesktop: 'burgerMenuDesktopId',
+  burgerMenuMobile: 'burgerMenuMobileId',
+  burgerMenuMobileItems: 'burgerMenuMobileItemsId',
+  burgerMenuMobileItem: 'burgerMenuMobileItemId',
 };
 
 export default testIds;
