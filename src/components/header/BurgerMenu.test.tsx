@@ -59,7 +59,7 @@ describe.each([600])(
       await user.click(item);
       expect(
         screen.getByTestId(testIds.burgerMenuMobileItems)
-      ).not.toBeDisabled();
+      ).not.toBeVisible();
     });
   }
 );
