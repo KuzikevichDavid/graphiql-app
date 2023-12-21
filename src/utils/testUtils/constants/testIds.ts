@@ -4,8 +4,6 @@ const testIds: Readonly<Record<string, string>> = {
   teamSection: 'teamSectionId',
   expandMore: 'expandMoreId',
   expandMoreData: 'expandMoreDataId',
-  selectLang: 'selectLangId',
-  langOption: 'langOptionId',
 };
 
 export default testIds;
