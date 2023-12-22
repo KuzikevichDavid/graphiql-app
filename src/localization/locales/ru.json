@@ -26,5 +26,7 @@
   "IliyaImage": "Фото Ильи",
   "VladBio": "Краткая биография Влада",
   "VladName": "Влад",
-  "VladImage": "Фото Влада"
+  "VladImage": "Фото Влада",
+  "notFound_Title": "Страница не существует",
+  "notFound_Button": "На главную"
 }

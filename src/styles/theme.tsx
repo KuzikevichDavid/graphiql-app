@@ -15,7 +15,8 @@ const LinkBehavior = React.forwardRef<
   return <RouterLink ref={ref} to={href} {...other} />;
 });
 
-const primaryMain = '#673ab7';
+const primaryMain = '#4a5d74';
+const secondaryMain = '#efac56';
 
 const theme: Theme = createTheme({
   palette: {
@@ -23,7 +24,7 @@ const theme: Theme = createTheme({
       main: primaryMain,
     },
     secondary: {
-      main: '#d500f9',
+      main: secondaryMain,
     },
   },
   components: {
@@ -35,7 +36,7 @@ const theme: Theme = createTheme({
         root: {
           textDecoration: 'none',
           ':hover': {
-            color: '#d500f9',
+            color: secondaryMain,
           },
         },
       },
@@ -48,7 +49,7 @@ const theme: Theme = createTheme({
         root: {
           textDecoration: 'none',
           ':hover': {
-            color: '#d500f9',
+            color: secondaryMain,
           },
         },
       },

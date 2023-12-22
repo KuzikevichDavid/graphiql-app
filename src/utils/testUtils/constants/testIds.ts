@@ -1,5 +1,6 @@
 const testIds: Readonly<Record<string, string>> = {
   header: 'test-header',
+  notFound: 'test-404',
   purposeSection: 'purposeSectionId',
   schoolSection: 'schoolSectionId',
   teamSection: 'teamSectionId',
