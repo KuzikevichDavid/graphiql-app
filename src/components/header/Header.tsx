@@ -3,6 +3,7 @@ import { AppBar, IconButton, Toolbar, Link, Typography } from '@mui/material';
 import { useState } from 'react';
 import Stack from '@mui/material/Stack';
 import { LANG } from '@/constants/language';
+import dataTestId from '@/tests/data-test';
 import LanguageSwitch from './styled';
 
 function Header() {
@@ -16,7 +17,7 @@ function Header() {
     }
   };
   return (
-    <AppBar position="static">
+    <AppBar data-testid={dataTestId.header} position="static">
       <Toolbar>
         <Link
           href="/"
