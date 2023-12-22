@@ -1,4 +1,5 @@
 const testIds: Readonly<Record<string, string>> = {
+  header: 'test-header',
   purposeSection: 'purposeSectionId',
   schoolSection: 'schoolSectionId',
   teamSection: 'teamSectionId',
