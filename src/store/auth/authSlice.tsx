@@ -4,7 +4,7 @@ import {
   CustomError,
   AuthStatus,
   Session,
-} from '@/types/auth-types';
+} from '@/types/auth';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 export const initialState: AuthState = {

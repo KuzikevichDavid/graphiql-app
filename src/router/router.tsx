@@ -1,14 +1,19 @@
+import AuthProvider from '@/store/auth/AuthProvider';
 import { RouteObject, createBrowserRouter } from 'react-router-dom';
 import RootLayout from '../layouts/RootLayout';
-import Routes from './routes';
-import WelcomePage from '../pages/welcome/WelcomePage';
-import SignUpPage from '../pages/sign-up-page/SignUpPage';
 import SignInPage from '../pages/sign-in-page/SignInPage';
+import SignUpPage from '../pages/sign-up-page/SignUpPage';
+import WelcomePage from '../pages/welcome/WelcomePage';
+import Routes from './routes';
 
 const routes: RouteObject[] = [
   {
     path: Routes.Home,
-    element: <RootLayout />,
+    element: (
+      <AuthProvider>
+        <RootLayout />
+      </AuthProvider>
+    ),
     children: [
       {
         index: true,

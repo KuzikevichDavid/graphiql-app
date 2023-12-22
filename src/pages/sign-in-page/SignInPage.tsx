@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { selectIsLoggedInUser } from '@/store/slices/authSelectors';
+import { selectIsLoggedInUser } from '@/store/auth/authSelectors';
 import { useAppSelector } from '@/store/store';
 import { Link } from '@mui/material';
 import { useEffect } from 'react';
@@ -15,6 +14,7 @@ function SignInPage() {
     if (isLoggedInUser) {
       navigate('/');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedInUser]);
   return (
     <>

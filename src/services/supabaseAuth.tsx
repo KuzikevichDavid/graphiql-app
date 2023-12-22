@@ -4,7 +4,7 @@ import {
   Session,
   SignInData,
   SignUpData,
-} from '@/types/auth-types';
+} from '@/types/auth';
 import supabase from './supabase';
 
 class AuthSupabase implements Auth {

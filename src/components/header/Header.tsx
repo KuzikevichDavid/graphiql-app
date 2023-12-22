@@ -1,5 +1,5 @@
 import { LANG } from '@/constants/language';
-import { signOut } from '@/store/slices/authActions';
+import { signOut } from '@/store/auth/authActions';
 import { useAppDispatch } from '@/store/store';
 import { LoginOutlined } from '@mui/icons-material';
 import { AppBar, IconButton, Link, Toolbar, Typography } from '@mui/material';

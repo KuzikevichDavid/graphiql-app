@@ -1,5 +1,5 @@
 import AuthSupabase from '@/services/supabaseAuth';
-import { AppOutputs } from '@/types/auth-types';
+import { AppOutputs } from '@/types/auth';
 import {
   Action,
   ThunkAction,
@@ -8,7 +8,7 @@ import {
   configureStore,
 } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { authSlice } from './slices/authSlice';
+import { authSlice } from './auth/authSlice';
 
 export const appOutputs: AppOutputs = {
   auth: new AuthSupabase(),

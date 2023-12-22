@@ -62,7 +62,7 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 'off',
     'react/jsx-props-no-spreading': 'off',
     'class-methods-use-this': 'off',
-    'no-param-reassign': 'off',
+    'no-param-reassign': ['error', { props: false }],
   },
   overrides: [
     {

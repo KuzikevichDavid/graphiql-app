@@ -1,10 +1,10 @@
-import { signIn } from '@/store/slices/authActions';
+import { signIn } from '@/store/auth/authActions';
 import {
   selectSignInError,
   selectSignInStatus,
-} from '@/store/slices/authSelectors';
+} from '@/store/auth/authSelectors';
 import { useAppDispatch, useAppSelector } from '@/store/store';
-import { CustomError, RequestStatus, SignInData } from '@/types/auth-types';
+import { CustomError, RequestStatus, SignInData } from '@/types/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, TextField } from '@mui/material';
 import { useForm } from 'react-hook-form';
@@ -50,7 +50,9 @@ function SignInForm() {
         fullWidth
       />
       {signInStatus === RequestStatus.FAILED && (
-        <StyledErrorMessage>{signInError?.message}</StyledErrorMessage>
+        <StyledErrorMessage>
+          {signInError?.message ?? 'Something went wrong'}
+        </StyledErrorMessage>
       )}
       <Button type="submit" variant="contained" color="primary">
         {signInStatus === RequestStatus.LOADING ? 'Loading ...' : 'Sign in'}

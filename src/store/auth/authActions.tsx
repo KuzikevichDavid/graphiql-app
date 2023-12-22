@@ -1,11 +1,10 @@
-import AuthSupabase from '@/services/supabaseAuth';
 import {
   Auth,
   AuthStatus,
   CustomError,
   Session,
   SignUpData,
-} from '@/types/auth-types';
+} from '@/types/auth';
 import { Dispatch } from '@reduxjs/toolkit';
 import { authSlice } from './authSlice';
 
@@ -13,7 +12,7 @@ const { actions } = authSlice;
 
 export const signIn =
   (signUpData: SignUpData) =>
-  async (dispatch: Dispatch, _: unknown, { auth }: { auth: AuthSupabase }) => {
+  async (dispatch: Dispatch, _: unknown, { auth }: { auth: Auth }) => {
     dispatch(actions.startAuth({ callType: AuthStatus.SIGN_IN }));
 
     const signInInfo: { session: Session | null; error: CustomError | null } =

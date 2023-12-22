@@ -52,11 +52,11 @@ export interface SignUpData {
 }
 
 export interface Auth {
-  signIn(
+  signIn: (
     signInDto: SignInData
-  ): Promise<{ session: Session | null; error: CustomError | null }>;
+  ) => Promise<{ session: Session | null; error: CustomError | null }>;
 
-  signUp(signUpDto: SignUpData): Promise<{ error: CustomError | null }>;
+  signUp: (signUpDto: SignUpData) => Promise<{ error: CustomError | null }>;
 
-  signOut(): Promise<{ error: CustomError | null }>;
+  signOut: () => Promise<{ error: CustomError | null }>;
 }

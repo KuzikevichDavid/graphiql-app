@@ -1,10 +1,10 @@
-import { signUp } from '@/store/slices/authActions';
+import { signUp } from '@/store/auth/authActions';
 import {
   selectSignUpError,
   selectSignUpStatus,
-} from '@/store/slices/authSelectors';
+} from '@/store/auth/authSelectors';
 import { useAppDispatch, useAppSelector } from '@/store/store';
-import { CustomError, RequestStatus } from '@/types/auth-types';
+import { CustomError, RequestStatus } from '@/types/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {
   Button,
@@ -113,7 +113,9 @@ function SignUpForm() {
         <div style={{ color: 'red' }}>{errors.termsCheck.message}</div>
       )}
       {signUpStatus === RequestStatus.FAILED && (
-        <StyledErrorMessage>{signUpError?.message}</StyledErrorMessage>
+        <StyledErrorMessage>
+          {signUpError?.message ?? 'Something went wrong'}
+        </StyledErrorMessage>
       )}
       <Button type="submit" variant="contained" color="primary">
         Sign up
