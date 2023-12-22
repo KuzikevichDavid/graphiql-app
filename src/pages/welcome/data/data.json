@@ -15,7 +15,7 @@
     },
     {
       "image": {
-        "src": "string",
+        "src": "./teamImages/avatar-ilya.png",
         "altLocaleIndex": "IliyaImage"
       },
       "nameLocaleIndex": "IliyaName",
@@ -28,7 +28,7 @@
     },
     {
       "image": {
-        "src": "string",
+        "src": "./teamImages/avatar-vlad.png",
         "altLocaleIndex": "VladImage"
       },
       "nameLocaleIndex": "VladName",
