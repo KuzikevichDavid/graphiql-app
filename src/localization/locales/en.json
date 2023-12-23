@@ -2,5 +2,7 @@
   "lang": "English",
   "welcome": "You Are Welcome",
   "header": "Header",
-  "footer": "Footer"
+  "footer": "Footer",
+  "notFound_Title": "The page you’re looking for doesn’t exist.",
+  "notFound_Button": "Back Home."
 }

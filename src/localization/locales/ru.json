@@ -2,5 +2,7 @@
   "lang": "Русский",
   "welcome": "Добро пожаловать!",
   "header": "Хэдэр",
-  "footer": "Футэр"
+  "footer": "Футэр",
+  "notFound_Title": "Страница не существует",
+  "notFound_Button": "На главную"
 }
