@@ -30,7 +30,11 @@ function ProtectedRoutes() {
       const supabase = new AuthSupabase();
       const localSessionData: Session | null = await supabase.getSession();
 
-      if (!localSessionData && location.pathname !== '/') {
+      if (
+        !localSessionData &&
+        location.pathname !== '/' &&
+        location.pathname !== '/signup'
+      ) {
         navigate('/signin');
         return;
       }
