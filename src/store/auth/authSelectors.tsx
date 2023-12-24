@@ -1,5 +1,9 @@
 import { CustomError, RequestStatus } from '@/types/auth';
+import { User } from '@supabase/supabase-js';
 import { RootState } from '../store';
+
+export const selectLoggedInUser = ({ auth }: RootState): User | null =>
+  auth.session?.user ?? null;
 
 export const selectIsLoggedInSession = ({ auth }: RootState): boolean =>
   Boolean(auth.session);

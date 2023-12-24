@@ -15,11 +15,6 @@ export enum RequestStatus {
   FAILED = 'FAILED',
 }
 
-export interface User {
-  id: string;
-  email: string;
-}
-
 export interface AuthState {
   session: Session | null;
   signInError: CustomError | null;

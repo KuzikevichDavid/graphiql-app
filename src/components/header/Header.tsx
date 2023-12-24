@@ -1,6 +1,9 @@
 import { LANG } from '@/constants/language';
 import { signOut } from '@/store/auth/authActions';
-import { selectIsLoggedInSession } from '@/store/auth/authSelectors';
+import {
+  selectIsLoggedInSession,
+  selectLoggedInUser,
+} from '@/store/auth/authSelectors';
 import { useAppDispatch, useAppSelector } from '@/store/store';
 import dataTestId from '@/tests/data-test';
 import { LoginOutlined } from '@mui/icons-material';
@@ -14,6 +17,7 @@ import LanguageSwitch from './styled';
 function Header() {
   const [language, setLanguage] = useState<string>(LANG.eng);
   const isLoggedInSession: boolean = useAppSelector(selectIsLoggedInSession);
+  const loggedInUser = useAppSelector(selectLoggedInUser);
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -37,20 +41,17 @@ function Header() {
   return (
     <AppBar data-testid={dataTestId.header} position="static">
       <Toolbar>
-        <Link
-          href="/"
-          color="inherit"
-          underline="none"
-          variant="h4"
-          sx={{ flexGrow: 1 }}
-        >
+        <Link href="/" color="inherit" underline="none" variant="h4">
           Header Test
         </Link>
-
+        <Typography sx={{ flexGrow: 1 }} />
         {isLoggedInSession ? (
-          <IconButton onClick={onSignOut} color="inherit">
-            <LogoutOutlinedIcon />
-          </IconButton>
+          <>
+            <Typography>{loggedInUser?.email}</Typography>
+            <IconButton onClick={onSignOut} color="inherit">
+              <LogoutOutlinedIcon />
+            </IconButton>
+          </>
         ) : (
           <IconButton onClick={onSignIn} color="inherit">
             <LoginOutlined />
