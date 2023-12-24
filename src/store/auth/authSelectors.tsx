@@ -1,11 +1,5 @@
-import supabase from '@/services/supabase';
-import { CustomError, RequestStatus, Session } from '@/types/auth';
+import { CustomError, RequestStatus } from '@/types/auth';
 import { RootState } from '../store';
-
-export const selectLocalSessionData = async (): Promise<Session | null> => {
-  const sbses = await supabase.auth.getSession();
-  return sbses.data.session as Session;
-};
 
 export const selectIsLoggedInSession = ({ auth }: RootState): boolean =>
   Boolean(auth.session);

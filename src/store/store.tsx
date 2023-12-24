@@ -1,4 +1,4 @@
-import AuthSupabase from '@/services/supabaseAuth';
+import AuthSupabase from '@/services/supabase/supabaseAuthService';
 import { AppOutputs } from '@/types/auth';
 import {
   Action,

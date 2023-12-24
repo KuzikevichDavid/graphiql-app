@@ -1,10 +1,5 @@
-import {
-  Auth,
-  CustomError,
-  Session,
-  SignInData,
-  SignUpData,
-} from '@/types/auth';
+import { Auth, CustomError, SignInData, SignUpData } from '@/types/auth';
+import { Session, Session as SupabaseSession } from '@supabase/supabase-js';
 import supabase from './supabase';
 
 class AuthSupabase implements Auth {
@@ -19,7 +14,7 @@ class AuthSupabase implements Auth {
       email,
       password,
     });
-    const transformedSession: Session | null = session as Session;
+    const transformedSession: Session | null = session;
     return Promise.resolve({ session: transformedSession, error });
   }
 
@@ -39,6 +34,13 @@ class AuthSupabase implements Auth {
     const { error } = await supabase.auth.signOut();
 
     return Promise.resolve({ error });
+  }
+
+  async getSession(): Promise<SupabaseSession | null> {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    return session;
   }
 }
 

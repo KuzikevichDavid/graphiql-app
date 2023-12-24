@@ -1,11 +1,6 @@
-import {
-  Auth,
-  AuthStatus,
-  CustomError,
-  Session,
-  SignUpData,
-} from '@/types/auth';
+import { Auth, AuthStatus, CustomError, SignUpData } from '@/types/auth';
 import { Dispatch } from '@reduxjs/toolkit';
+import { Session } from '@supabase/supabase-js';
 import { authSlice } from './authSlice';
 
 const { actions } = authSlice;

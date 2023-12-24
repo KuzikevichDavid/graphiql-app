@@ -1,12 +1,10 @@
-import { Session } from '@/types/auth';
+import AuthSupabase from '@/services/supabase/supabaseAuthService';
+import { Session } from '@supabase/supabase-js';
 import { ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { setSessionFromLocalSessionData } from './authActions';
-import {
-  selectIsLoggedInSession,
-  selectLocalSessionData,
-} from './authSelectors';
 import { useAppDispatch, useAppSelector } from '../store';
+import { setSessionFromLocalSessionData } from './authActions';
+import { selectIsLoggedInSession } from './authSelectors';
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -20,7 +18,8 @@ function AuthProvider({ children }: AuthProviderProps): ReactNode {
 
   useEffect(() => {
     const getLoggedInDataOrRedirect = async () => {
-      const localSessionData: Session | null = await selectLocalSessionData();
+      const supabase = new AuthSupabase();
+      const localSessionData: Session | null = await supabase.getSession();
 
       if (!localSessionData) {
         navigate('/signin');

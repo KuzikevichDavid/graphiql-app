@@ -1,3 +1,5 @@
+import { Session } from '@supabase/supabase-js';
+
 export interface AppOutputs {
   auth: Auth;
 }
@@ -5,14 +7,7 @@ export interface AppOutputs {
 export interface CustomError {
   message: string;
 }
-export interface Session {
-  access_token: string;
-  token_type: string;
-  expires_in: number;
-  refresh_token: string;
-  user: User;
-  expires_at?: number;
-}
+
 export enum RequestStatus {
   IDLE = 'IDLE',
   LOADING = 'LOADING',
