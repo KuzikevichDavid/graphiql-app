@@ -1,5 +1,6 @@
+import NotFoundPage from '@/pages/404/NotFound';
+import SignInPage from '@/pages/sign-in-page/SignInPage';
 import { RouteObject, createBrowserRouter } from 'react-router-dom';
-import SignInPage from '../pages/sign-in-page/SignInPage';
 import SignUpPage from '../pages/sign-up-page/SignUpPage';
 import WelcomePage from '../pages/welcome/WelcomePage';
 import ProtectedRoutes from './ProtectedRoutes';
@@ -22,10 +23,14 @@ const routes: RouteObject[] = [
         path: Routes.SignIn,
         element: <SignInPage />,
       },
+      {
+        path: Routes.NotFound,
+        element: <NotFoundPage />,
+      },
     ],
   },
 ];
 
 const router = createBrowserRouter(routes);
 
-export default router;
+export { router, routes };

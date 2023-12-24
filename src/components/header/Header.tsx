@@ -1,6 +1,7 @@
 import { LANG } from '@/constants/language';
 import { signOut } from '@/store/auth/authActions';
 import { useAppDispatch } from '@/store/store';
+import dataTestId from '@/tests/data-test';
 import { LoginOutlined } from '@mui/icons-material';
 import { AppBar, IconButton, Link, Toolbar, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
@@ -27,7 +28,7 @@ function Header() {
     }
   };
   return (
-    <AppBar position="static">
+    <AppBar data-testid={dataTestId.header} position="static">
       <Toolbar>
         <Link
           href="/"
@@ -36,7 +37,7 @@ function Header() {
           variant="h4"
           sx={{ flexGrow: 1 }}
         >
-          G R A P H I Q L A P P
+          Header Test
         </Link>
 
         <IconButton onClick={onSignOut} color="inherit">

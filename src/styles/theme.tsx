@@ -17,10 +17,10 @@ const LinkBehavior = React.forwardRef<
 const theme: Theme = createTheme({
   palette: {
     primary: {
-      main: '#673ab7',
+      main: '#4a5d74',
     },
     secondary: {
-      main: '#d500f9',
+      main: '#efac56',
     },
   },
   components: {
@@ -32,7 +32,7 @@ const theme: Theme = createTheme({
         root: {
           textDecoration: 'none',
           ':hover': {
-            color: '#d500f9',
+            color: '#efac56',
           },
         },
       },
@@ -45,7 +45,7 @@ const theme: Theme = createTheme({
         root: {
           textDecoration: 'none',
           ':hover': {
-            color: '#d500f9',
+            color: '#efac56',
           },
         },
       },
