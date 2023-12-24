@@ -1,6 +1,7 @@
 import { authSlice } from '@/store/auth/authSlice';
 import { appOutputs } from '@/store/store';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
 
 const rootReducer = combineReducers({
   auth: authSlice.reducer,
@@ -17,4 +18,8 @@ const setupTestStore = () =>
       }),
   });
 
-export default setupTestStore;
+function TestProvider({ children }: { children: React.ReactNode }) {
+  return <Provider store={setupTestStore()}>{children}</Provider>;
+}
+
+export default TestProvider;
