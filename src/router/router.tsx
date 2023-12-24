@@ -1,4 +1,5 @@
 import NotFoundPage from '@/pages/404/NotFound';
+import GraphiqlAppPage from '@/pages/graphiql-app-page/GraphiqlAppPage';
 import SignInPage from '@/pages/sign-in-page/SignInPage';
 import { RouteObject, createBrowserRouter } from 'react-router-dom';
 import SignUpPage from '../pages/sign-up-page/SignUpPage';
@@ -12,10 +13,6 @@ const routes: RouteObject[] = [
     element: <ProtectedRoutes />,
     children: [
       {
-        index: true,
-        element: <WelcomePage />,
-      },
-      {
         path: Routes.SignUp,
         element: <SignUpPage />,
       },
@@ -24,10 +21,18 @@ const routes: RouteObject[] = [
         element: <SignInPage />,
       },
       {
-        path: Routes.NotFound,
-        element: <NotFoundPage />,
+        path: Routes.App,
+        element: <GraphiqlAppPage />,
       },
     ],
+  },
+  {
+    path: Routes.Home,
+    element: <WelcomePage />,
+  },
+  {
+    path: Routes.NotFound,
+    element: <NotFoundPage />,
   },
 ];
 

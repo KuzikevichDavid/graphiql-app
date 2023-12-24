@@ -1,8 +1,10 @@
 import { LANG } from '@/constants/language';
 import { signOut } from '@/store/auth/authActions';
-import { useAppDispatch } from '@/store/store';
+import { selectIsLoggedInSession } from '@/store/auth/authSelectors';
+import { useAppDispatch, useAppSelector } from '@/store/store';
 import dataTestId from '@/tests/data-test';
 import { LoginOutlined } from '@mui/icons-material';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { AppBar, IconButton, Link, Toolbar, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
@@ -11,9 +13,14 @@ import LanguageSwitch from './styled';
 
 function Header() {
   const [language, setLanguage] = useState<string>(LANG.eng);
+  const isLoggedInSession: boolean = useAppSelector(selectIsLoggedInSession);
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
+  const onSignIn = () => {
+    navigate('/signin');
+  };
 
   const onSignOut = async () => {
     await dispatch(signOut());
@@ -40,9 +47,15 @@ function Header() {
           Header Test
         </Link>
 
-        <IconButton onClick={onSignOut} color="inherit">
-          <LoginOutlined />
-        </IconButton>
+        {isLoggedInSession ? (
+          <IconButton onClick={onSignOut} color="inherit">
+            <LogoutOutlinedIcon />
+          </IconButton>
+        ) : (
+          <IconButton onClick={onSignIn} color="inherit">
+            <LoginOutlined />
+          </IconButton>
+        )}
         <Stack direction="row" spacing={1} alignItems="center">
           <Typography>{LANG.eng}</Typography>
           <LanguageSwitch

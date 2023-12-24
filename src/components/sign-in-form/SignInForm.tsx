@@ -8,7 +8,7 @@ import { CustomError, RequestStatus, SignInData } from '@/types/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, TextField } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import signInSchema from '../../pages/sign-in-page/signInSchema';
+import signInSchema from './signInSchema';
 import { StyledErrorMessage, StyledForm } from '../styled';
 
 function SignInForm() {
