@@ -3,9 +3,9 @@ import {
   RequestStatus,
   CustomError,
   AuthStatus,
-  Session,
 } from '@/types/auth';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { Session } from '@supabase/supabase-js';
 
 export const initialState: AuthState = {
   session: null,

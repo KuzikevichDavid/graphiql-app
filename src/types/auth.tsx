@@ -1,7 +1,7 @@
 import { Session } from '@supabase/supabase-js';
 
 export interface AppOutputs {
-  auth: Auth;
+  auth?: Auth;
 }
 
 export interface CustomError {
