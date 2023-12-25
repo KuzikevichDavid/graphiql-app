@@ -1,26 +1,31 @@
-import { useForm } from 'react-hook-form';
-import { TextField, Button } from '@mui/material';
+import { signIn } from '@/store/auth/authActions';
+import {
+  selectSignInError,
+  selectSignInStatus,
+} from '@/store/auth/authSelectors';
+import { useAppDispatch, useAppSelector } from '@/store/store';
+import { CustomError, RequestStatus, SignInData } from '@/types/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
-import signInSchema from '../../pages/sign-in-page/signInSchema';
-import { StyledForm } from '../styled';
-
-interface SignInFormData {
-  email: string;
-  password: string;
-}
+import { Button, TextField } from '@mui/material';
+import { useForm } from 'react-hook-form';
+import signInSchema from './signInSchema';
+import { StyledErrorMessage, StyledForm } from '../styled';
 
 function SignInForm() {
+  const dispatch = useAppDispatch();
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm<SignInFormData>({
+  } = useForm<SignInData>({
     resolver: yupResolver(signInSchema),
   });
+  const signInError: CustomError | null = useAppSelector(selectSignInError);
+  const signInStatus: RequestStatus = useAppSelector(selectSignInStatus);
 
-  const onSubmit = (data: SignInFormData) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
+  const onSubmit = async (data: SignInData) => {
+    const { email, password } = data;
+    await dispatch(signIn({ email, password }));
   };
 
   return (
@@ -44,9 +49,13 @@ function SignInForm() {
         helperText={errors.password?.message}
         fullWidth
       />
-
+      {signInStatus === RequestStatus.FAILED && (
+        <StyledErrorMessage>
+          {signInError?.message ?? 'Something went wrong'}
+        </StyledErrorMessage>
+      )}
       <Button type="submit" variant="contained" color="primary">
-        Sign In
+        {signInStatus === RequestStatus.LOADING ? 'Loading ...' : 'Sign in'}
       </Button>
     </StyledForm>
   );

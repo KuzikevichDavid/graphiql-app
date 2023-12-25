@@ -1,8 +1,25 @@
-import { TextField, FormControlLabel, Checkbox, Button } from '@mui/material';
+import { signUp } from '@/store/auth/authActions';
+import {
+  selectSignUpError,
+  selectSignUpStatus,
+} from '@/store/auth/authSelectors';
+import { useAppDispatch, useAppSelector } from '@/store/store';
+import { CustomError, RequestStatus } from '@/types/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
+import {
+  Button,
+  Checkbox,
+  FormControlLabel,
+  Link,
+  TextField,
+} from '@mui/material';
 import { useForm } from 'react-hook-form';
+import {
+  StyledErrorMessage,
+  StyledForm,
+  StyledSuccessfullMessage,
+} from '../styled';
 import signUpSchema from './signUpSchema';
-import { StyledForm } from '../styled';
 
 interface FormData {
   email: string;
@@ -13,6 +30,11 @@ interface FormData {
 }
 
 function SignUpForm() {
+  const dispatch = useAppDispatch();
+
+  const signUpError: CustomError | null = useAppSelector(selectSignUpError);
+  const signUpStatus: RequestStatus = useAppSelector(selectSignUpStatus);
+
   const {
     handleSubmit,
     register,
@@ -21,15 +43,26 @@ function SignUpForm() {
     resolver: yupResolver(signUpSchema),
   });
 
-  const onSubmit = (data: FormData) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
+  const onSubmit = async (data: FormData) => {
+    await dispatch(signUp(data));
   };
+
+  if (signUpStatus === RequestStatus.COMPLETED) {
+    return (
+      <>
+        <StyledSuccessfullMessage>
+          Your registration was successful. Now you can sign in.
+        </StyledSuccessfullMessage>
+        <Link href="/signin">Sign in</Link>
+      </>
+    );
+  }
+
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <TextField
         id="username"
-        label="Username"
+        label="Name"
         {...register('username')}
         error={!!errors.username}
         helperText={errors.username?.message}
@@ -79,7 +112,11 @@ function SignUpForm() {
       {errors.termsCheck && (
         <div style={{ color: 'red' }}>{errors.termsCheck.message}</div>
       )}
-
+      {signUpStatus === RequestStatus.FAILED && (
+        <StyledErrorMessage>
+          {signUpError?.message ?? 'Something went wrong'}
+        </StyledErrorMessage>
+      )}
       <Button type="submit" variant="contained" color="primary">
         Sign up
       </Button>
