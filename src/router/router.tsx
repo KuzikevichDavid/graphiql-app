@@ -1,3 +1,4 @@
+import RootLayout from '@/layouts/RootLayout';
 import NotFoundPage from '@/pages/404/NotFound';
 import GraphiqlAppPage from '@/pages/graphiql-app-page/GraphiqlAppPage';
 import SignInPage from '@/pages/sign-in-page/SignInPage';
@@ -8,6 +9,16 @@ import ProtectedRoutes from './ProtectedRoutes';
 import Routes from './routes';
 
 const routes: RouteObject[] = [
+  {
+    path: Routes.Home,
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: <WelcomePage />,
+      },
+    ],
+  },
   {
     path: '/',
     element: <ProtectedRoutes />,
@@ -25,10 +36,6 @@ const routes: RouteObject[] = [
         element: <GraphiqlAppPage />,
       },
     ],
-  },
-  {
-    path: Routes.Home,
-    element: <WelcomePage />,
   },
   {
     path: Routes.NotFound,
