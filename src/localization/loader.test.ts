@@ -16,7 +16,7 @@ describe('Locales are "ru", "en"', () => {
   });
 
   it('Load "ru" locale', async () => {
-    const locale: Locales = 'ru';
+    const locale: Locales = Locales.ru;
 
     const file: LocaleData = await loadLocale(locale);
 

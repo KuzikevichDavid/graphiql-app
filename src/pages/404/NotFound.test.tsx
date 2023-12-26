@@ -2,16 +2,17 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { describe, it } from 'vitest';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
-
 import { routes } from '@/router/router';
-import dataTestId from '@/tests/data-test';
 import { LocalizationContextType } from '@/contexts/localization/types';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
+import { Lang, Locales } from '@/localization/types';
+import dataTestId from '@/tests/data-test';
+import TestProvider from '@/utils/testUtils/provider';
 
 const testContext: LocalizationContextType = {
-  locale: 'en',
+  locale: Locales.en,
   localeData: {
-    lang: 'English',
+    lang: Lang.en,
     notFound_Title: 'test_title',
     notFound_Button: 'test_button',
   },
@@ -25,9 +26,11 @@ describe('NotFoundPage tests', () => {
     });
 
     const wrapper = render(
-      <LocalizationContext.Provider value={testContext}>
-        <RouterProvider router={router} />
-      </LocalizationContext.Provider>
+      <TestProvider>
+        <LocalizationContext.Provider value={testContext}>
+          <RouterProvider router={router} />
+        </LocalizationContext.Provider>
+      </TestProvider>
     );
     const page = wrapper.getByTestId(dataTestId.notFound);
     expect(page).toBeInTheDocument();

@@ -1,11 +1,11 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import svgr from 'vite-plugin-svgr';
 import * as path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), svgr()],
   esbuild: {
     supported: {
       'top-level-await': true, // browsers can handle top-level-await features
@@ -24,7 +24,7 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text'],
       all: true,
-      exclude: ['**/index.ts', '**/types.ts', '**/*.d.ts'],
+      exclude: ['**/index.ts', '**/types.ts', '**/*.d.ts', '*.cjs'],
       watermarks: {
         lines: [50, 80],
         functions: [50, 80],

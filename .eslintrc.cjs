@@ -61,6 +61,20 @@ module.exports = {
     '@typescript-eslint/no-misused-promises': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '**/testUtils/**',
+          '**/*.test.ts',
+          '**/*.test.tsx',
+          'vite.config.ts',
+          '/src/setupTests.ts',
+        ],
+      },
+    ],
+    'class-methods-use-this': 'off',
+    'no-param-reassign': ['error', { props: false }],
   },
   overrides: [
     {

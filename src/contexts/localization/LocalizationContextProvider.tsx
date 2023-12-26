@@ -1,6 +1,6 @@
+import loadLocale from '@/localization/loader';
+import { Locales } from '@/localization/types';
 import { useContext, useMemo, useState } from 'react';
-import loadLocale from '../../localization/loader';
-import { Locales } from '../../localization/types';
 import LocalizationContext from './LocalizationContext';
 import { LocalizationContextType } from './types';
 

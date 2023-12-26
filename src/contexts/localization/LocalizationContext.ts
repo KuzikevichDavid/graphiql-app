@@ -1,15 +1,13 @@
+import { DEFAULT_LOCALE } from '@/constants/defaultLang';
+import loadLocale from '@/localization/loader';
 import { createContext } from 'react';
-import loadLocale from '../../localization/loader';
-import { Locales } from '../../localization/types';
 import { LocalizationContextType } from './types';
 
-const defaultLocale: Locales = 'en';
-
-const defaultLocaleData = await loadLocale(defaultLocale);
+const defaultLocaleData = await loadLocale();
 
 const initValue: LocalizationContextType = {
   localeData: defaultLocaleData,
-  locale: defaultLocale,
+  locale: DEFAULT_LOCALE,
   setLocale: () => Promise.resolve<void>(undefined),
 };
 

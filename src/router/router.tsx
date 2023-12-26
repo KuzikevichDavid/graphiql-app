@@ -1,10 +1,12 @@
-import { RouteObject, createBrowserRouter } from 'react-router-dom';
+import RootLayout from '@/layouts/RootLayout';
 import NotFoundPage from '@/pages/404/NotFound';
-import RootLayout from '../layouts/RootLayout';
-import Routes from './routes';
-import WelcomePage from '../pages/welcome/WelcomePage';
+import GraphiqlAppPage from '@/pages/graphiql-app-page/GraphiqlAppPage';
+import SignInPage from '@/pages/sign-in-page/SignInPage';
+import { RouteObject, createBrowserRouter } from 'react-router-dom';
 import SignUpPage from '../pages/sign-up-page/SignUpPage';
-import SignInPage from '../pages/sign-in-page/SignInPage';
+import WelcomePage from '../pages/welcome/WelcomePage';
+import ProtectedRoutes from './ProtectedRoutes';
+import Routes from './routes';
 
 const routes: RouteObject[] = [
   {
@@ -16,12 +18,21 @@ const routes: RouteObject[] = [
         element: <WelcomePage />,
       },
       {
-        path: Routes.SignUp,
-        element: <SignUpPage />,
-      },
-      {
-        path: Routes.SignIn,
-        element: <SignInPage />,
+        element: <ProtectedRoutes />,
+        children: [
+          {
+            path: Routes.SignUp,
+            element: <SignUpPage />,
+          },
+          {
+            path: Routes.SignIn,
+            element: <SignInPage />,
+          },
+          {
+            path: Routes.App,
+            element: <GraphiqlAppPage />,
+          },
+        ],
       },
       {
         path: Routes.NotFound,
@@ -33,4 +44,4 @@ const routes: RouteObject[] = [
 
 const router = createBrowserRouter(routes);
 
-export { routes, router };
+export { router, routes };
