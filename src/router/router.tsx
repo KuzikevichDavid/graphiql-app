@@ -17,29 +17,28 @@ const routes: RouteObject[] = [
         index: true,
         element: <WelcomePage />,
       },
+      {
+        element: <ProtectedRoutes />,
+        children: [
+          {
+            path: Routes.SignUp,
+            element: <SignUpPage />,
+          },
+          {
+            path: Routes.SignIn,
+            element: <SignInPage />,
+          },
+          {
+            path: Routes.App,
+            element: <GraphiqlAppPage />,
+          },
+        ],
+      },
+      {
+        path: Routes.NotFound,
+        element: <NotFoundPage />,
+      },
     ],
-  },
-  {
-    path: '/',
-    element: <ProtectedRoutes />,
-    children: [
-      {
-        path: Routes.SignUp,
-        element: <SignUpPage />,
-      },
-      {
-        path: Routes.SignIn,
-        element: <SignInPage />,
-      },
-      {
-        path: Routes.App,
-        element: <GraphiqlAppPage />,
-      },
-    ],
-  },
-  {
-    path: Routes.NotFound,
-    element: <NotFoundPage />,
   },
 ];
 

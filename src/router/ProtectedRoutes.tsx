@@ -1,4 +1,3 @@
-import RootLayout from '@/layouts/RootLayout';
 import AuthSupabase from '@/services/supabase/supabaseAuthService';
 import { setSessionFromLocalSessionData } from '@/store/auth/authActions';
 import {
@@ -8,7 +7,7 @@ import {
 import { useAppDispatch, useAppSelector } from '@/store/store';
 import { Session } from '@supabase/supabase-js';
 import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 function ProtectedRoutes() {
   const navigate = useNavigate();
@@ -47,6 +46,6 @@ function ProtectedRoutes() {
     if (!isLoggedInSession) getLoggedInDataOrRedirect().catch(console.error);
   }, [dispatch, isLoggedInSession, location.pathname, navigate]);
 
-  return <RootLayout />;
+  return <Outlet />;
 }
 export default ProtectedRoutes;

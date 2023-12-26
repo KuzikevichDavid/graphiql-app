@@ -1,72 +1,66 @@
-import { LANG } from '@/constants/language';
+import { LoginOutlined } from '@mui/icons-material';
+import LogoutOutlinedIcon from '@mui/icons-material/LoginOutlined';
+import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import { signOut } from '@/store/auth/authActions';
 import {
   selectIsLoggedInSession,
   selectLoggedInUser,
 } from '@/store/auth/authSelectors';
-import { useAppDispatch, useAppSelector } from '@/store/store';
-import dataTestId from '@/tests/data-test';
-import { LoginOutlined } from '@mui/icons-material';
-import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import { AppBar, IconButton, Link, Toolbar, Typography } from '@mui/material';
-import Stack from '@mui/material/Stack';
-import { useState } from 'react';
+import { useAppSelector, useAppDispatch } from '@/store/store';
 import { useNavigate } from 'react-router-dom';
-import LanguageSwitch from './styled';
+import dataTestId from '@/tests/data-test';
+import Routes from '@/router/routes';
+import { useContext } from 'react';
+import LocalizationContext from '@/contexts/localization/LocalizationContext';
+import BurgerMenu from './BurgerMenu';
+import SelectLang from './SelectLang';
 
 function Header() {
-  const [language, setLanguage] = useState<string>(LANG.eng);
   const isLoggedInSession: boolean = useAppSelector(selectIsLoggedInSession);
   const loggedInUser = useAppSelector(selectLoggedInUser);
+
+  const { localeData } = useContext(LocalizationContext);
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const onSignIn = () => {
-    navigate('/signin');
+    navigate(Routes.SignIn);
   };
 
   const onSignOut = async () => {
     await dispatch(signOut());
-    navigate('/signin');
   };
 
-  const changeLanguage = () => {
-    if (language === LANG.rus) {
-      setLanguage(LANG.eng);
-    } else {
-      setLanguage(LANG.rus);
-    }
-  };
   return (
     <AppBar data-testid={dataTestId.header} position="static">
       <Toolbar>
-        <Link href="/" color="inherit" underline="none" variant="h4">
-          Header Test
-        </Link>
-        <Typography sx={{ flexGrow: 1 }} />
+        <BurgerMenu />
+
         {isLoggedInSession ? (
           <>
-            <Typography>{loggedInUser?.email}</Typography>
-            <IconButton onClick={onSignOut} color="inherit">
+            <Typography sx={{ overflow: 'hidden' }}>
+              {loggedInUser?.email}
+            </Typography>
+            <IconButton
+              onClick={onSignOut}
+              title={localeData.signout}
+              color="inherit"
+            >
               <LogoutOutlinedIcon />
             </IconButton>
           </>
         ) : (
-          <IconButton onClick={onSignIn} color="inherit">
+          <IconButton
+            onClick={onSignIn}
+            title={localeData.signup}
+            color="inherit"
+          >
             <LoginOutlined />
           </IconButton>
         )}
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Typography>{LANG.eng}</Typography>
-          <LanguageSwitch
-            aria-label="Switch between languages"
-            checked={language !== LANG.eng}
-            onChange={changeLanguage}
-            inputProps={{ 'aria-label': 'ant design' }}
-          />
-          <Typography>{LANG.rus}</Typography>
-        </Stack>
+
+        <SelectLang />
       </Toolbar>
     </AppBar>
   );

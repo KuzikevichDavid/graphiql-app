@@ -1,10 +1,11 @@
-import { createTheme, Theme } from '@mui/material';
+import { alpha, createTheme, darken, Theme } from '@mui/material';
 import {
   Link as RouterLink,
   LinkProps as RouterLinkProps,
 } from 'react-router-dom';
 import { LinkProps } from '@mui/material/Link';
 import React from 'react';
+import important from '@/utils/muiStyles/important';
 
 const LinkBehavior = React.forwardRef<
   HTMLAnchorElement,
@@ -14,13 +15,16 @@ const LinkBehavior = React.forwardRef<
   return <RouterLink ref={ref} to={href} {...other} />;
 });
 
+const primaryMain = '#4a5d74';
+const secondaryMain = '#efac56';
+
 const theme: Theme = createTheme({
   palette: {
     primary: {
-      main: '#4a5d74',
+      main: primaryMain,
     },
     secondary: {
-      main: '#efac56',
+      main: secondaryMain,
     },
   },
   components: {
@@ -32,7 +36,7 @@ const theme: Theme = createTheme({
         root: {
           textDecoration: 'none',
           ':hover': {
-            color: '#efac56',
+            color: secondaryMain,
           },
         },
       },
@@ -45,7 +49,21 @@ const theme: Theme = createTheme({
         root: {
           textDecoration: 'none',
           ':hover': {
-            color: '#efac56',
+            color: secondaryMain,
+          },
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          '&.Mui-selected': {
+            backgroundColor: important(alpha(primaryMain, 0.8)),
+            opacity: 1,
+            '&:hover': {
+              backgroundColor: important(darken(primaryMain, 0.3)),
+              opacity: 1,
+            },
           },
         },
       },

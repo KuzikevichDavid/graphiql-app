@@ -1,5 +1,12 @@
-export type Locales = 'ru' | 'en' | undefined;
-export type Lang = 'Русский' | 'English';
+export enum Locales {
+  ru = 'ru',
+  en = 'en',
+}
+
+export enum Lang {
+  ru = 'Русский',
+  en = 'English',
+}
 
 export interface LocaleData {
   lang: Lang;
