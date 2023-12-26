@@ -2,7 +2,7 @@ enum Routes {
   Home = '/',
   SignUp = '/signup',
   SignIn = '/signin',
-  Main = '/main',
+  App = '/app',
   NotFound = '*',
 }
 

@@ -1,4 +1,4 @@
-import testIds from '@/utils/testUtils/constants/testIds';
+import dataTestId from '@/tests/data-test';
 import wrappedRender from '@/utils/testUtils/wrappedRender';
 import { screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
@@ -8,7 +8,7 @@ describe('Rendered "ExpandMore" element', () => {
   it('Rendered expanded', () => {
     wrappedRender(<ExpandMore expand />);
 
-    const expand = screen.getByTestId(testIds.expandMore);
+    const expand = screen.getByTestId(dataTestId.expandMore);
 
     const computedStyle = getComputedStyle(expand);
     expect(computedStyle.transform).toBe('rotate(180deg)');

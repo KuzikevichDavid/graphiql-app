@@ -1,4 +1,4 @@
-import testIds from '@/utils/testUtils/constants/testIds';
+import dataTestId from '@/tests/data-test';
 import wrappedRender from '@/utils/testUtils/wrappedRender';
 import { screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
@@ -19,9 +19,9 @@ describe('Developer card with fake data', () => {
     const user = userEvent.setup();
     wrappedRender(<DeveloperCard data={fakeDeveloperData} />);
 
-    const expand = screen.getByTestId(testIds.expandMore);
+    const expand = screen.getByTestId(dataTestId.expandMore);
     await user.click(expand);
-    const expandData = screen.getByTestId(testIds.expandMoreData);
+    const expandData = screen.getByTestId(dataTestId.expandMoreData);
 
     expect(expandData, 'Expand does not open').toBeInTheDocument();
 

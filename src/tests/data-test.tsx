@@ -1,6 +1,6 @@
-const testIds: Readonly<Record<string, string>> = {
-  header: 'test-header',
+const dataTestId: Record<string, string> = {
   notFound: 'test-404',
+  header: 'test-header',
   purposeSection: 'purposeSectionId',
   schoolSection: 'schoolSectionId',
   teamSection: 'teamSectionId',
@@ -12,4 +12,4 @@ const testIds: Readonly<Record<string, string>> = {
   burgerMenuMobileItem: 'burgerMenuMobileItemId',
 };
 
-export default testIds;
+export default dataTestId;

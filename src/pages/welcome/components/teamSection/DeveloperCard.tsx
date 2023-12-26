@@ -17,7 +17,7 @@ import {
 } from '@mui/material';
 import { useContext, useState } from 'react';
 import { DeveloperData } from '@/pages/welcome/data/types';
-import testIds from '@/utils/testUtils/constants/testIds';
+import dataTestId from '@/tests/data-test';
 
 interface PropType {
   data: DeveloperData;
@@ -67,7 +67,7 @@ function DeveloperCard({ data }: PropType) {
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="show more"
-            data-testid={testIds.expandMore}
+            data-testid={dataTestId.expandMore}
           >
             <ExpandMoreIcon />
           </ExpandMore>
@@ -79,7 +79,7 @@ function DeveloperCard({ data }: PropType) {
               paragraph
               variant="body2"
               color="text.secondary"
-              data-testid={testIds.expandMoreData}
+              data-testid={dataTestId.expandMoreData}
             >
               {localeData[data.quickBioLocaleIndex]}
             </Typography>

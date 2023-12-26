@@ -10,7 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import React, { useContext } from 'react';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
 import Routes from '@/router/routes';
-import testIds from '@/utils/testUtils/constants/testIds';
+import dataTestId from '@/tests/data-test';
 
 interface Page {
   href: string;
@@ -44,7 +44,7 @@ function BurgerMenu() {
           aria-haspopup="true"
           onClick={handleOpenNavMenu}
           color="inherit"
-          data-testid={testIds.burgerMenuMobile}
+          data-testid={dataTestId.burgerMenuMobile}
         >
           <MenuIcon />
         </IconButton>
@@ -62,15 +62,17 @@ function BurgerMenu() {
           }}
           open={Boolean(anchorElNav)}
           onClose={handleCloseNavMenu}
-          data-testid={testIds.burgerMenuMobileItems}
+          data-testid={dataTestId.burgerMenuMobileItems}
         >
           {pages.map((page) => (
             <MenuItem
               key={page.href}
               onClick={handleCloseNavMenu}
-              data-testid={testIds.burgerMenuMobileItem}
+              data-testid={dataTestId.burgerMenuMobileItem}
             >
-              <Typography textAlign="center">{page.title}</Typography>
+              <Link href={page.href}>
+                <Typography textAlign="center">{page.title}</Typography>
+              </Link>
             </MenuItem>
           ))}
         </Menu>
@@ -78,7 +80,7 @@ function BurgerMenu() {
 
       <Box
         sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
-        data-testid={testIds.burgerMenuDesktop}
+        data-testid={dataTestId.burgerMenuDesktop}
       >
         {pages.map((page) => (
           <Link

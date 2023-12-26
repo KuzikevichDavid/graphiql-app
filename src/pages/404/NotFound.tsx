@@ -3,14 +3,14 @@ import Grid from '@mui/material/Grid';
 import notFoundImage from '@/assets/images/404.png';
 import { useContext } from 'react';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
-import testIds from '@/utils/testUtils/constants/testIds';
+import dataTestId from '@/tests/data-test';
 
 function NotFoundPage() {
   const { localeData } = useContext(LocalizationContext);
 
   return (
     <Box
-      data-testid={testIds.notFound}
+      data-testid={dataTestId.notFound}
       sx={{
         display: 'flex',
         justifyContent: 'center',

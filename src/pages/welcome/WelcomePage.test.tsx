@@ -1,4 +1,4 @@
-import testIds from '@/utils/testUtils/constants/testIds';
+import dataTestId from '@/tests/data-test';
 import wrappedRender from '@/utils/testUtils/wrappedRender';
 import { screen } from '@testing-library/react';
 import { ReactElement } from 'react';
@@ -10,9 +10,9 @@ import WelcomePage from './WelcomePage';
 
 describe('Rendering "Welcome" page', () => {
   it.each([
-    ['School', <SchoolSection key="School" />, testIds.schoolSection],
-    ['Purpose', <PurposeSection key="Purpose" />, testIds.purposeSection],
-    ['Team', <TeamSection key="Team" />, testIds.teamSection],
+    ['School', <SchoolSection key="School" />, dataTestId.schoolSection],
+    ['Purpose', <PurposeSection key="Purpose" />, dataTestId.purposeSection],
+    ['Team', <TeamSection key="Team" />, dataTestId.teamSection],
   ])('Rendering "%s" section', async (_, ui: ReactElement, testId: string) => {
     wrappedRender(ui);
 
@@ -23,9 +23,9 @@ describe('Rendering "Welcome" page', () => {
   it('Render the page', () => {
     wrappedRender(<WelcomePage />);
 
-    const schoolSection = screen.queryByTestId(testIds.schoolSection);
-    const purposeSection = screen.queryByTestId(testIds.purposeSection);
-    const teamSection = screen.queryByTestId(testIds.teamSection);
+    const schoolSection = screen.queryByTestId(dataTestId.schoolSection);
+    const purposeSection = screen.queryByTestId(dataTestId.purposeSection);
+    const teamSection = screen.queryByTestId(dataTestId.teamSection);
 
     expect(schoolSection).toBeInTheDocument();
     expect(purposeSection).toBeInTheDocument();

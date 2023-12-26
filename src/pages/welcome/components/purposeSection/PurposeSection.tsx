@@ -1,6 +1,6 @@
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
+import dataTestId from '@/tests/data-test';
 import important from '@/utils/muiStyles/important';
-import testIds from '@/utils/testUtils/constants/testIds';
 import { Box, Container, Typography } from '@mui/material';
 import { useContext } from 'react';
 import { greySection } from '../styles/styles';
@@ -32,7 +32,7 @@ function PurposeSection() {
           maxWidth: '720px',
           padding: '10px',
         }}
-        data-testid={testIds.purposeSection}
+        data-testid={dataTestId.purposeSection}
       >
         <Box sx={{ margin: '10px' }}>
           <Container sx={{ margin: '10px' }}>

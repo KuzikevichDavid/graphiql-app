@@ -1,7 +1,7 @@
 import RSSchoolIcon from '@/components/icons/RSSchoolIcon';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
 import theme from '@/styles/theme';
-import testIds from '@/utils/testUtils/constants/testIds';
+import dataTestId from '@/tests/data-test';
 import { Box, Container, Typography, IconButton } from '@mui/material';
 import { useContext } from 'react';
 import { flexRowWrap } from './styles/styles';
@@ -46,7 +46,7 @@ function SchoolSection() {
           </IconButton>
           <Typography
             sx={{ maxWidth: 320, textAlign: 'justify' }}
-            data-testid={testIds.schoolSection}
+            data-testid={dataTestId.schoolSection}
           >
             {localeData.schoolBio}
           </Typography>

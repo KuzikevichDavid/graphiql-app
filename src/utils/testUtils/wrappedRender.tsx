@@ -4,6 +4,7 @@ import { ThemeProvider } from '@emotion/react';
 import { render } from '@testing-library/react';
 import React, { ReactElement } from 'react';
 import { MemoryRouter } from 'react-router-dom';
+import TestProvider from './provider';
 import { IExtendedRenderOptions } from './types';
 
 function wrappedRender(
@@ -14,11 +15,13 @@ function wrappedRender(
     return (
       <React.StrictMode>
         <ThemeProvider theme={theme}>
-          <LocalizationContextProvider>
-            <MemoryRouter initialEntries={options?.initialEntries ?? ['/']}>
-              {children}
-            </MemoryRouter>
-          </LocalizationContextProvider>
+          <TestProvider>
+            <LocalizationContextProvider>
+              <MemoryRouter initialEntries={options?.initialEntries ?? ['/']}>
+                {children}
+              </MemoryRouter>
+            </LocalizationContextProvider>
+          </TestProvider>
         </ThemeProvider>
       </React.StrictMode>
     );

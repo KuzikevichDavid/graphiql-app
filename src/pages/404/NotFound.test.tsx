@@ -5,8 +5,9 @@ import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { routes } from '@/router/router';
 import { LocalizationContextType } from '@/contexts/localization/types';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
-import testIds from '@/utils/testUtils/constants/testIds';
 import { Lang, Locales } from '@/localization/types';
+import dataTestId from '@/tests/data-test';
+import TestProvider from '@/utils/testUtils/provider';
 
 const testContext: LocalizationContextType = {
   locale: Locales.en,
@@ -25,11 +26,13 @@ describe('NotFoundPage tests', () => {
     });
 
     const wrapper = render(
-      <LocalizationContext.Provider value={testContext}>
-        <RouterProvider router={router} />
-      </LocalizationContext.Provider>
+      <TestProvider>
+        <LocalizationContext.Provider value={testContext}>
+          <RouterProvider router={router} />
+        </LocalizationContext.Provider>
+      </TestProvider>
     );
-    const page = wrapper.getByTestId(testIds.notFound);
+    const page = wrapper.getByTestId(dataTestId.notFound);
     expect(page).toBeInTheDocument();
 
     const title = wrapper.getByText(testContext.localeData.notFound_Title);
