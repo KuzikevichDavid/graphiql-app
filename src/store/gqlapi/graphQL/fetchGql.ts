@@ -2,7 +2,7 @@ import { GraphQLRequestBody } from './types';
 
 const CONTENT_JSON = 'application/json';
 
-const JSON_INDENTATION = 4;
+export const JSON_INDENTATION = 4;
 
 export default async function fetchGql(
   url: string,
@@ -16,7 +16,7 @@ export default async function fetchGql(
       'Content-Type': CONTENT_JSON,
       ...headers,
     },
-    body: new Blob([JSON.stringify(body, null, 2)], { type: CONTENT_JSON }),
+    body: JSON.stringify(body, null, 2),
   };
   const response = await fetch(url, options);
 

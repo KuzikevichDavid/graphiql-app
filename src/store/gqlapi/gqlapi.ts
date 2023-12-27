@@ -6,7 +6,7 @@ import {
 } from '@reduxjs/toolkit/query/react';
 import { QueryArgs, QueryEndpoints } from './types';
 
-const customBaseQuery: BaseQueryFn = async (
+const customBaseQuery: BaseQueryFn<QueryArgs, string> = async (
   args: QueryArgs,
   api: BaseQueryApi
 ) => {
@@ -35,7 +35,7 @@ export const gqlapi = createApi({
   reducerPath: 'gqlapi',
   tagTypes: [],
   endpoints: (builder) => ({
-    [QueryEndpoints.FetchGql]: builder.query<unknown, QueryArgs>({
+    [QueryEndpoints.FetchGql]: builder.query<string, QueryArgs>({
       query: (args: QueryArgs) => args,
       keepUnusedDataFor: 360,
     }),
@@ -43,3 +43,4 @@ export const gqlapi = createApi({
 });
 
 export const { getGraphQL } = gqlapi.endpoints;
+export const { useGetGraphQLQuery } = gqlapi;
