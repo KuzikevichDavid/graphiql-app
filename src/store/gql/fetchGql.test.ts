@@ -7,6 +7,7 @@ import fetchGql, { JSON_INDENTATION } from './fetchGql';
 
 describe('Send graphQL query', () => {
   const query = 'fake query';
+  const url = 'https://fake_url.com';
 
   it('Variables section missing', async () => {
     const expectData = JSON.stringify(
@@ -15,7 +16,7 @@ describe('Send graphQL query', () => {
       JSON_INDENTATION
     );
 
-    const data = await fetchGql('https://fake_url.com', {
+    const data = await fetchGql(url, {
       query,
       variables: '',
     });
@@ -31,7 +32,7 @@ describe('Send graphQL query', () => {
       JSON_INDENTATION
     );
 
-    const data = await fetchGql('https://fake_url.com', { query, variables });
+    const data = await fetchGql(url, { query, variables });
 
     expect(data).toBe(expectData);
   });

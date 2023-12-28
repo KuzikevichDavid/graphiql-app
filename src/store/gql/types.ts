@@ -1,4 +1,7 @@
-import { GraphQLRequestBody } from '@/store/gqlapi/graphQL/types';
+export interface GraphQLRequestBody {
+  query: string;
+  variables: string;
+}
 
 export interface QueryArgs {
   endpoint: string;

@@ -1,4 +1,4 @@
-import { GraphQLRequestBody } from '@/store/gqlapi/graphQL/types';
+import { GraphQLRequestBody } from '@/store/gql/types';
 import { http, HttpResponse } from 'msw';
 import { FakeResponse } from './types';
 

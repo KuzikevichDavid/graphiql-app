@@ -8,9 +8,9 @@ import {
   configureStore,
 } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { gqlapi } from './gqlapi/gqlapi';
+import { gqlapi } from './gql/gqlapi';
 import { authSlice } from './auth/authSlice';
-import gqlSlice from './gqlapi/slice/gqlSlice';
+import gqlSlice from './gql/slice/gqlSlice';
 
 export const appOutputs: AppOutputs = {
   auth: new AuthSupabase(),

@@ -1,4 +1,4 @@
-import fetchGql from '@/store/gqlapi/graphQL/fetchGql';
+import fetchGql from '@/store/gql/fetchGql';
 import {
   BaseQueryApi,
   BaseQueryFn,
