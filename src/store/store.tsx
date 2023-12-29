@@ -9,6 +9,7 @@ import {
 } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { authSlice } from './auth/authSlice';
+import docsSlice from './docs/docsSlice';
 
 export const appOutputs: AppOutputs = {
   auth: new AuthSupabase(),
@@ -16,6 +17,7 @@ export const appOutputs: AppOutputs = {
 
 const rootReducer = combineReducers({
   auth: authSlice.reducer,
+  docs: docsSlice,
 });
 const setupStore = () =>
   configureStore({

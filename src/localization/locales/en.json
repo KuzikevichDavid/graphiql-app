@@ -29,5 +29,7 @@
   "VladName": "Vlad",
   "VladImage": "Vlad image",
   "notFound_Title": "The page you’re looking for doesn’t exist.",
-  "notFound_Button": "Back Home."
+  "notFound_Button": "Back Home.",
+  "docs_load": "Load docs",
+  "docs_show": "Show docs"
 }

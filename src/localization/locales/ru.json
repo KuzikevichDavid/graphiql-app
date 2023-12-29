@@ -29,5 +29,7 @@
   "VladName": "Влад",
   "VladImage": "Фото Влада",
   "notFound_Title": "Страница не существует",
-  "notFound_Button": "На главную"
+  "notFound_Button": "На главную",
+  "docs_load": "Загрузить документацию",
+  "docs_show": "Показать документацию"
 }
