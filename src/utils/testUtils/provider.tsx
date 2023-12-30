@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 const rootReducer = combineReducers({
   auth: authSlice.reducer,
 });
-const setupTestStore = () =>
+export const setupTestStore = () =>
   configureStore({
     reducer: rootReducer,
 
