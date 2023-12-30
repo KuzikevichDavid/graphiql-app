@@ -1,47 +1,22 @@
-import RootLayout from '@/layouts/RootLayout';
-import NotFoundPage from '@/pages/404/NotFound';
 import GraphiqlAppPage from '@/pages/graphiql-app-page/GraphiqlAppPage';
 import SignInPage from '@/pages/sign-in-page/SignInPage';
-import { RouteObject, createBrowserRouter } from 'react-router-dom';
-import SignUpPage from '../pages/sign-up-page/SignUpPage';
-import WelcomePage from '../pages/welcome/WelcomePage';
+import SignUpPage from '@/pages/sign-up-page/SignUpPage';
+import WelcomePage from '@/pages/welcome/WelcomePage';
+import { Route, Routes } from 'react-router-dom';
 import ProtectedRoutes from './ProtectedRoutes';
-import Routes from './routes';
+import * as EnumRoutes from './routes';
 
-const routes: RouteObject[] = [
-  {
-    path: Routes.Home,
-    element: <RootLayout />,
-    children: [
-      {
-        index: true,
-        element: <WelcomePage />,
-      },
-      {
-        element: <ProtectedRoutes />,
-        children: [
-          {
-            path: Routes.SignUp,
-            element: <SignUpPage />,
-          },
-          {
-            path: Routes.SignIn,
-            element: <SignInPage />,
-          },
-          {
-            path: Routes.App,
-            element: <GraphiqlAppPage />,
-          },
-        ],
-      },
-      {
-        path: Routes.NotFound,
-        element: <NotFoundPage />,
-      },
-    ],
-  },
-];
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path={EnumRoutes.default.Home} element={<WelcomePage />} />
+      <Route path={EnumRoutes.default.SignUp} element={<SignUpPage />} />
+      <Route path={EnumRoutes.default.SignIn} element={<SignInPage />} />
+      <Route element={<ProtectedRoutes />}>
+        <Route path={EnumRoutes.default.App} element={<GraphiqlAppPage />} />
+      </Route>
+    </Routes>
+  );
+}
 
-const router = createBrowserRouter(routes);
-
-export { router, routes };
+export default AppRoutes;

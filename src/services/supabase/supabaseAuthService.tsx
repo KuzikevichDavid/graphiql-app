@@ -1,5 +1,5 @@
 import { Auth, CustomError, SignInData, SignUpData } from '@/types/auth';
-import { Session, Session as SupabaseSession } from '@supabase/supabase-js';
+import { Session } from '@supabase/supabase-js';
 import supabase from './supabase';
 
 class AuthSupabase implements Auth {
@@ -36,11 +36,21 @@ class AuthSupabase implements Auth {
     return Promise.resolve({ error });
   }
 
-  async getSession(): Promise<SupabaseSession | null> {
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
-    return session;
+  getSession() {
+    const pattern = /^sb-(.+)-auth-token$/;
+    let localSessionDataString = null;
+
+    for (let i = 0; i < localStorage.length; i += 1) {
+      const key = localStorage.key(i);
+      if (key && pattern.test(key)) {
+        localSessionDataString = localStorage.getItem(key);
+        break;
+      }
+    }
+
+    if (!localSessionDataString) return null;
+
+    return JSON.parse(localSessionDataString) as Session;
   }
 }
 
