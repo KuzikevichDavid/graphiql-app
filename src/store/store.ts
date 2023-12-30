@@ -8,7 +8,9 @@ import {
   configureStore,
 } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { gqlapi } from './gql/gqlapi';
 import { authSlice } from './auth/authSlice';
+import gqlSlice from './gql/slice/gqlSlice';
 
 export const appOutputs: AppOutputs = {
   auth: new AuthSupabase(),
@@ -16,6 +18,8 @@ export const appOutputs: AppOutputs = {
 
 const rootReducer = combineReducers({
   auth: authSlice.reducer,
+  gql: gqlSlice,
+  gqlapi: gqlapi.reducer,
 });
 const setupStore = () =>
   configureStore({
@@ -26,7 +30,7 @@ const setupStore = () =>
         immutableCheck: false,
         serializableCheck: false,
         thunk: { extraArgument: appOutputs },
-      }),
+      }).concat(gqlapi.middleware),
   });
 
 export const store = setupStore();
