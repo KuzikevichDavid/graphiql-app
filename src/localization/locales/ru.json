@@ -29,5 +29,8 @@
   "VladName": "Влад",
   "VladImage": "Фото Влада",
   "notFound_Title": "Страница не существует",
-  "notFound_Button": "На главную"
+  "notFound_Button": "На главную",
+  "appVariables": "Переменные",
+  "appHeaders": "Заголовки",
+  "documentation": "Документация"
 }

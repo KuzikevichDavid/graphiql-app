@@ -17,11 +17,13 @@ const LinkBehavior = React.forwardRef<
 
 const primaryMain = '#4a5d74';
 const secondaryMain = '#efac56';
+const lightColor = '#fff';
 
 const theme: Theme = createTheme({
   palette: {
     primary: {
       main: primaryMain,
+      light: lightColor,
     },
     secondary: {
       main: secondaryMain,
