@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
+import { Paper } from '@mui/material';
 import HeadersTab from './HeadersTab';
 import VariablesTab from './VariablesTab';
 
@@ -44,26 +45,28 @@ export default function TabsSection() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-          indicatorColor="secondary"
-          textColor="secondary"
-          sx={{}}
-        >
-          <Tab label={localeData.appVariables} {...a11yProps(0)} />
-          <Tab label={localeData.appHeaders} {...a11yProps(1)} />
-        </Tabs>
+    <Paper elevation={3} sx={{ mt: '10px' }}>
+      <Box sx={{ width: '100%' }}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+            indicatorColor="secondary"
+            textColor="secondary"
+            sx={{}}
+          >
+            <Tab label={localeData.appVariables} {...a11yProps(0)} />
+            <Tab label={localeData.appHeaders} {...a11yProps(1)} />
+          </Tabs>
+        </Box>
+        <CustomTabPanel value={value} index={0}>
+          <HeadersTab />
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          <VariablesTab />
+        </CustomTabPanel>
       </Box>
-      <CustomTabPanel value={value} index={0}>
-        <HeadersTab />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        <VariablesTab />
-      </CustomTabPanel>
-    </Box>
+    </Paper>
   );
 }

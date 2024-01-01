@@ -32,5 +32,6 @@
   "notFound_Button": "На главную",
   "appVariables": "Переменные",
   "appHeaders": "Заголовки",
-  "documentation": "Документация"
+  "documentation": "Документация",
+  "appInputPlaceholder": "Введите API адрес"
 }

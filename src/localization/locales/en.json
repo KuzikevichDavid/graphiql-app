@@ -32,5 +32,6 @@
   "notFound_Button": "Back Home.",
   "appVariables": "Variables",
   "appHeaders": "Headers",
-  "documentation": "Documentation"
+  "documentation": "Documentation",
+  "appInputPlaceholder": "Enter Api url"
 }
