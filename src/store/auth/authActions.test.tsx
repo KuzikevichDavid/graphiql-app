@@ -14,7 +14,7 @@ describe('dispatch actions', () => {
     signOut: vi.fn().mockResolvedValue({ error: null }),
   };
 
-  it('should dispatch startAuth and signIn actions', async () => {
+  it('should signin correctly', async () => {
     const signInData = {
       email: 'test@test.com',
       password: 'Test123!',
@@ -30,7 +30,7 @@ describe('dispatch actions', () => {
     );
   });
 
-  it('should dispatch startAuth and signUp actions', async () => {
+  it('should signup correctly', async () => {
     const signUpData = {
       email: 'test@test.com',
       password: 'Test123!',
@@ -45,7 +45,7 @@ describe('dispatch actions', () => {
     );
   });
 
-  it('should dispatch startAuth and signOut actions', async () => {
+  it('should signout correctly', async () => {
     await signOut()(dispatch, undefined, { auth });
     expect(dispatch).toHaveBeenCalledWith(
       authSlice.actions.startAuth({ callType: AuthStatus.SIGN_OUT })
