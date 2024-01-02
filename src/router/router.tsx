@@ -1,9 +1,9 @@
+import ProtectedRoutes from '@/components/protected-routes/ProtectedRoutes';
 import GraphiqlAppPage from '@/pages/graphiql-app-page/GraphiqlAppPage';
 import SignInPage from '@/pages/sign-in-page/SignInPage';
 import SignUpPage from '@/pages/sign-up-page/SignUpPage';
 import WelcomePage from '@/pages/welcome/WelcomePage';
 import { Route, Routes } from 'react-router-dom';
-import ProtectedRoutes from './ProtectedRoutes';
 import * as EnumRoutes from './routes';
 
 function AppRoutes() {
