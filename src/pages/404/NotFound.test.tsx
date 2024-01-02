@@ -1,13 +1,13 @@
-import { render } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import { describe, it } from 'vitest';
-import { createMemoryRouter, RouterProvider } from 'react-router-dom';
-import { routes } from '@/router/router';
-import { LocalizationContextType } from '@/contexts/localization/types';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
+import { LocalizationContextType } from '@/contexts/localization/types';
 import { Lang, Locales } from '@/localization/types';
+import AppRoutes from '@/router/router';
 import dataTestId from '@/tests/data-test';
 import TestProvider from '@/utils/testUtils/provider';
+import '@testing-library/jest-dom';
+import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import { describe, it } from 'vitest';
 
 const testContext: LocalizationContextType = {
   locale: Locales.en,
@@ -21,14 +21,12 @@ const testContext: LocalizationContextType = {
 
 describe('NotFoundPage tests', () => {
   it('the 404 page is displayed when navigating to an invalid route', () => {
-    const router = createMemoryRouter(routes, {
-      initialEntries: ['/404'],
-    });
-
     const wrapper = render(
       <TestProvider>
         <LocalizationContext.Provider value={testContext}>
-          <RouterProvider router={router} />
+          <MemoryRouter initialEntries={['/404']}>
+            <AppRoutes />
+          </MemoryRouter>
         </LocalizationContext.Provider>
       </TestProvider>
     );

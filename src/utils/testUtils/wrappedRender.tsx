@@ -15,7 +15,7 @@ function wrappedRender(
     return (
       <React.StrictMode>
         <ThemeProvider theme={theme}>
-          <TestProvider>
+          <TestProvider initialState={options?.initialState}>
             <LocalizationContextProvider>
               <MemoryRouter initialEntries={options?.initialEntries ?? ['/']}>
                 {children}

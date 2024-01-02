@@ -1,3 +1,4 @@
+import supabaseInstance from '@/services/supabase/supabaseAuthService';
 import { Auth, AuthStatus, CustomError, SignUpData } from '@/types/auth';
 import { Dispatch } from '@reduxjs/toolkit';
 import { Session } from '@supabase/supabase-js';
@@ -40,4 +41,15 @@ export const signOut =
 export const setSessionFromLocalSessionData =
   (localSessionData: Session) => (dispatch: Dispatch) => {
     dispatch(actions.signInWithLocalData({ localSessionData }));
+  };
+
+export const tryGetSessionFromLocalStorage =
+  () => async (dispatch: Dispatch) => {
+    dispatch(actions.startAuth({ callType: AuthStatus.SIGN_IN }));
+
+    const sessionFromLocalStorage = await supabaseInstance.getSession();
+
+    dispatch(
+      actions.signInWithLocalData({ localSessionData: sessionFromLocalStorage })
+    );
   };

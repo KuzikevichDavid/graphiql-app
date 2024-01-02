@@ -6,20 +6,26 @@ import { ThemeProvider } from '@mui/material';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import LocalizationContextProvider from './contexts/localization/LocalizationContextProvider';
 import './index.css';
-import theme from './styles/theme';
+import RootLayout from './layouts/RootLayout';
 import { store } from './store/store';
+import theme from './styles/theme';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Provider store={store}>
-        <LocalizationContextProvider>
-          <App />
-        </LocalizationContextProvider>
-      </Provider>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <LocalizationContextProvider>
+            <RootLayout>
+              <App />
+            </RootLayout>
+          </LocalizationContextProvider>
+        </Provider>
+      </ThemeProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
