@@ -6,7 +6,7 @@ import {
   Session,
 } from '@supabase/supabase-js';
 import supabase from './supabase';
-import AuthSupabase from './supabaseAuthService';
+import supabaseInstance from './supabaseAuthService';
 
 describe('AuthSupabase', () => {
   afterEach(() => {
@@ -14,7 +14,6 @@ describe('AuthSupabase', () => {
   });
 
   describe('signIn', () => {
-    const authSupabase = new AuthSupabase();
     const email = 'test@test.com';
     const password = 'Test123!';
     const mockSession: Session = {
@@ -45,7 +44,7 @@ describe('AuthSupabase', () => {
         signInResponse
       );
 
-      const result = await authSupabase.signIn({ email, password });
+      const result = await supabaseInstance.signIn({ email, password });
 
       expect(result.session?.user.aud).toEqual(mockSession.user.aud);
       expect(result.session?.user.identities).toEqual(
@@ -62,7 +61,7 @@ describe('AuthSupabase', () => {
       );
 
       try {
-        const result = await authSupabase.signIn({ email, password });
+        const result = await supabaseInstance.signIn({ email, password });
         expect(result).toBeUndefined();
       } catch (err) {
         if (err instanceof AuthError) {
@@ -74,17 +73,16 @@ describe('AuthSupabase', () => {
 
   describe('signUp', () => {
     it('successful sign up', async () => {
-      const authSupabase = new AuthSupabase();
       const mockResponse = { data: { user: null, session: null }, error: null };
-      vi.spyOn(authSupabase, 'signUp').mockResolvedValueOnce(mockResponse);
+      vi.spyOn(supabaseInstance, 'signUp').mockResolvedValueOnce(mockResponse);
 
-      const signUpResult = await authSupabase.signUp({
+      const signUpResult = await supabaseInstance.signUp({
         email: 'test@example.com',
         password: 'password123',
       });
 
-      expect(authSupabase.signUp).toHaveBeenCalledTimes(1);
-      expect(authSupabase.signUp).toHaveBeenCalledWith({
+      expect(supabaseInstance.signUp).toHaveBeenCalledTimes(1);
+      expect(supabaseInstance.signUp).toHaveBeenCalledWith({
         email: 'test@example.com',
         password: 'password123',
       });
@@ -92,8 +90,6 @@ describe('AuthSupabase', () => {
     });
 
     it('sign up with existing user', async () => {
-      const authSupabase = new AuthSupabase();
-
       const mockResponse: AuthResponse = {
         data: {
           user: null,
@@ -101,15 +97,15 @@ describe('AuthSupabase', () => {
         },
         error: new AuthError('User already exists'),
       };
-      vi.spyOn(authSupabase, 'signUp').mockResolvedValueOnce(mockResponse);
+      vi.spyOn(supabaseInstance, 'signUp').mockResolvedValueOnce(mockResponse);
 
-      const signUpResult = await authSupabase.signUp({
+      const signUpResult = await supabaseInstance.signUp({
         email: 'test@test.com',
         password: 'password123',
       });
 
-      expect(authSupabase.signUp).toHaveBeenCalledTimes(1);
-      expect(authSupabase.signUp).toHaveBeenCalledWith({
+      expect(supabaseInstance.signUp).toHaveBeenCalledTimes(1);
+      expect(supabaseInstance.signUp).toHaveBeenCalledWith({
         email: 'test@test.com',
         password: 'password123',
       });
@@ -119,8 +115,6 @@ describe('AuthSupabase', () => {
 
   describe('signOut', () => {
     it('should handle sign out', async () => {
-      const authSupabase = new AuthSupabase();
-
       const mockResponse = {
         data: {
           user: null,
@@ -128,18 +122,16 @@ describe('AuthSupabase', () => {
         },
         error: null,
       };
-      vi.spyOn(authSupabase, 'signOut').mockResolvedValueOnce(mockResponse);
-      const signOutResult = await authSupabase.signOut();
+      vi.spyOn(supabaseInstance, 'signOut').mockResolvedValueOnce(mockResponse);
+      const signOutResult = await supabaseInstance.signOut();
 
-      expect(authSupabase.signOut).toHaveBeenCalledTimes(1);
+      expect(supabaseInstance.signOut).toHaveBeenCalledTimes(1);
       expect(signOutResult).toEqual(mockResponse);
     });
   });
 
   describe('getSession', () => {
     it('should handle get session', async () => {
-      const authSupabase = new AuthSupabase();
-
       const mockSession: Session = {
         access_token: 'mock-token',
         expires_at: 1703957503,
@@ -154,9 +146,11 @@ describe('AuthSupabase', () => {
           created_at: '2022-03-03T15:55:03.000Z',
         },
       };
-      vi.spyOn(authSupabase, 'getSession').mockResolvedValueOnce(mockSession);
+      vi.spyOn(supabaseInstance, 'getSession').mockResolvedValueOnce(
+        mockSession
+      );
 
-      const session = await authSupabase.getSession();
+      const session = await supabaseInstance.getSession();
       expect(session).toEqual(mockSession);
     });
   });
