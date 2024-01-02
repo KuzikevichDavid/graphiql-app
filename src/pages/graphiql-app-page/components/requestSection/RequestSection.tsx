@@ -10,7 +10,7 @@ function RequestSection() {
   return (
     <Paper elevation={3}>
       <Editor
-        height="50vh"
+        height="600px"
         defaultLanguage="graphql"
         defaultValue="// some comment"
         onChange={onChange}

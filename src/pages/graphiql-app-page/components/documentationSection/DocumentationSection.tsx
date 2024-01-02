@@ -40,7 +40,7 @@ export default function DocumentationSection() {
         onClick={handleDrawerOpen}
         edge="start"
         sx={{
-          borderRadius: '10px',
+          borderRadius: '10px 10px 0px 0px',
           width: '160px',
           mr: 2,
           ...(open && { display: 'none' }),
@@ -50,6 +50,7 @@ export default function DocumentationSection() {
           left: '-48px',
           backgroundColor: 'primary.main',
           color: 'primary.light',
+          zIndex: '1000',
           '&:hover': { backgroundColor: 'primary.main' },
         }}
       >

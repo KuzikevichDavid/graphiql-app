@@ -45,7 +45,7 @@ export default function TabsSection() {
   };
 
   return (
-    <Paper elevation={3} sx={{ mt: '10px' }}>
+    <Paper elevation={3} sx={{ mt: '10px', borderRadius: '0px' }}>
       <Box sx={{ width: '100%' }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs
