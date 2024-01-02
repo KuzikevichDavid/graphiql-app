@@ -54,7 +54,12 @@ function SignInForm() {
           {signInError?.message ?? 'Something went wrong'}
         </StyledErrorMessage>
       )}
-      <Button type="submit" variant="contained" color="primary">
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        data-testid="signin-button"
+      >
         {signInStatus === RequestStatus.LOADING ? 'Loading ...' : 'Sign in'}
       </Button>
     </StyledForm>
