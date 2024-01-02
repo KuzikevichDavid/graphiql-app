@@ -36,22 +36,13 @@ class AuthSupabase implements Auth {
     return Promise.resolve({ error });
   }
 
-  getSession() {
-    const pattern = /^sb-(.+)-auth-token$/;
-    let localSessionDataString = null;
-
-    for (let i = 0; i < localStorage.length; i += 1) {
-      const key = localStorage.key(i);
-      if (key && pattern.test(key)) {
-        localSessionDataString = localStorage.getItem(key);
-        break;
-      }
-    }
-
-    if (!localSessionDataString) return null;
-
-    return JSON.parse(localSessionDataString) as Session;
+  async getSession(): Promise<Session | null> {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    return session;
   }
 }
+const supabaseInstance = new AuthSupabase();
 
-export default AuthSupabase;
+export default supabaseInstance;

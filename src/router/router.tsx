@@ -1,4 +1,5 @@
 import ProtectedRoutes from '@/components/protected-routes/ProtectedRoutes';
+import NotFoundPage from '@/pages/404/NotFound';
 import GraphiqlAppPage from '@/pages/graphiql-app-page/GraphiqlAppPage';
 import SignInPage from '@/pages/sign-in-page/SignInPage';
 import SignUpPage from '@/pages/sign-up-page/SignUpPage';
@@ -15,6 +16,7 @@ function AppRoutes() {
       <Route element={<ProtectedRoutes />}>
         <Route path={EnumRoutes.default.App} element={<GraphiqlAppPage />} />
       </Route>
+      <Route path={EnumRoutes.default.NotFound} element={<NotFoundPage />} />
     </Routes>
   );
 }
