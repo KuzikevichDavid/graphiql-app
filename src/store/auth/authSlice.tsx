@@ -67,9 +67,10 @@ export const authSlice = createSlice({
     },
     signInWithLocalData: (
       state: AuthState,
-      { payload }: PayloadAction<{ localSessionData: Session }>
+      { payload }: PayloadAction<{ localSessionData: Session | null }>
     ) => {
       state.session = payload.localSessionData;
+      state.signInStatus = RequestStatus.COMPLETED;
     },
   },
 });
