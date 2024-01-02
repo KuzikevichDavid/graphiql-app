@@ -1,5 +1,5 @@
 import { Auth, CustomError, SignInData, SignUpData } from '@/types/auth';
-import { Session, Session as SupabaseSession } from '@supabase/supabase-js';
+import { Session } from '@supabase/supabase-js';
 import supabase from './supabase';
 
 class AuthSupabase implements Auth {
@@ -38,12 +38,13 @@ class AuthSupabase implements Auth {
     return Promise.resolve({ error });
   };
 
-  getSession = async (): Promise<SupabaseSession | null> => {
+  async getSession(): Promise<Session | null> {
     const {
       data: { session },
     } = await supabase.auth.getSession();
     return session;
-  };
+  }
 }
+const supabaseInstance = new AuthSupabase();
 
-export default AuthSupabase;
+export default supabaseInstance;
