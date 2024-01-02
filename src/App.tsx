@@ -1,8 +1,17 @@
-import { RouterProvider } from 'react-router-dom';
-import { router } from './router/router';
+import { useEffect } from 'react';
+import AppRoutes from './router/router';
+import { tryGetSessionFromLocalStorage } from './store/auth/authActions';
+import { useAppDispatch } from './store/store';
 
 function App() {
-  return <RouterProvider router={router} />;
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    dispatch(tryGetSessionFromLocalStorage()).catch(console.error);
+  }, [dispatch]);
+
+  return <AppRoutes />;
 }
 
 export default App;
