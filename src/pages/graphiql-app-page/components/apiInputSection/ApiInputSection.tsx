@@ -11,7 +11,13 @@ function ApiInputSection() {
   return (
     <Paper
       component="form"
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
+      sx={{
+        p: '2px 4px',
+        display: 'flex',
+        alignItems: 'center',
+        ml: '10px',
+        mr: '10px',
+      }}
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}

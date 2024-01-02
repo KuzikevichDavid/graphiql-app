@@ -70,6 +70,17 @@ const theme: Theme = createTheme({
         },
       },
     },
+    MuiGrid: {
+      styleOverrides: {
+        root: {
+          '.MuiGrid-item': {
+            padding: '5px',
+          },
+          padding: '5px',
+          margin: '0px',
+        },
+      },
+    },
   },
 });
 

@@ -6,14 +6,10 @@ function RequestButton() {
     <Button
       variant="contained"
       sx={{
-        position: 'absolute',
-        right: '0px',
-        top: '0px',
-        transform: 'translate(50%, 0%)',
         zIndex: '100',
-        borderRadius: '50%',
-        width: '64px',
-        height: '64px',
+        minWidth: '30px',
+        width: '50px',
+        height: '40px',
         '&:hover': { color: 'secondary.main' },
       }}
     >

@@ -1,16 +1,19 @@
 import Editor from '@monaco-editor/react';
-import { Paper } from '@mui/material';
 
 function ResponseSection() {
   return (
-    <Paper elevation={3} sx={{ height: '100%', borderRadius: '4px' }}>
-      <Editor
-        height="100%"
-        language="json"
-        value="Response"
-        options={{ minimap: { enabled: false }, contextmenu: false }}
-      />
-    </Paper>
+    <Editor
+      height="100%"
+      language="json"
+      value="//Response section"
+      options={{
+        minimap: { enabled: false },
+        contextmenu: false,
+        readOnly: true,
+        overviewRulerBorder: false,
+        renderLineHighlight: 'none',
+      }}
+    />
   );
 }
 

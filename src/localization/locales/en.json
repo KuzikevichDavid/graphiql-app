@@ -33,5 +33,6 @@
   "appVariables": "Variables",
   "appHeaders": "Headers",
   "documentation": "Documentation",
-  "appInputPlaceholder": "Enter Api url"
+  "appInputPlaceholder": "Enter Api url",
+  "ControlPanel": "Execute query"
 }

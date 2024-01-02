@@ -33,5 +33,6 @@
   "appVariables": "Переменные",
   "appHeaders": "Заголовки",
   "documentation": "Документация",
-  "appInputPlaceholder": "Введите API адрес"
+  "appInputPlaceholder": "Введите API адрес",
+  "ControlPanel": "Выполнить запрос"
 }
