@@ -1,23 +1,30 @@
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
-import { useAppSelector } from '@/store/store';
+import { useAppDispatch, useAppSelector } from '@/store/store';
 import { Box, Button, CircularProgress, Fab } from '@mui/material';
 import { green, red } from '@mui/material/colors';
 import { useContext, useEffect, useState } from 'react';
 import DescriptionIcon from '@mui/icons-material/Description';
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
+import { getGraphQL } from '@/store/gql/gqlapi';
+import INTROSPECTION_QUERY from '@/constants/introspectionQuery';
+import { setDocs } from '@/store/docs/docsSlice';
+import important from '@/utils/muiStyles/important';
+import { Schema } from './types';
 
 function DocsButtons() {
   const [loading, setLoading] = useState(false);
   const { localeData } = useContext(LocalizationContext);
   const { isError, isDefined } = useAppSelector((state) => state.docs);
+  const { endpoint, headers } = useAppSelector((state) => state.gql);
+  const dispatch = useAppDispatch();
 
   const disabled = loading || isError;
 
   const buttonSx = {
     ...(isError && {
-      bgcolor: red[500],
+      bgcolor: important(red[500]),
       '&:hover': {
-        bgcolor: red[700],
+        bgcolor: important(red[700]),
       },
     }),
     ...(isDefined && {
@@ -28,19 +35,41 @@ function DocsButtons() {
     }),
   };
 
+  function setError() {
+    dispatch(setDocs({ endpoint, isError: true }));
+    setLoading(false);
+  }
+
   useEffect(() => {
     if (loading) {
-      // TODO do query
+      const data = dispatch(
+        getGraphQL.initiate({ body: INTROSPECTION_QUERY, endpoint, headers })
+      );
+      data.then((value) => {
+        if (value.isError) {
+          setError();
+          return;
+        }
+        if (value.data) {
+          const schema: Schema = JSON.parse(value.data) as Schema;
+          dispatch(setDocs({ endpoint, isError: false, docs: schema }));
+          setLoading(false);
+        }
+      }, setError);
+      return () => {
+        data.abort();
+      };
     }
-    return () => {
-      // TODO abort not finished query
-    };
+    return undefined;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
   const handleClick = () => {
-    if (!loading) {
-      setLoading(true);
+    if (!endpoint) {
+      // endpoint is null
+      return;
     }
+    setLoading(true);
   };
 
   return (
@@ -94,6 +123,10 @@ function DocsButtons() {
           />
         )}
       </Box>
+
+      <button onClick={() => setLoading(false)} type="button">
+        Load
+      </button>
     </Box>
   );
 }

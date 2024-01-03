@@ -14,7 +14,12 @@ const customBaseQuery: BaseQueryFn<QueryArgs, string> = async (
     switch (api.endpoint as QueryEndpoints) {
       case QueryEndpoints.FetchGql:
         return {
-          data: await fetchGql(args.endpoint, args.body, args.headers),
+          data: await fetchGql(
+            args.endpoint,
+            args.body,
+            args.headers,
+            api.signal
+          ),
         };
       default:
         return {
