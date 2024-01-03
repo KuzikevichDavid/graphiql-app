@@ -23,10 +23,8 @@ interface Page {
 
 function BurgerMenu() {
   const { localeData } = useContext(LocalizationContext);
-  let location = useLocation();
+  const location = useLocation();
   const isLoggedInSession: boolean = useAppSelector(selectIsLoggedInSession);
-
-  console.log(location);
 
   const pages: Page[] = [
     { href: Routes.Home, title: localeData.welcomePage },
