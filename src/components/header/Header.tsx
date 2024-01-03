@@ -31,7 +31,11 @@ function Header() {
       data-testid={dataTestId.header}
       position="static"
       className={scroll ? styles.header__scrolled : ''}
-      sx={{ minHeight: '80px', justifyContent: 'center' }}
+      sx={{
+        minHeight: '80px',
+        justifyContent: 'center',
+        backgroundColor: scroll ? 'text.disabled' : null,
+      }}
     >
       <Toolbar>
         <BurgerMenu />
