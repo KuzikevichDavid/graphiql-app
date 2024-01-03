@@ -1,4 +1,4 @@
-import AuthSupabase from '@/services/supabase/supabaseAuthService';
+import supabaseInstance from '@/services/supabase/supabaseAuthService';
 import { AppOutputs } from '@/types/auth';
 import {
   Action,
@@ -9,13 +9,17 @@ import {
 } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { authSlice } from './auth/authSlice';
+import { gqlapi } from './gql/gqlapi';
+import gqlSlice from './gql/slice/gqlSlice';
 
 export const appOutputs: AppOutputs = {
-  auth: new AuthSupabase(),
+  auth: supabaseInstance,
 };
 
 const rootReducer = combineReducers({
   auth: authSlice.reducer,
+  gql: gqlSlice,
+  gqlapi: gqlapi.reducer,
 });
 const setupStore = () =>
   configureStore({
@@ -26,7 +30,7 @@ const setupStore = () =>
         immutableCheck: false,
         serializableCheck: false,
         thunk: { extraArgument: appOutputs },
-      }),
+      }).concat(gqlapi.middleware),
   });
 
 export const store = setupStore();

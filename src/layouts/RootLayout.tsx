@@ -1,14 +1,11 @@
 import Header from '@/components/header/Header';
 import { StyledMain } from '@/components/styled';
-import { Outlet } from 'react-router-dom';
 
-function RootLayout() {
+function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header />
-      <StyledMain>
-        <Outlet />
-      </StyledMain>
+      <StyledMain>{children}</StyledMain>
       Footer
     </>
   );
