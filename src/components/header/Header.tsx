@@ -9,6 +9,8 @@ import dataTestId from '@/tests/data-test';
 import LogoutOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import { useContext } from 'react';
+import useHeaderScroll from '@/hooks/useHeaderScroll';
+import styles from '@/components/header/styles/styles.module.css';
 import BurgerMenu from './BurgerMenu';
 import SelectLang from './SelectLang';
 
@@ -16,6 +18,7 @@ function Header() {
   const isLoggedInSession: boolean = useAppSelector(selectIsLoggedInSession);
   const loggedInUser = useAppSelector(selectLoggedInUser);
   const { localeData } = useContext(LocalizationContext);
+  const { scroll } = useHeaderScroll();
 
   const dispatch = useAppDispatch();
 
@@ -24,7 +27,12 @@ function Header() {
   };
 
   return (
-    <AppBar data-testid={dataTestId.header} position="sticky">
+    <AppBar
+      data-testid={dataTestId.header}
+      position="static"
+      className={scroll ? styles.header__scrolled : ''}
+      sx={{ minHeight: '80px', justifyContent: 'center' }}
+    >
       <Toolbar>
         <BurgerMenu />
 

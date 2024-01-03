@@ -1,0 +1,17 @@
+.header__scrolled {
+  position: fixed !important;
+  z-index: 9999;
+  top: 0px;
+  animation: slideDown 0.6s ease-out;
+  height: 55px !important;
+  min-height: 55px !important;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
