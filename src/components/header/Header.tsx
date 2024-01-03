@@ -33,7 +33,7 @@ function Header() {
   };
 
   return (
-    <AppBar data-testid={dataTestId.header} position="static">
+    <AppBar data-testid={dataTestId.header} position="sticky">
       <Toolbar>
         <BurgerMenu />
 
