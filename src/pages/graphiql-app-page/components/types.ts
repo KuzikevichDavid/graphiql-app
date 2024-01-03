@@ -15,21 +15,22 @@ export interface Schema {
   types: FullType[];
 }
 
-interface FullType {
+export interface FullType {
   kind: string;
   name: string;
   description: string;
   fields: Field[] | null;
+  inputFields: InputValue[] | null;
 }
 
-interface Field {
+export interface Field {
   name: string;
   description: string;
   args: InputValue[];
   types: TypeRef;
 }
 
-interface InputValue {
+export interface InputValue {
   name: string;
   description: string;
   type: TypeRef;

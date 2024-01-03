@@ -9,7 +9,7 @@ import { getGraphQL } from '@/store/gql/gqlapi';
 import INTROSPECTION_QUERY from '@/constants/introspectionQuery';
 import { setDocs } from '@/store/docs/docsSlice';
 import important from '@/utils/muiStyles/important';
-import { Schema } from './types';
+import { IntrospectionQuery } from './types';
 
 function DocsButtons() {
   const [loading, setLoading] = useState(false);
@@ -51,8 +51,13 @@ function DocsButtons() {
           return;
         }
         if (value.data) {
-          const schema: Schema = JSON.parse(value.data) as Schema;
-          dispatch(setDocs({ endpoint, isError: false, docs: schema }));
+          const queryData: IntrospectionQuery = JSON.parse(
+            value.data
+          ) as IntrospectionQuery;
+          dispatch(
+            // eslint-disable-next-line no-underscore-dangle
+            setDocs({ endpoint, isError: false, docs: queryData.data.__schema })
+          );
           setLoading(false);
         }
       }, setError);
