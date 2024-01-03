@@ -11,6 +11,10 @@ import React, { useContext } from 'react';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
 import Routes from '@/router/routes';
 import dataTestId from '@/tests/data-test';
+import { useAppSelector } from '@/store/store';
+import { selectIsLoggedInSession } from '@/store/auth/authSelectors';
+import { useLocation } from 'react-router-dom';
+import GraphQlIcon from '../icons/GraphQlIcon';
 
 interface Page {
   href: string;
@@ -19,8 +23,15 @@ interface Page {
 
 function BurgerMenu() {
   const { localeData } = useContext(LocalizationContext);
+  let location = useLocation();
+  const isLoggedInSession: boolean = useAppSelector(selectIsLoggedInSession);
 
-  const pages: Page[] = [{ href: Routes.Home, title: localeData.welcomePage }];
+  console.log(location);
+
+  const pages: Page[] = [
+    { href: Routes.Home, title: localeData.welcomePage },
+    { href: Routes.App, title: localeData.appPage },
+  ];
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -64,35 +75,42 @@ function BurgerMenu() {
           onClose={handleCloseNavMenu}
           data-testid={dataTestId.burgerMenuMobileItems}
         >
-          {pages.map((page) => (
-            <MenuItem
-              key={page.href}
-              onClick={handleCloseNavMenu}
-              data-testid={dataTestId.burgerMenuMobileItem}
-            >
-              <Link href={page.href}>
-                <Typography textAlign="center">{page.title}</Typography>
-              </Link>
-            </MenuItem>
-          ))}
+          {pages.map((page, index) =>
+            !isLoggedInSession && index > 0 ? null : (
+              <MenuItem
+                key={page.href}
+                onClick={handleCloseNavMenu}
+                data-testid={dataTestId.burgerMenuMobileItem}
+              >
+                <Link href={page.href}>
+                  <Typography textAlign="center">{page.title}</Typography>
+                </Link>
+              </MenuItem>
+            )
+          )}
         </Menu>
       </Box>
+
+      <GraphQlIcon />
 
       <Box
         sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
         data-testid={dataTestId.burgerMenuDesktop}
       >
-        {pages.map((page) => (
-          <Link
-            href={page.href}
-            color="inherit"
-            underline="none"
-            variant="h4"
-            key={page.href}
-          >
-            {page.title}
-          </Link>
-        ))}
+        {pages.map((page, index) =>
+          !isLoggedInSession && index > 0 ? null : (
+            <Link
+              href={page.href}
+              color={location.pathname === page.href ? 'info.light' : 'inherit'}
+              underline="none"
+              variant="h6"
+              key={page.href}
+              sx={{ m: '10px' }}
+            >
+              {page.title}
+            </Link>
+          )
+        )}
       </Box>
     </>
   );
