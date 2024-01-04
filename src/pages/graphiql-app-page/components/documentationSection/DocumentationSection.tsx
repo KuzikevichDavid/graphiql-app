@@ -9,8 +9,8 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import FolderIcon from '@mui/icons-material/Folder';
 import { Typography } from '@mui/material';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
-
-const drawerWidth = 240;
+import Schema from '../docs/Schema';
+import { DOC_SECTION_WIDTH } from './docsSection';
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -59,10 +59,10 @@ export default function DocumentationSection() {
       </IconButton>
       <Drawer
         sx={{
-          width: drawerWidth,
+          width: DOC_SECTION_WIDTH,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: drawerWidth,
+            width: DOC_SECTION_WIDTH,
             boxSizing: 'border-box',
           },
         }}
@@ -82,14 +82,8 @@ export default function DocumentationSection() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <Typography>Documentation</Typography>
+        <Schema />
       </Drawer>
     </Box>
   );
 }
-
-// function DocumentationSection() {
-//   return <p>Documentation</p>;
-// }
-
-// export default DocumentationSection;

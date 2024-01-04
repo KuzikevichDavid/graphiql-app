@@ -1,6 +1,10 @@
 import { useAppSelector } from '@/store/store';
 import { Box } from '@mui/material';
 import { Virtuoso } from 'react-virtuoso';
+import {
+  DOC_SECTION_HEIGHT,
+  DOC_SECTION_WIDTH,
+} from '../documentationSection/docsSection';
 import { FullType } from '../types';
 import RenderListItem from './RenderListItem';
 
@@ -14,13 +18,13 @@ function Schema() {
     <Box
       sx={{
         width: '100%',
-        height: 400,
-        maxWidth: 360,
+        height: DOC_SECTION_HEIGHT,
+        maxWidth: DOC_SECTION_WIDTH,
         bgcolor: 'background.paper',
       }}
     >
       <Virtuoso
-        style={{ height: 400 }}
+        style={{ height: DOC_SECTION_HEIGHT }}
         data={docs.types}
         itemContent={callback}
       />
