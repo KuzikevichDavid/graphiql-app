@@ -9,7 +9,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import FolderIcon from '@mui/icons-material/Folder';
 import { Typography } from '@mui/material';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
-import Schema from '../docs/Schema';
+import Schema from './docs/Schema';
 import { DOC_SECTION_WIDTH } from './docsSection';
 
 const DrawerHeader = styled('div')(({ theme }) => ({

@@ -14,24 +14,29 @@ function DocsButtons() {
   const [loading, setLoading] = useState(false);
   const { localeData } = useContext(LocalizationContext);
   const { isError, isDefined } = useAppSelector((state) => state.docs);
+  const docsEndpoint = useAppSelector((state) => state.docs.endpoint);
   const { endpoint, headers } = useAppSelector((state) => state.gql);
   const dispatch = useAppDispatch();
 
-  const disabled = loading || isError;
+  const newVal = endpoint !== docsEndpoint;
+
+  const disabled = !newVal && (loading || isError || isDefined);
 
   const buttonSx = {
-    ...(isError && {
-      bgcolor: important(red[500]),
-      '&:hover': {
-        bgcolor: important(red[700]),
-      },
-    }),
-    ...(isDefined && {
-      bgcolor: green[500],
-      '&:hover': {
-        bgcolor: green[700],
-      },
-    }),
+    ...(!newVal &&
+      isError && {
+        bgcolor: important(red[500]),
+        '&:hover': {
+          bgcolor: important(red[700]),
+        },
+      }),
+    ...(!newVal &&
+      isDefined && {
+        bgcolor: important(green[500]),
+        '&:hover': {
+          bgcolor: important(green[700]),
+        },
+      }),
   };
 
   function setError() {
@@ -53,10 +58,10 @@ function DocsButtons() {
           const queryData: IntrospectionQuery = JSON.parse(
             value.data
           ) as IntrospectionQuery;
-          dispatch(
-            // eslint-disable-next-line no-underscore-dangle
-            setDocs({ endpoint, isError: false, docs: queryData.data.__schema })
-          );
+          // eslint-disable-next-line no-underscore-dangle
+          const schema = queryData.data.__schema;
+          schema.types.sort((a, b) => -1 * a.kind.localeCompare(b.kind));
+          dispatch(setDocs({ endpoint, isError: false, docs: schema }));
           setLoading(false);
         }
       }, setError);
@@ -103,10 +108,6 @@ function DocsButtons() {
           />
         )}
       </Box>
-
-      <button onClick={() => setLoading(false)} type="button">
-        Load
-      </button>
     </Box>
   );
 }

@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { InputValue } from '../types';
+import { InputValue } from '../../types';
 import Row from './Row';
 import Type from './Type';
 

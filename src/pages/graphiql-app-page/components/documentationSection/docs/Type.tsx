@@ -1,4 +1,4 @@
-import { TypeRef } from '../types';
+import { TypeRef } from '../../types';
 import mapType from './mapType';
 import Row from './Row';
 import { inline, italic } from './styles';

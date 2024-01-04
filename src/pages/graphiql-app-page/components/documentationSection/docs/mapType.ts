@@ -1,4 +1,4 @@
-import { TypeRef } from '../types';
+import { TypeRef } from '../../types';
 
 export interface ParsedType {
   type: string;

@@ -6,8 +6,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useState } from 'react';
-
-import { FullType } from '../types';
+import { FullType } from '@/pages/graphiql-app-page/components/types';
 import Fields from './Fields';
 import InputValues from './InputValues';
 import Row from './Row';
