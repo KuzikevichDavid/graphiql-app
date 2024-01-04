@@ -6,16 +6,18 @@ import { setQuery } from '@/store/gql/slice/gqlSlice';
 function RequestSection() {
   const dispatch = useAppDispatch();
   const query = useAppSelector((state) => state.gql.body.query);
-  const onChange = useCallback((value?: string) => {
-    if (value) dispatch(setQuery(value));
-  }, []);
+  const onChange = useCallback(
+    (value?: string) => {
+      if (value) dispatch(setQuery(value));
+    },
+    [dispatch]
+  );
 
   return (
     <Editor
       height="600px"
       value={query}
       defaultLanguage="graphql"
-      defaultValue='"""some comment"""'
       onChange={onChange}
       options={{
         minimap: { enabled: false },
