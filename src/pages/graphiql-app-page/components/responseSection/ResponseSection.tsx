@@ -5,7 +5,7 @@ function ResponseSection() {
   const responseData = useAppSelector((state) => state.response.responseData);
   return (
     <Editor
-      height="100%"
+      height="300px"
       language="json"
       value={responseData}
       options={{
