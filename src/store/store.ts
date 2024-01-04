@@ -12,6 +12,7 @@ import { authSlice } from './auth/authSlice';
 import docsSlice from './docs/docsSlice';
 import { gqlapi } from './gql/gqlapi';
 import gqlSlice from './gql/slice/gqlSlice';
+import responseDataSlice from './responseData/responseDataSlice';
 
 export const appOutputs: AppOutputs = {
   auth: supabaseInstance,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   docs: docsSlice,
   gql: gqlSlice,
   gqlapi: gqlapi.reducer,
+  responseData: responseDataSlice,
 });
 const setupStore = () =>
   configureStore({
