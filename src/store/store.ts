@@ -23,7 +23,7 @@ const rootReducer = combineReducers({
   docs: docsSlice,
   gql: gqlSlice,
   gqlapi: gqlapi.reducer,
-  responseData: responseDataSlice,
+  response: responseDataSlice,
 });
 const setupStore = () =>
   configureStore({
