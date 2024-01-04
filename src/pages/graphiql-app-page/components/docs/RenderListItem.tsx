@@ -11,13 +11,14 @@ import { FullType } from '../types';
 import Fields from './Fields';
 import InputValues from './InputValues';
 import Row from './Row';
+import { bold } from './styles';
 
 interface PropsType {
   index: number;
   data: FullType;
 }
 
-function RenderRow({ index, data }: PropsType) {
+function RenderListItem({ index, data }: PropsType) {
   const [open, setOpen] = useState(false);
 
   const item: FullType = data;
@@ -75,7 +76,13 @@ function RenderRow({ index, data }: PropsType) {
       {open ? (
         <>
           {item.description ? (
-            <Row rowData={{ desc: 'Description', value: item.description }} />
+            <Row
+              rowData={{
+                desc: 'Description',
+                sxDesc: bold,
+                value: item.description,
+              }}
+            />
           ) : null}
           <Fields fields={item.fields} title="Fields:" />
           <InputValues inputValues={item.inputFields} title="Input Fields:" />
@@ -85,4 +92,4 @@ function RenderRow({ index, data }: PropsType) {
   );
 }
 
-export default RenderRow;
+export default RenderListItem;

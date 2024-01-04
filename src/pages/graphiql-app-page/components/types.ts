@@ -27,7 +27,7 @@ export interface Field {
   name: string;
   description: string;
   args: InputValue[];
-  types: TypeRef;
+  type: TypeRef;
 }
 
 export interface InputValue {
@@ -37,8 +37,8 @@ export interface InputValue {
   defaultValue?: string | number | boolean | null;
 }
 
-interface TypeRef {
+export interface TypeRef {
   kind: string;
-  name: string;
+  name: string | null;
   ofType: TypeRef | null;
 }

@@ -2,12 +2,12 @@ import { useAppSelector } from '@/store/store';
 import { Box } from '@mui/material';
 import { Virtuoso } from 'react-virtuoso';
 import { FullType } from '../types';
-import RenderRow from './RenderRow';
+import RenderListItem from './RenderListItem';
 
 function Schema() {
   const docs = useAppSelector((state) => state.docs.docs);
   const callback = (index: number, data: FullType) => (
-    <RenderRow data={data} index={index} />
+    <RenderListItem data={data} index={index} />
   );
 
   return docs ? (

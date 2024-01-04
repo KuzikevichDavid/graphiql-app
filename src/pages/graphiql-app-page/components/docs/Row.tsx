@@ -1,23 +1,37 @@
-import { Box, Typography } from '@mui/material';
+import { Box, SxProps, Theme, Typography } from '@mui/material';
+import { ReactNode } from 'react';
 
 interface PropsType {
   rowData: {
     desc: string;
-    value: string;
+    sxDesc?: SxProps<Theme>;
+    value: ReactNode;
+    sxValue?: SxProps<Theme>;
   };
+  sxWrapper?: SxProps<Theme>;
 }
 
-function Row({ rowData: { desc, value } }: PropsType) {
+function Row({
+  rowData: { desc, sxDesc, value, sxValue },
+  sxWrapper: style,
+}: PropsType) {
   return (
-    <Box>
+    <Box sx={style}>
       <Typography component="span">
-        {`${desc}: `}
-        <Typography component="span" sx={{ fontStyle: 'italic' }}>
-          {`${value}`}
+        <Typography component="span" sx={sxDesc}>
+          {' '}
+          {`${desc}: `}
+        </Typography>
+        <Typography component="span" sx={sxValue}>
+          {typeof value === 'string' ? `${value}` : value}
         </Typography>
       </Typography>
     </Box>
   );
 }
+
+Row.defaultProps = {
+  sxWrapper: {},
+};
 
 export default Row;

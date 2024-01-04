@@ -1,6 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { InputValue } from '../types';
 import Row from './Row';
+import Type from './Type';
 
 interface PropsType {
   inputValues: InputValue[] | null;
@@ -15,7 +16,7 @@ function InputValues({ inputValues, title }: PropsType) {
         paddingLeft: '5px',
       }}
     >
-      <Typography> {title} </Typography>
+      <Typography variant="h6"> {title} </Typography>
       {inputValues.map((input) => (
         <Box
           key={input.name}
@@ -26,7 +27,7 @@ function InputValues({ inputValues, title }: PropsType) {
         >
           <Row rowData={{ desc: 'Name', value: input.name }} />
           <Row rowData={{ desc: 'Description', value: input.description }} />
-          <Row rowData={{ desc: 'Type', value: input.type?.kind }} />
+          <Row rowData={{ desc: 'Type', value: <Type type={input.type} /> }} />
         </Box>
       ))}
     </Box>

@@ -2,6 +2,7 @@ import { Box, Typography } from '@mui/material';
 import { Field } from '../types';
 import InputValues from './InputValues';
 import Row from './Row';
+import Type from './Type';
 
 interface PropsType {
   fields: Field[] | null;
@@ -16,7 +17,7 @@ function Fields({ fields, title }: PropsType) {
         m: '2px',
       }}
     >
-      <Typography>{title}</Typography>
+      <Typography variant="h6">{title}</Typography>
       <Box
         sx={{
           paddingLeft: '5px',
@@ -35,7 +36,9 @@ function Fields({ fields, title }: PropsType) {
             <Row
               rowData={{ desc: 'Description', value: itemValue.description }}
             />
-            <Row rowData={{ desc: 'Type', value: itemValue.types?.kind }} />
+            <Row
+              rowData={{ desc: 'Type', value: <Type type={itemValue.type} /> }}
+            />
             <InputValues inputValues={itemValue.args} title="Args:" />
           </Box>
         ))}
