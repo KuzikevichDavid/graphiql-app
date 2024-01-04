@@ -1,16 +1,21 @@
 import { useCallback } from 'react';
 import Editor from '@monaco-editor/react';
+import { useAppDispatch, useAppSelector } from '@/store/store';
+import { setQuery } from '@/store/gql/slice/gqlSlice';
 
 function RequestSection() {
+  const dispatch = useAppDispatch();
+  const query = useAppSelector((state) => state.gql.body.query);
   const onChange = useCallback((value?: string) => {
-    console.log('value:', value);
+    if (value) dispatch(setQuery(value));
   }, []);
 
   return (
     <Editor
       height="600px"
+      value={query}
       defaultLanguage="graphql"
-      defaultValue="// some comment"
+      defaultValue='"""some comment"""'
       onChange={onChange}
       options={{
         minimap: { enabled: false },
