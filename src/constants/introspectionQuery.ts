@@ -98,7 +98,6 @@ fragment TypeRef on __Type {
   }
 }
   `,
-  variables: '',
 };
 
 export default INTROSPECTION_QUERY;

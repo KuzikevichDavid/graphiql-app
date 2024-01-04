@@ -1,6 +1,6 @@
 export interface GraphQLRequestBody {
   query: string;
-  variables: string;
+  variables?: string;
 }
 
 export interface QueryArgs {
