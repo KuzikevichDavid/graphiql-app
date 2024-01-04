@@ -8,6 +8,7 @@
   "signout": "Log Out",
   "mainPage": "Main",
   "welcomePage": "Welcome",
+  "appPage": "Application",
   "welcome": "You Are Welcome",
   "purpose": "Purpose",
   "welcomePurpose": "This site is the solution for RSShool task. This site provide GrahpQL IDE with can execute grahpql query to REST API's that supports CORS. ",
@@ -31,5 +32,10 @@
   "notFound_Title": "The page you’re looking for doesn’t exist.",
   "notFound_Button": "Back Home.",
   "docs_load": "Load docs",
-  "docs_show": "Show docs"
+  "docs_show": "Show docs",
+  "appVariables": "Variables",
+  "appHeaders": "Headers",
+  "documentation": "Documentation",
+  "appInputPlaceholder": "Enter Api url",
+  "ControlPanel": "Execute query"
 }

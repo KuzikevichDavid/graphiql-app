@@ -17,11 +17,13 @@ const LinkBehavior = React.forwardRef<
 
 const primaryMain = '#4a5d74';
 const secondaryMain = '#efac56';
+const lightColor = '#fff';
 
 const theme: Theme = createTheme({
   palette: {
     primary: {
       main: primaryMain,
+      light: lightColor,
     },
     secondary: {
       main: secondaryMain,
@@ -65,6 +67,17 @@ const theme: Theme = createTheme({
               opacity: 1,
             },
           },
+        },
+      },
+    },
+    MuiGrid: {
+      styleOverrides: {
+        root: {
+          '.MuiGrid-item': {
+            padding: '5px',
+          },
+          padding: '5px',
+          margin: '0px',
         },
       },
     },

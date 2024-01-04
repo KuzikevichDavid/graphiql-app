@@ -8,6 +8,7 @@
   "signout": "Выйти",
   "mainPage": "Главная",
   "welcomePage": "Домой",
+  "appPage": "Приложение",
   "welcome": "Добро пожаловать!",
   "purpose": "Назначение сайта",
   "welcomePurpose": "Данный сайт решение задачи RSShool. Представляет собой IDE - среду разработки на GrahpQL. Может работать с REST API которые поддерживают CORS.",
@@ -31,5 +32,10 @@
   "notFound_Title": "Страница не существует",
   "notFound_Button": "На главную",
   "docs_load": "Загрузить документацию",
-  "docs_show": "Показать документацию"
+  "docs_show": "Показать документацию",
+  "appVariables": "Переменные",
+  "appHeaders": "Заголовки",
+  "documentation": "Документация",
+  "appInputPlaceholder": "Введите API адрес",
+  "ControlPanel": "Выполнить запрос"
 }
