@@ -35,5 +35,14 @@
   "appHeaders": "Заголовки",
   "documentation": "Документация",
   "appInputPlaceholder": "Введите API адрес",
-  "ControlPanel": "Выполнить запрос"
+  "ControlPanel": "Выполнить запрос",
+  "signinMessage": "У вас нет аккаунта?",
+  "email": "Электронная почта",
+  "password": "Пароль",
+  "loading": "Загрузка...",
+  "emailRequired": "Электронная почта обязательна",
+  "invalidEmail": "Неверная электронная почта",
+  "passwordRequired": "Пароль обязателен",
+  "invalidLoginCredentials": "Неверные имя пользователя или пароль",
+  "somethingWentWrong": "Что-то пошло не так"
 }

@@ -35,5 +35,14 @@
   "appHeaders": "Headers",
   "documentation": "Documentation",
   "appInputPlaceholder": "Enter Api url",
-  "ControlPanel": "Execute query"
+  "ControlPanel": "Execute query",
+  "signinMessage": "You do not have an account?",
+  "email": "Email",
+  "password": "Password",
+  "loading": "Loading...",
+  "emailRequired": "Email is required",
+  "invalidEmail": "Invalid email",
+  "passwordRequired": "Password is required",
+  "invalidLoginCredentials": "Invalid login credentials",
+  "somethingWentWrong": "Something went wrong"
 }
