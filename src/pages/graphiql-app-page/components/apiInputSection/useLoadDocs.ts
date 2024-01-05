@@ -34,7 +34,7 @@ function useLoadDocs([loading, setLoading]: [
           // eslint-disable-next-line no-underscore-dangle
           const schema = queryData.data.__schema;
           schema.types.sort((a, b) => -1 * a.kind.localeCompare(b.kind));
-          dispatch(setDocs({ endpoint, isError: false, docs: schema }));
+          dispatch(setDocs({ endpoint, isError: false, schema }));
           setLoading(false);
         }
       }, setError);

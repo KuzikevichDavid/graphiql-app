@@ -21,7 +21,7 @@ describe('wrapped render "DocsButtons" with initial endpoint', () => {
     await user.click(elem);
 
     await waitFor(() => {
-      expect(store.getState().docs.docs).toBeDefined();
+      expect(store.getState().docs.schema).toBeDefined();
     });
   });
 

@@ -2,11 +2,12 @@ import { useAppSelector } from '@/store/store';
 import { Box } from '@mui/material';
 import { Virtuoso } from 'react-virtuoso';
 import { FullType } from '@/pages/graphiql-app-page/components/documentationSection/components/types';
+import dataTestId from '@/tests/data-test';
 import { DOC_SECTION_HEIGHT, DOC_SECTION_WIDTH } from '../docsSection';
 import RenderListItem from './RenderListItem';
 
 function Schema() {
-  const docs = useAppSelector((state) => state.docs.docs);
+  const docs = useAppSelector((state) => state.docs.schema);
   const renderItem = (_: number, data: FullType) => (
     <RenderListItem data={data} />
   );
@@ -24,6 +25,7 @@ function Schema() {
         overflowWrap: 'anywhere',
         bgcolor: 'background.paper',
       }}
+      data-testid={dataTestId.docsSchema}
     >
       <Virtuoso
         style={{ height: DOC_SECTION_HEIGHT }}

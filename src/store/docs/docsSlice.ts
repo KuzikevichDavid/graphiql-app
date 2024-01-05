@@ -17,7 +17,7 @@ const docsSlice = createSlice({
       },
       prepare: (docsData: DocsData) => ({
         payload: {
-          isDefined: !!docsData.docs,
+          isDefined: !!docsData.schema,
           ...docsData,
         },
       }),

@@ -6,6 +6,6 @@ export type DocsState = {
 
 export interface DocsData {
   endpoint: string;
-  docs?: Schema;
+  schema?: Schema;
   isError: boolean;
 }
