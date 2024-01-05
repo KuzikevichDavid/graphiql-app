@@ -1,4 +1,4 @@
-import { Schema } from '@/pages/graphiql-app-page/components/types';
+import { Schema } from '@/pages/graphiql-app-page/components/documentationSection/components/types';
 
 export type DocsState = {
   isDefined: boolean;

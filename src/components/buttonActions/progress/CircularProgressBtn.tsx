@@ -1,6 +1,6 @@
 import { Box, Button, CircularProgress, SxProps, Theme } from '@mui/material';
-import { green } from '@mui/material/colors';
 import { MouseEventHandler } from 'react';
+import { circularProgressStyle } from './circularProgressStyles';
 
 interface PropsType {
   isLoading?: boolean;
@@ -12,11 +12,11 @@ interface PropsType {
 }
 
 function CircularProgressBtn({
-  isLoading,
+  isLoading = false,
   buttonSx,
-  disabled,
-  title,
-  onClick,
+  disabled = false,
+  title = '',
+  onClick = () => {},
   children,
 }: PropsType) {
   return (
@@ -31,29 +31,10 @@ function CircularProgressBtn({
         >
           {children}
         </Button>
-        {isLoading && (
-          <CircularProgress
-            size={24}
-            sx={{
-              color: green[500],
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              marginTop: '-12px',
-              marginLeft: '-12px',
-            }}
-          />
-        )}
+        {isLoading && <CircularProgress size={24} sx={circularProgressStyle} />}
       </Box>
     </Box>
   );
 }
-
-CircularProgressBtn.defaultProps = {
-  isLoading: false,
-  disabled: false,
-  title: '',
-  onClick: () => {},
-};
 
 export default CircularProgressBtn;

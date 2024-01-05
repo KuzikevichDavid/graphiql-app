@@ -1,4 +1,4 @@
-import { TypeRef } from '../../types';
+import { TypeRef } from './types';
 
 export interface ParsedType {
   type: string;
@@ -6,20 +6,17 @@ export interface ParsedType {
 }
 
 const mapType = (type: TypeRef): ParsedType => {
-  const res: ParsedType = type.ofType
+  const ofType: ParsedType = type.ofType
     ? mapType(type.ofType)
     : { type: type.kind, name: type.name ?? '' };
   switch (type.kind) {
     case 'NON_NULL':
-      res.type = `${res.type}!`;
-      break;
+      return { name: ofType.name, type: `${ofType.type}!` };
     case 'LIST':
-      res.type = `[${res.type}]`;
-      break;
+      return { name: ofType.name, type: `[${ofType.type}]` };
     default:
-      break;
+      return ofType;
   }
-  return res;
 };
 
 export default mapType;

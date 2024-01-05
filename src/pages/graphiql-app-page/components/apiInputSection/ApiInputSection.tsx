@@ -30,7 +30,6 @@ function ApiInputSection() {
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder={localeData.appInputPlaceholder}
-        inputProps={{ 'aria-label': 'search google maps' }}
         value={gqlEndpoint}
         onChange={handleChangeEndpoint}
       />

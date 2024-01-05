@@ -3,7 +3,7 @@ import { useGetGraphQLQuery } from '@/store/gql/gqlapi';
 import { useAppDispatch, useAppSelector } from '@/store/store';
 import { skipToken } from '@reduxjs/toolkit/query';
 import { useEffect, useState } from 'react';
-import getCircularProgressBtnStyle from '@/components/buttonActions/progress/getCircularProgressBtnStyle';
+import { getCircularProgressBtnStyle } from '@/components/buttonActions/progress/circularProgressStyles';
 import CircularProgressBtn from '@/components/buttonActions/progress/CircularProgressBtn';
 import { QueryArgs } from '@/store/gql/types';
 import { setData } from '@/store/responseData/responseDataSlice';
@@ -22,16 +22,17 @@ function RequestButton() {
     setArgs({ body: gqlBody, endpoint: gqlEndpoint });
   };
 
-  const buttonSx = Object.assign(
-    getCircularProgressBtnStyle(isError, !isError && isSuccess),
-    {
-      zIndex: '100',
-      minWidth: '30px',
-      width: '50px',
-      height: '40px',
-      '&:hover': { color: 'secondary.main' },
-    }
+  const progressSx = getCircularProgressBtnStyle(
+    (isError && 'error') || (!isError && isSuccess && 'success') || 'default'
   );
+
+  const buttonSx = Object.assign(progressSx, {
+    zIndex: '100',
+    minWidth: '30px',
+    width: '50px',
+    height: '40px',
+    '&:hover': { color: 'secondary.main' },
+  });
 
   useEffect(() => {
     if (data) {

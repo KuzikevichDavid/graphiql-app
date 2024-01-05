@@ -1,4 +1,4 @@
-import { TypeRef } from '../../types';
+import { TypeRef } from './types';
 import mapType from './mapType';
 import Row from './Row';
 import { inline, italic } from './styles';
@@ -12,8 +12,12 @@ function Type({ type }: PropsType) {
 
   return (
     <Row
-      rowData={{ desc: mapped.name, sxDesc: italic, value: mapped.type }}
-      sxWrapper={inline}
+      rowData={{
+        desc: mapped.name,
+        descriptionSx: italic,
+        children: mapped.type,
+      }}
+      sx={inline}
     />
   );
 }

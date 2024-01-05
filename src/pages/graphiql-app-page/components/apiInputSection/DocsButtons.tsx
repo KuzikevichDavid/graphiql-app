@@ -6,8 +6,8 @@ import { getGraphQL } from '@/store/gql/gqlapi';
 import INTROSPECTION_QUERY from '@/constants/introspectionQuery';
 import { setDocs } from '@/store/docs/docsSlice';
 import CircularProgressBtn from '@/components/buttonActions/progress/CircularProgressBtn';
-import getCircularProgressBtnStyle from '@/components/buttonActions/progress/getCircularProgressBtnStyle';
-import { IntrospectionQuery } from '../types';
+import { getCircularProgressBtnStyle } from '@/components/buttonActions/progress/circularProgressStyles';
+import { IntrospectionQuery } from '../documentationSection/components/types';
 
 function DocsButtons() {
   const [loading, setLoading] = useState(false);
@@ -17,13 +17,14 @@ function DocsButtons() {
   const { endpoint, headers } = useAppSelector((state) => state.gql);
   const dispatch = useAppDispatch();
 
-  const newVal = endpoint !== docsEndpoint;
+  const isNewEndpoint = endpoint !== docsEndpoint;
 
-  const disabled = !newVal && (loading || isError || isDefined);
+  const disabled = !isNewEndpoint && (loading || isError || isDefined);
 
   const buttonSx = getCircularProgressBtnStyle(
-    !newVal && isError,
-    !newVal && isDefined
+    (!isNewEndpoint && isError && 'error') ||
+      (!isNewEndpoint && isDefined && 'success') ||
+      'default'
   );
 
   function setError() {

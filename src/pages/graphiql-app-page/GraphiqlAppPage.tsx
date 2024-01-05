@@ -11,14 +11,14 @@ function GraphiqlAppPage() {
   const isDefined = useAppSelector((state) => state.docs.isDefined);
   const docsEndpoint = useAppSelector((state) => state.docs.endpoint);
   const curEndpoint = useAppSelector((state) => state.gql.endpoint);
-  const newVal = curEndpoint !== docsEndpoint;
+  const isNewEnpoint = curEndpoint !== docsEndpoint;
 
-  const disable = !newVal && isDefined;
+  const shouldShowDocumentation = !isNewEnpoint && isDefined;
 
   return (
     <Container sx={{ my: '10px' }}>
       <ApiInputSection />
-      {disable ? <DocumentationSection /> : null}
+      {shouldShowDocumentation ? <DocumentationSection /> : null}
       <Grid container columns={{ xs: 12, md: 12 }} sx={{ maxWidth: '100%' }}>
         <Grid
           item

@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { InputValue } from '../../types';
+import { InputValue } from './types';
 import Row from './Row';
 import Type from './Type';
 
@@ -25,9 +25,13 @@ function InputValues({ inputValues, title }: PropsType) {
             border: 'solid 1px',
           }}
         >
-          <Row rowData={{ desc: 'Name', value: input.name }} />
-          <Row rowData={{ desc: 'Description', value: input.description }} />
-          <Row rowData={{ desc: 'Type', value: <Type type={input.type} /> }} />
+          <Row rowData={{ desc: 'Name', children: `${input.name}` }} />
+          <Row
+            rowData={{ desc: 'Description', children: `${input.description}` }}
+          />
+          <Row
+            rowData={{ desc: 'Type', children: <Type type={input.type} /> }}
+          />
         </Box>
       ))}
     </Box>

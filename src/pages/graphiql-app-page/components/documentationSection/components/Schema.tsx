@@ -1,17 +1,21 @@
 import { useAppSelector } from '@/store/store';
 import { Box } from '@mui/material';
 import { Virtuoso } from 'react-virtuoso';
+import { FullType } from '@/pages/graphiql-app-page/components/documentationSection/components/types';
 import { DOC_SECTION_HEIGHT, DOC_SECTION_WIDTH } from '../docsSection';
-import { FullType } from '../../types';
 import RenderListItem from './RenderListItem';
 
 function Schema() {
   const docs = useAppSelector((state) => state.docs.docs);
-  const callback = (index: number, data: FullType) => (
+  const renderItem = (index: number, data: FullType) => (
     <RenderListItem data={data} index={index} />
   );
 
-  return docs ? (
+  if (!docs) {
+    return null;
+  }
+
+  return (
     <Box
       sx={{
         width: '100%',
@@ -24,10 +28,10 @@ function Schema() {
       <Virtuoso
         style={{ height: DOC_SECTION_HEIGHT }}
         data={docs.types}
-        itemContent={callback}
+        itemContent={renderItem}
       />
     </Box>
-  ) : null;
+  );
 }
 
 export default Schema;

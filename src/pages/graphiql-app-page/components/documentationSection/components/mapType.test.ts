@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { TypeRef } from '../../types';
+import { TypeRef } from './types';
 import mapType, { ParsedType } from './mapType';
 
 const listOfNonNull: TypeRef = {

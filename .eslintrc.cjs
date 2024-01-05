@@ -75,6 +75,12 @@ module.exports = {
     ],
     'class-methods-use-this': 'off',
     'no-param-reassign': ['error', { props: false }],
+    'react/require-default-props': [
+      'error',
+      {
+        functions: 'defaultArguments',
+      },
+    ],
   },
   overrides: [
     {

@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { Field } from '../../types';
+import { Field } from './types';
 import InputValues from './InputValues';
 import Row from './Row';
 import Type from './Type';
@@ -32,12 +32,15 @@ function Fields({ fields, title }: PropsType) {
               m: '2px',
             }}
           >
-            <Row rowData={{ desc: 'Name', value: itemValue.name }} />
+            <Row rowData={{ desc: 'Name', children: itemValue.name }} />
             <Row
-              rowData={{ desc: 'Description', value: itemValue.description }}
+              rowData={{ desc: 'Description', children: itemValue.description }}
             />
             <Row
-              rowData={{ desc: 'Type', value: <Type type={itemValue.type} /> }}
+              rowData={{
+                desc: 'Type',
+                children: <Type type={itemValue.type} />,
+              }}
             />
             <InputValues inputValues={itemValue.args} title="Args:" />
           </Box>

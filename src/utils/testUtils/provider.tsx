@@ -45,16 +45,12 @@ export const setupTestStore = (initialState?: TestRootState) =>
 
 function TestProvider({
   children,
-  initialState,
+  initialState = undefined,
 }: {
   children: React.ReactNode;
   initialState?: TestRootState;
 }) {
   return <Provider store={setupTestStore(initialState)}>{children}</Provider>;
 }
-
-TestProvider.defaultProps = {
-  initialState: undefined,
-};
 
 export default TestProvider;
