@@ -1,11 +1,13 @@
+import LocalizationContext from '@/contexts/localization/LocalizationContext';
 import { selectIsLoggedInUser } from '@/store/auth/authSelectors';
 import { useAppSelector } from '@/store/store';
 import { Link } from '@mui/material';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SignUpForm from '../../components/sign-up-form/SignUpForm';
 
 function SignUpPage() {
+  const { localeData } = useContext(LocalizationContext);
   const navigate = useNavigate();
   const isLoggedInUser: boolean = useAppSelector(selectIsLoggedInUser);
   useEffect(() => {
@@ -15,10 +17,11 @@ function SignUpPage() {
   }, [isLoggedInUser, navigate]);
   return (
     <>
-      <h1>Sign Up</h1>
+      <h1>{localeData.signup}</h1>
       <SignUpForm />
       <p>
-        Already have an account ? <Link href="/signin">Sign in</Link>
+        {localeData.signupMessage}{' '}
+        <Link href="/signin">{localeData.signin}</Link>
       </p>
     </>
   );
