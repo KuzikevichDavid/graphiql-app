@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material';
+import dataTestId from '@/tests/data-test';
 import { InputValue } from './types';
 import Row from './Row';
 import Type from './Type';
@@ -24,6 +25,7 @@ function InputValues({ inputValues, title }: PropsType) {
             width: '100%',
             border: 'solid 1px',
           }}
+          data-testid={dataTestId.docsListItemInputValue}
         >
           <Row rowData={{ desc: 'Name', children: `${input.name}` }} />
           <Row

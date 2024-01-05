@@ -7,6 +7,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { FullType } from '@/pages/graphiql-app-page/components/documentationSection/components/types';
+import dataTestId from '@/tests/data-test';
 import Fields from './Fields';
 import InputValues from './InputValues';
 import Row from './Row';
@@ -30,6 +31,7 @@ function RenderListItem({ data }: PropsType) {
         alignItems="flex-start"
         onClick={() => setOpen(!open)}
         sx={itemButtonSx}
+        data-testid={dataTestId.documentationListItem}
       >
         <ListItemText sx={{ my: 0 }}>
           <Typography sx={{ display: 'inline' }} component="span">

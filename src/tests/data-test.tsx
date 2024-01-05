@@ -14,6 +14,9 @@ const dataTestId: Record<string, string> = {
   DownloadForOfflineIcon: 'DownloadForOfflineIcon',
   docsSchema: 'docsSchemaId',
   documentationSection: 'documentationSectionId',
+  documentationListItem: 'documentationListItemId',
+  docsListItemField: 'docsListItemFieldId',
+  docsListItemInputValue: 'docsListItemInputValueId',
 };
 
 export default dataTestId;

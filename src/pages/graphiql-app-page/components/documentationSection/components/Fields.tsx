@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material';
+import dataTestId from '@/tests/data-test';
 import { Field } from './types';
 import InputValues from './InputValues';
 import Row from './Row';
@@ -31,6 +32,7 @@ function Fields({ fields, title }: PropsType) {
               border: 'solid 1px',
               m: '2px',
             }}
+            data-testid={dataTestId.docsListItemField}
           >
             <Row rowData={{ desc: 'Name', children: itemValue.name }} />
             <Row
