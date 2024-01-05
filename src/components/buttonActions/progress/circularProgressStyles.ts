@@ -3,7 +3,7 @@ import { Theme } from '@emotion/react';
 import { SxProps } from '@mui/material';
 import { red, green } from '@mui/material/colors';
 
-type ProgressFlag = 'error' | 'success' | 'default';
+export type ProgressFlag = 'error' | 'success' | 'default';
 
 const circularProgressStyle: SxProps<Theme> = {
   color: green[500],
