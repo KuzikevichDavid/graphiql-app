@@ -1,29 +1,32 @@
-import { useCallback } from 'react';
-import Editor from '@monaco-editor/react';
-import { useAppDispatch, useAppSelector } from '@/store/store';
+import { selectQuery } from '@/store/gql/slice/gqlSelectors';
 import { setQuery } from '@/store/gql/slice/gqlSlice';
+import { useAppDispatch, useAppSelector } from '@/store/store';
+import Editor from '@monaco-editor/react';
+import { debounce } from '@mui/material';
 
 function RequestSection() {
   const dispatch = useAppDispatch();
-  const query = useAppSelector((state) => state.gql.body.query);
-  const onChange = useCallback(
-    (value?: string) => {
-      if (value) dispatch(setQuery(value));
-    },
-    [dispatch]
-  );
+  const selectedQuery = useAppSelector(selectQuery);
+
+  const onChange = (value?: string) => {
+    dispatch(setQuery(value ?? ''));
+  };
+
+  const debouncedOnChange = debounce(onChange, 300);
 
   return (
     <Editor
       height="600px"
-      value={query}
       defaultLanguage="graphql"
-      onChange={onChange}
+      onChange={debouncedOnChange}
+      value={selectedQuery}
       options={{
         minimap: { enabled: false },
         contextmenu: false,
         overviewRulerBorder: false,
         renderLineHighlight: 'none',
+        formatOnPaste: false,
+        formatOnType: false,
       }}
     />
   );
