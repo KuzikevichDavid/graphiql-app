@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { DocsData, DocsState } from './type';
+import { DocsData, DocsState } from './types';
 
 const initialState: DocsState = {
   endpoint: '',

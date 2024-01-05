@@ -25,10 +25,13 @@ const rootReducer = combineReducers({
   gqlapi: gqlapi.reducer,
   response: responseDataSlice,
 });
-const setupStore = () =>
+
+export type RootState = ReturnType<typeof rootReducer>;
+
+export const setupStore = (initialState?: RootState) =>
   configureStore({
     reducer: rootReducer,
-
+    preloadedState: initialState,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         immutableCheck: false,
@@ -38,7 +41,6 @@ const setupStore = () =>
   });
 
 export const store = setupStore();
-export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export type TypedDispatch = ThunkDispatch<RootState, never, Action>;
 export type TypedThunk<ReturnType = void> = ThunkAction<
