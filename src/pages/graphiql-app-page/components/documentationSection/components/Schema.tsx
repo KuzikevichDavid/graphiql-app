@@ -7,8 +7,8 @@ import RenderListItem from './RenderListItem';
 
 function Schema() {
   const docs = useAppSelector((state) => state.docs.docs);
-  const renderItem = (index: number, data: FullType) => (
-    <RenderListItem data={data} index={index} />
+  const renderItem = (_: number, data: FullType) => (
+    <RenderListItem data={data} />
   );
 
   if (!docs) {

@@ -11,6 +11,7 @@ const dataTestId: Record<string, string> = {
   burgerMenuMobileItems: 'burgerMenuMobileItemsId',
   burgerMenuMobileItem: 'burgerMenuMobileItemId',
   circularProgress: 'circularProgressId',
+  DownloadForOfflineIcon: 'DownloadForOfflineIcon',
 };
 
 export default dataTestId;

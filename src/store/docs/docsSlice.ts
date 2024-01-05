@@ -25,5 +25,5 @@ const docsSlice = createSlice({
   },
 });
 
-export default docsSlice.reducer;
+export default docsSlice;
 export const { setDocs } = docsSlice.actions;

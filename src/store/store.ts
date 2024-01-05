@@ -18,10 +18,10 @@ export const appOutputs: AppOutputs = {
   auth: supabaseInstance,
 };
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   auth: authSlice.reducer,
-  docs: docsSlice,
-  gql: gqlSlice,
+  docs: docsSlice.reducer,
+  gql: gqlSlice.reducer,
   gqlapi: gqlapi.reducer,
   response: responseDataSlice,
 });

@@ -1,21 +1,18 @@
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
-import { useAppDispatch, useAppSelector } from '@/store/store';
-import { useContext, useEffect, useState } from 'react';
+import { useAppSelector } from '@/store/store';
+import { useContext, useState } from 'react';
 import DownloadForOfflineIcon from '@mui/icons-material/DownloadForOffline';
-import { getGraphQL } from '@/store/gql/gqlapi';
-import INTROSPECTION_QUERY from '@/constants/introspectionQuery';
-import { setDocs } from '@/store/docs/docsSlice';
 import CircularProgressBtn from '@/components/buttonActions/progress/CircularProgressBtn';
 import { getCircularProgressBtnStyle } from '@/components/buttonActions/progress/circularProgressStyles';
-import { IntrospectionQuery } from '../documentationSection/components/types';
+import useLoadDocs from './useLoadDocs';
 
 function DocsButtons() {
-  const [loading, setLoading] = useState(false);
+  const loadState = useState(false);
+  const [loading, setLoading] = loadState;
   const { localeData } = useContext(LocalizationContext);
   const { isError, isDefined } = useAppSelector((state) => state.docs);
   const docsEndpoint = useAppSelector((state) => state.docs.endpoint);
-  const { endpoint, headers } = useAppSelector((state) => state.gql);
-  const dispatch = useAppDispatch();
+  const endpoint = useAppSelector((state) => state.gql.endpoint);
 
   const isNewEndpoint = endpoint !== docsEndpoint;
 
@@ -27,48 +24,15 @@ function DocsButtons() {
       'default'
   );
 
-  function setError() {
-    dispatch(setDocs({ endpoint, isError: true }));
-    setLoading(false);
-  }
-
-  useEffect(() => {
-    if (loading) {
-      const data = dispatch(
-        getGraphQL.initiate({ body: INTROSPECTION_QUERY, endpoint, headers })
-      );
-      data.then((value) => {
-        if (value.isError) {
-          setError();
-          return;
-        }
-        if (value.data) {
-          const queryData: IntrospectionQuery = JSON.parse(
-            value.data
-          ) as IntrospectionQuery;
-          // eslint-disable-next-line no-underscore-dangle
-          const schema = queryData.data.__schema;
-          schema.types.sort((a, b) => -1 * a.kind.localeCompare(b.kind));
-          dispatch(setDocs({ endpoint, isError: false, docs: schema }));
-          setLoading(false);
-        }
-      }, setError);
-      return () => {
-        data.abort();
-      };
-    }
-
-    return undefined;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading]);
-
   const handleClick = () => {
     if (!endpoint) {
-      // endpoint is null
+      // TODO msg `endpoint is null`
       return;
     }
     setLoading(true);
   };
+
+  useLoadDocs(loadState);
 
   return (
     <CircularProgressBtn

@@ -29,6 +29,7 @@ function CircularProgressBtn({
           disabled={disabled}
           onClick={onClick}
           title={title}
+          data-testid={dataTestId.docsBtn}
         >
           {children}
         </Button>
