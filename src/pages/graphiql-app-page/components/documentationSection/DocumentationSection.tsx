@@ -9,6 +9,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import FolderIcon from '@mui/icons-material/Folder';
 import { Typography } from '@mui/material';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
+import dataTestId from '@/tests/data-test';
 import Schema from './components/Schema';
 import { DOC_SECTION_WIDTH } from './docsSection';
 
@@ -34,7 +35,7 @@ export default function DocumentationSection() {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex' }} data-testid={dataTestId.documentationSection}>
       <IconButton
         aria-label="open drawer"
         onClick={handleDrawerOpen}

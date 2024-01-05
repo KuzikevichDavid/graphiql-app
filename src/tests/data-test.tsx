@@ -13,6 +13,7 @@ const dataTestId: Record<string, string> = {
   circularProgress: 'circularProgressId',
   DownloadForOfflineIcon: 'DownloadForOfflineIcon',
   docsSchema: 'docsSchemaId',
+  documentationSection: 'documentationSectionId',
 };
 
 export default dataTestId;
