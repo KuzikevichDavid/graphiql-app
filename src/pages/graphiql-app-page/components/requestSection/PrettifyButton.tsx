@@ -1,33 +1,23 @@
-import { Button } from '@mui/material';
-import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
-import { useAppDispatch, useAppSelector } from '@/store/store';
+import { StyledControlPanelButton } from '@/components/styled';
 import { selectQuery } from '@/store/gql/slice/gqlSelectors';
 import { setQuery } from '@/store/gql/slice/gqlSlice';
+import { useAppDispatch, useAppSelector } from '@/store/store';
 import prettifyCode from '@/utils/graphQL-edit/prettifyCode';
+import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
 
 function PrettifyButton() {
   const dispatch = useAppDispatch();
   const selectedQuery = useAppSelector(selectQuery);
 
-  const prttifyQuery = () => {
+  const prettifyQuery = () => {
     const formattedQuery = prettifyCode(selectedQuery);
     dispatch(setQuery(formattedQuery));
   };
 
   return (
-    <Button
-      onClick={prttifyQuery}
-      variant="contained"
-      sx={{
-        zIndex: '100',
-        minWidth: '30px',
-        width: '50px',
-        height: '40px',
-        '&:hover': { color: 'secondary.main' },
-      }}
-    >
+    <StyledControlPanelButton onClick={prettifyQuery} variant="contained">
       <CleaningServicesIcon />
-    </Button>
+    </StyledControlPanelButton>
   );
 }
 

@@ -4,7 +4,7 @@ import TabsSection from './components/tabsSection/TabsSection';
 import DocumentationSection from './components/documentationSection/DocumentationSection';
 import RequestSection from './components/requestSection/RequestSection';
 import ResponseSection from './components/responseSection/ResponseSection';
-import ControlPanel from './components/requestSection/ConntrolPanel';
+import ControlPanel from './components/requestSection/ControlPanel';
 
 function GraphiqlAppPage() {
   return (

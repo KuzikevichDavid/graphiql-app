@@ -1,20 +1,11 @@
-import { Button } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import { StyledControlPanelButton } from '@/components/styled';
 
 function RequestButton() {
   return (
-    <Button
-      variant="contained"
-      sx={{
-        zIndex: '100',
-        minWidth: '30px',
-        width: '50px',
-        height: '40px',
-        '&:hover': { color: 'secondary.main' },
-      }}
-    >
+    <StyledControlPanelButton variant="contained">
       <PlayArrowIcon />
-    </Button>
+    </StyledControlPanelButton>
   );
 }
 

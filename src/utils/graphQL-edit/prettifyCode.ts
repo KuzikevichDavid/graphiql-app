@@ -11,22 +11,21 @@ function prettifyCode(input: string): string {
       return line.replace(/\s+/g, ' ');
     });
   let indentLevel = 0;
-  let result = '';
 
-  lines.forEach((line) => {
-    const trimmedLine = line.trim();
-
-    if (trimmedLine.includes('}')) {
+  const result = lines.reduce((acc, line) => {
+    if (line.includes('}')) {
       indentLevel -= 1;
     }
 
     const indent = '  '.repeat(indentLevel);
-    result += `${indent + trimmedLine}\n`;
+    const newLine = `${indent}${line}\n`;
 
-    if (trimmedLine.includes('{')) {
+    if (line.includes('{')) {
       indentLevel += 1;
     }
-  });
+
+    return acc + newLine;
+  }, '');
   return result.trim();
 }
 
