@@ -9,7 +9,6 @@ const defaultLocaleData = isLocalStorageLocaleExist
   ? await loadLocale(Locales.ru)
   : await loadLocale(Locales.en);
 
-console.log(defaultLocaleData);
 const initValue: LocalizationContextType = {
   localeData: defaultLocaleData,
   locale: isLocalStorageLocaleExist ? Locales.ru : Locales.en,
