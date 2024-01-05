@@ -1,3 +1,4 @@
+import dataTestId from '@/tests/data-test';
 import { Box, Button, CircularProgress, SxProps, Theme } from '@mui/material';
 import { MouseEventHandler } from 'react';
 import { circularProgressStyle } from './circularProgressStyles';
@@ -31,7 +32,13 @@ function CircularProgressBtn({
         >
           {children}
         </Button>
-        {isLoading && <CircularProgress size={24} sx={circularProgressStyle} />}
+        {isLoading && (
+          <CircularProgress
+            size={24}
+            sx={circularProgressStyle}
+            data-testid={dataTestId.circularProgress}
+          />
+        )}
       </Box>
     </Box>
   );

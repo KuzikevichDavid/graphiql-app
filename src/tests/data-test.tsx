@@ -10,6 +10,7 @@ const dataTestId: Record<string, string> = {
   burgerMenuMobile: 'burgerMenuMobileId',
   burgerMenuMobileItems: 'burgerMenuMobileItemsId',
   burgerMenuMobileItem: 'burgerMenuMobileItemId',
+  circularProgress: 'circularProgressId',
 };
 
 export default dataTestId;
