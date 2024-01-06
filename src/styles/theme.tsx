@@ -18,6 +18,7 @@ const LinkBehavior = React.forwardRef<
 const primaryMain = '#4a5d74';
 const secondaryMain = '#efac56';
 const lightColor = '#fff';
+const headerScrolled = '#757575';
 
 const theme: Theme = createTheme({
   palette: {
@@ -27,6 +28,9 @@ const theme: Theme = createTheme({
     },
     secondary: {
       main: secondaryMain,
+    },
+    text: {
+      disabled: headerScrolled,
     },
   },
   components: {
