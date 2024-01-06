@@ -1,10 +1,11 @@
+import { LocaleData } from '@/localization/types';
 import * as Yup from 'yup';
 
-const signInSchema = Yup.object().shape({
-  password: Yup.string().required('Password is required'),
-  email: Yup.string()
-    .required('Email is required')
-    .email('Invalid email address'),
-});
-
-export default signInSchema;
+const createSignInSchema = (localeData: LocaleData) =>
+  Yup.object().shape({
+    password: Yup.string().required(localeData.passwordRequired),
+    email: Yup.string()
+      .required(localeData.emailRequired)
+      .email(localeData.emailInvalid),
+  });
+export default createSignInSchema;

@@ -1,3 +1,4 @@
+import LocalizationContext from '@/contexts/localization/LocalizationContext';
 import { signUp } from '@/store/auth/authActions';
 import {
   selectSignUpError,
@@ -13,13 +14,14 @@ import {
   Link,
   TextField,
 } from '@mui/material';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import {
   StyledErrorMessage,
   StyledForm,
   StyledSuccessfullMessage,
 } from '../styled';
-import signUpSchema from './signUpSchema';
+import createSignUpSchema from './signUpSchema';
 
 interface FormData {
   email: string;
@@ -30,17 +32,20 @@ interface FormData {
 }
 
 function SignUpForm() {
+  const { localeData } = useContext(LocalizationContext);
   const dispatch = useAppDispatch();
-
   const signUpError: CustomError | null = useAppSelector(selectSignUpError);
   const signUpStatus: RequestStatus = useAppSelector(selectSignUpStatus);
+  const signUpErrorMessage = signUpError?.message
+    ? localeData.userAlreadyExists
+    : localeData.somethingWentWrong;
 
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: yupResolver(signUpSchema),
+    resolver: yupResolver(createSignUpSchema(localeData)),
   });
 
   const onSubmit = async (data: FormData) => {
@@ -51,9 +56,9 @@ function SignUpForm() {
     return (
       <>
         <StyledSuccessfullMessage>
-          Your registration was successful. Now you can sign in.
+          {localeData.successfullSignup}
         </StyledSuccessfullMessage>
-        <Link href="/signin">Sign in</Link>
+        <Link href="/signin">{localeData.signin}</Link>
       </>
     );
   }
@@ -62,7 +67,7 @@ function SignUpForm() {
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <TextField
         id="username"
-        label="Name"
+        label={localeData.name}
         {...register('username')}
         error={!!errors.username}
         helperText={errors.username?.message}
@@ -71,7 +76,7 @@ function SignUpForm() {
 
       <TextField
         id="password"
-        label="Password"
+        label={localeData.password}
         type="password"
         {...register('password')}
         error={!!errors.password}
@@ -81,7 +86,7 @@ function SignUpForm() {
 
       <TextField
         id="confirmPassword"
-        label="Confirm Password"
+        label={localeData.confirmPassword}
         type="password"
         {...register('confirmPassword')}
         error={!!errors.confirmPassword}
@@ -91,7 +96,7 @@ function SignUpForm() {
 
       <TextField
         id="email"
-        label="Email"
+        label={localeData.email}
         type="email"
         {...register('email')}
         error={!!errors.email}
@@ -107,18 +112,16 @@ function SignUpForm() {
             color="primary"
           />
         }
-        label="Agree to the Terms of Use"
+        label={localeData.agreeTerms}
       />
       {errors.termsCheck && (
         <div style={{ color: 'red' }}>{errors.termsCheck.message}</div>
       )}
       {signUpStatus === RequestStatus.FAILED && (
-        <StyledErrorMessage>
-          {signUpError?.message ?? 'Something went wrong'}
-        </StyledErrorMessage>
+        <StyledErrorMessage>{signUpErrorMessage}</StyledErrorMessage>
       )}
       <Button type="submit" variant="contained" color="primary">
-        Sign up
+        {localeData.signup}
       </Button>
     </StyledForm>
   );

@@ -1,3 +1,4 @@
+import LocalizationContext from '@/contexts/localization/LocalizationContext';
 import { signIn } from '@/store/auth/authActions';
 import {
   selectSignInError,
@@ -7,20 +8,29 @@ import { useAppDispatch, useAppSelector } from '@/store/store';
 import { CustomError, RequestStatus, SignInData } from '@/types/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, TextField } from '@mui/material';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import signInSchema from './signInSchema';
 import { StyledErrorMessage, StyledForm } from '../styled';
+import createSignInSchema from './signInSchema';
 
 function SignInForm() {
+  const { localeData } = useContext(LocalizationContext);
   const dispatch = useAppDispatch();
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<SignInData>({
-    resolver: yupResolver(signInSchema),
+    resolver: yupResolver(createSignInSchema(localeData)),
+    context: {
+      localeData,
+    },
   });
+
   const signInError: CustomError | null = useAppSelector(selectSignInError);
+  const signInErrorMessage = signInError?.message
+    ? localeData.invalidLoginCredentials
+    : localeData.somethingWentWrong;
   const signInStatus: RequestStatus = useAppSelector(selectSignInStatus);
 
   const onSubmit = async (data: SignInData) => {
@@ -32,7 +42,7 @@ function SignInForm() {
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <TextField
         id="email"
-        label="Email"
+        label={localeData.email}
         type="email"
         {...register('email')}
         error={!!errors.email}
@@ -42,7 +52,7 @@ function SignInForm() {
 
       <TextField
         id="password"
-        label="Password"
+        label={localeData.password}
         type="password"
         {...register('password')}
         error={!!errors.password}
@@ -50,9 +60,7 @@ function SignInForm() {
         fullWidth
       />
       {signInStatus === RequestStatus.FAILED && (
-        <StyledErrorMessage>
-          {signInError?.message ?? 'Something went wrong'}
-        </StyledErrorMessage>
+        <StyledErrorMessage>{signInErrorMessage}</StyledErrorMessage>
       )}
       <Button
         type="submit"
@@ -60,7 +68,9 @@ function SignInForm() {
         color="primary"
         data-testid="signin-button"
       >
-        {signInStatus === RequestStatus.LOADING ? 'Loading ...' : 'Sign in'}
+        {signInStatus === RequestStatus.LOADING
+          ? localeData.loading
+          : localeData.signin}
       </Button>
     </StyledForm>
   );
