@@ -37,5 +37,12 @@
   "appHeaders": "Headers",
   "documentation": "Documentation",
   "appInputPlaceholder": "Enter Api url",
-  "ControlPanel": "Execute query"
+  "ControlPanel": "Execute query",
+  "docsName": "Name",
+  "docsDescription": "Description",
+  "docsType": "Type",
+  "docsArgs": "Arguments",
+  "docsFields": "Fields",
+  "docsInputs": "Input Fields",
+  "docsEnums": "Enums"
 }

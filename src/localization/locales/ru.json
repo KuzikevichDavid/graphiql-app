@@ -37,5 +37,12 @@
   "appHeaders": "Заголовки",
   "documentation": "Документация",
   "appInputPlaceholder": "Введите API адрес",
-  "ControlPanel": "Выполнить запрос"
+  "ControlPanel": "Выполнить запрос",
+  "docsName": "Имя",
+  "docsDescription": "Описание",
+  "docsType": "Тип",
+  "docsArgs": "Агрументы",
+  "docsFields": "Поля",
+  "docsInputs": "Поля ввода",
+  "docsEnums": "Перечиления"
 }

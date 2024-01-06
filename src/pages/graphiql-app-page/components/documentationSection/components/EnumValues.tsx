@@ -1,5 +1,7 @@
+import LocalizationContext from '@/contexts/localization/LocalizationContext';
 import dataTestId from '@/tests/data-test';
 import { Box, Typography } from '@mui/material';
+import { useContext } from 'react';
 import Row from './Row';
 import { EnumValue } from './types';
 
@@ -9,6 +11,8 @@ interface PropsType {
 }
 
 function Enums({ enums, title }: PropsType) {
+  const { localeData } = useContext(LocalizationContext);
+
   return enums && enums.length > 0 ? (
     <Box
       sx={{
@@ -32,8 +36,10 @@ function Enums({ enums, title }: PropsType) {
               p: '2px',
             }}
           >
-            <Row description={{ text: 'Name' }}>{enumValue.name} </Row>
-            <Row description={{ text: 'Description' }}>
+            <Row description={{ text: localeData.docsName }}>
+              {enumValue.name}{' '}
+            </Row>
+            <Row description={{ text: localeData.docsDescription }}>
               {enumValue.description}{' '}
             </Row>
           </Box>

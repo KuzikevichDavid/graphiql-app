@@ -1,5 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import dataTestId from '@/tests/data-test';
+import LocalizationContext from '@/contexts/localization/LocalizationContext';
+import { useContext } from 'react';
 import { Field } from './types';
 import InputValues from './InputValues';
 import Row from './Row';
@@ -11,6 +13,8 @@ interface PropsType {
 }
 
 function Fields({ fields, title }: PropsType) {
+  const { localeData } = useContext(LocalizationContext);
+
   return fields && fields.length > 0 ? (
     <Box
       sx={{
@@ -34,18 +38,23 @@ function Fields({ fields, title }: PropsType) {
             }}
             data-testid={dataTestId.docsListItemField}
           >
-            <Row description={{ text: 'Name' }}>{itemValue.name} </Row>
-            <Row description={{ text: 'Description' }}>
+            <Row description={{ text: localeData.docsName }}>
+              {itemValue.name}{' '}
+            </Row>
+            <Row description={{ text: localeData.docsDescription }}>
               {itemValue.description}{' '}
             </Row>
             <Row
               description={{
-                text: 'Type',
+                text: localeData.docsType,
               }}
             >
               <Type type={itemValue.type} />
             </Row>
-            <InputValues inputValues={itemValue.args} title="Args:" />
+            <InputValues
+              inputValues={itemValue.args}
+              title={`${localeData.docsArgs}:`}
+            />
           </Box>
         ))}
       </Box>

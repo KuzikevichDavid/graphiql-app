@@ -1,5 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import dataTestId from '@/tests/data-test';
+import LocalizationContext from '@/contexts/localization/LocalizationContext';
+import { useContext } from 'react';
 import { InputValue } from './types';
 import Row from './Row';
 import Type from './Type';
@@ -10,6 +12,8 @@ interface PropsType {
 }
 
 function InputValues({ inputValues, title }: PropsType) {
+  const { localeData } = useContext(LocalizationContext);
+
   return inputValues && inputValues.length > 0 ? (
     <Box
       sx={{
@@ -27,15 +31,15 @@ function InputValues({ inputValues, title }: PropsType) {
           }}
           data-testid={dataTestId.docsListItemInputValue}
         >
-          <Row description={{ text: 'Name' }}>{input.name} </Row>
+          <Row description={{ text: localeData.docsName }}>{input.name} </Row>
           <Row
             description={{
-              text: 'Description',
+              text: localeData.docsDescription,
             }}
           >
             {input.description}
           </Row>
-          <Row description={{ text: 'Type' }}>
+          <Row description={{ text: localeData.docsType }}>
             <Type type={input.type} />
           </Row>
         </Box>

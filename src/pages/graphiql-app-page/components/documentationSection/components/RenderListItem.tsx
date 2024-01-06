@@ -1,8 +1,9 @@
 import { KeyboardArrowDown } from '@mui/icons-material';
 import { ListItem, ListItemButton, ListItemText } from '@mui/material';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FullType } from '@/pages/graphiql-app-page/components/documentationSection/components/types';
 import dataTestId from '@/tests/data-test';
+import LocalizationContext from '@/contexts/localization/LocalizationContext';
 import Fields from './Fields';
 import InputValues from './InputValues';
 import Row from './Row';
@@ -15,6 +16,7 @@ interface PropsType {
 }
 
 function RenderListItem({ data }: PropsType) {
+  const { localeData } = useContext(LocalizationContext);
   const [open, setOpen] = useState(false);
 
   const item: FullType = data;
@@ -45,16 +47,19 @@ function RenderListItem({ data }: PropsType) {
           {item.description ? (
             <Row
               description={{
-                text: 'Description',
+                text: localeData.docsDescription,
                 styles: bold,
               }}
             >
               {item.description}
             </Row>
           ) : null}
-          <Fields fields={item.fields} title="Fields:" />
-          <InputValues inputValues={item.inputFields} title="Input Fields:" />
-          <Enums enums={item.enumValues} title="Enums:" />
+          <Fields fields={item.fields} title={`${localeData.docsFields}:`} />
+          <InputValues
+            inputValues={item.inputFields}
+            title={`${localeData.docsInputs}:`}
+          />
+          <Enums enums={item.enumValues} title={`${localeData.docsEnums}:`} />
         </>
       ) : null}
     </ListItem>
