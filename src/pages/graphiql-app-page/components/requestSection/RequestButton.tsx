@@ -13,13 +13,15 @@ function RequestButton() {
   const dispatch = useAppDispatch();
 
   const gqlBody = useAppSelector((state) => state.gql.body);
+  const headers = useAppSelector((state) => state.gql.headers);
   const gqlEndpoint = useAppSelector((state) => state.gql.endpoint);
   const { data, error, isError, isLoading, isSuccess } = useGetGraphQLQuery(
-    args ?? skipToken
+    args ?? skipToken,
+    { refetchOnMountOrArgChange: true }
   );
 
   const handleQuery = () => {
-    setArgs({ body: gqlBody, endpoint: gqlEndpoint });
+    setArgs({ body: gqlBody, endpoint: gqlEndpoint, headers });
   };
 
   const progressSx = getCircularProgressBtnStyle(

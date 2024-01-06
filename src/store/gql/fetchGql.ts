@@ -10,13 +10,12 @@ export default async function fetchGql(
   headers: Headers = new Headers(),
   signal?: AbortSignal
 ) {
+  headers.set('Accept', CONTENT_JSON);
+  headers.set('Content-Type', CONTENT_JSON);
+
   const options: RequestInit = {
     method: 'POST',
-    headers: {
-      Accept: CONTENT_JSON,
-      'Content-Type': CONTENT_JSON,
-      ...headers,
-    },
+    headers,
     body: JSON.stringify(body, null, 2),
     signal,
   };

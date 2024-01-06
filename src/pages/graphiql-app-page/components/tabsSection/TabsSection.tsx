@@ -3,8 +3,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
-import HeadersTab from './HeadersTab';
 import VariablesTab from './VariablesTab';
+import HeadersTable from './headersTab/HeadersTable';
 
 interface TabPanelProps {
   index: number;
@@ -59,7 +59,7 @@ export default function TabsSection() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <HeadersTab />
+        <HeadersTable />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <VariablesTab />

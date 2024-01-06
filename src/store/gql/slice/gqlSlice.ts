@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { QueryArgs } from '../types';
-import { HeaderItem } from './types';
+import { GqlState, HeaderIdentityItem, HeadersPayload } from './types';
 
-const initialState: QueryArgs = {
+const initialState: GqlState = {
   endpoint: '',
   body: { query: '', variables: '' },
   headers: new Headers(),
+  mappedHeaders: [],
 };
 
 const gqlSlice = createSlice({
@@ -22,18 +22,23 @@ const gqlSlice = createSlice({
     setVariables: (state, { payload }: PayloadAction<string>) => {
       state.body.variables = payload;
     },
-    addHeader: (
-      state,
-      { payload: { name, value } }: PayloadAction<HeaderItem>
-    ) => {
-      state.headers?.set(name, value);
-    },
-    removeHeader: (state, { payload }: PayloadAction<string>) => {
-      state.headers?.delete(payload);
+    setHeaders: {
+      reducer: (state, { payload }: PayloadAction<HeadersPayload>) => {
+        state.headers = payload.headers;
+        state.mappedHeaders = payload.mappedHeaders;
+      },
+      prepare: (mappedHeaders: HeaderIdentityItem[]) => ({
+        payload: {
+          headers: new Headers(
+            mappedHeaders.map((header) => [header.name, header.value])
+          ),
+          mappedHeaders,
+        },
+      }),
     },
   },
 });
 
-export const { addHeader, setEndpoint, setQuery, setVariables } =
+export const { setHeaders, setEndpoint, setQuery, setVariables } =
   gqlSlice.actions;
 export default gqlSlice;
