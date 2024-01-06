@@ -36,4 +36,4 @@ const gqlSlice = createSlice({
 
 export const { addHeader, setEndpoint, setQuery, setVariables } =
   gqlSlice.actions;
-export default gqlSlice.reducer;
+export default gqlSlice;

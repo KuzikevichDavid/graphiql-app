@@ -1,36 +1,10 @@
-import { authSlice } from '@/store/auth/authSlice';
-import { appOutputs } from '@/store/store';
-import { AuthState } from '@/types/auth';
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import {
-  BaseQueryFn,
-  CombinedState,
-  QueryDefinition,
-} from '@reduxjs/toolkit/query';
-import { QueryArgs } from '@testing-library/react';
+import { gqlapi } from '@/store/gql/gqlapi';
+import { appOutputs, rootReducer, RootState } from '@/store/store';
+import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 
-export interface TestRootState {
-  auth?: AuthState;
-  gql?: QueryArgs;
-  gqlapi?: CombinedState<
-    {
-      getGraphQL: QueryDefinition<
-        QueryArgs,
-        BaseQueryFn<QueryArgs, string>,
-        never,
-        string,
-        'gqlapi'
-      >;
-    },
-    never,
-    'gqlapi'
-  >;
-}
+export type TestRootState = Partial<RootState>;
 
-const rootReducer = combineReducers({
-  auth: authSlice.reducer,
-});
 export const setupTestStore = (initialState?: TestRootState) =>
   configureStore({
     reducer: rootReducer,
@@ -40,21 +14,17 @@ export const setupTestStore = (initialState?: TestRootState) =>
         immutableCheck: false,
         serializableCheck: false,
         thunk: { extraArgument: appOutputs },
-      }),
+      }).concat(gqlapi.middleware),
   });
 
 function TestProvider({
   children,
-  initialState,
+  initialState = undefined,
 }: {
   children: React.ReactNode;
   initialState?: TestRootState;
 }) {
   return <Provider store={setupTestStore(initialState)}>{children}</Provider>;
 }
-
-TestProvider.defaultProps = {
-  initialState: undefined,
-};
 
 export default TestProvider;

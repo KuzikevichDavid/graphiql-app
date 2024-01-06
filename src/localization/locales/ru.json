@@ -31,9 +31,18 @@
   "VladImage": "Фото Влада",
   "notFound_Title": "Страница не существует",
   "notFound_Button": "На главную",
+  "docs_load": "Загрузить документацию",
+  "docs_show": "Показать документацию",
   "appVariables": "Переменные",
   "appHeaders": "Заголовки",
   "documentation": "Документация",
   "appInputPlaceholder": "Введите API адрес",
-  "ControlPanel": "Выполнить запрос"
+  "ControlPanel": "Выполнить запрос",
+  "docsName": "Имя",
+  "docsDescription": "Описание",
+  "docsType": "Тип",
+  "docsArgs": "Агрументы",
+  "docsFields": "Поля",
+  "docsInputs": "Поля ввода",
+  "docsEnums": "Перечиления"
 }

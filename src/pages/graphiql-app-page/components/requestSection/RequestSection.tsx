@@ -18,7 +18,6 @@ function RequestSection() {
     <Editor
       height="600px"
       defaultLanguage="graphql"
-      defaultValue="// some comment"
       onChange={debouncedOnChange}
       value={selectedQuery}
       options={{
