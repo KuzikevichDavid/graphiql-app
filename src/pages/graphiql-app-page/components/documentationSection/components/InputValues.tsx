@@ -27,13 +27,17 @@ function InputValues({ inputValues, title }: PropsType) {
           }}
           data-testid={dataTestId.docsListItemInputValue}
         >
-          <Row rowData={{ desc: 'Name', children: `${input.name}` }} />
+          <Row description={{ text: 'Name' }}>{input.name} </Row>
           <Row
-            rowData={{ desc: 'Description', children: `${input.description}` }}
-          />
-          <Row
-            rowData={{ desc: 'Type', children: <Type type={input.type} /> }}
-          />
+            description={{
+              text: 'Description',
+            }}
+          >
+            {input.description}
+          </Row>
+          <Row description={{ text: 'Type' }}>
+            <Type type={input.type} />
+          </Row>
         </Box>
       ))}
     </Box>

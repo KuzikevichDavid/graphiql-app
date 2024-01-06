@@ -30,20 +30,21 @@ function Fields({ fields, title }: PropsType) {
             sx={{
               width: '100%',
               border: 'solid 1px',
-              m: '2px',
+              p: '2px',
             }}
             data-testid={dataTestId.docsListItemField}
           >
-            <Row rowData={{ desc: 'Name', children: itemValue.name }} />
+            <Row description={{ text: 'Name' }}>{itemValue.name} </Row>
+            <Row description={{ text: 'Description' }}>
+              {itemValue.description}{' '}
+            </Row>
             <Row
-              rowData={{ desc: 'Description', children: itemValue.description }}
-            />
-            <Row
-              rowData={{
-                desc: 'Type',
-                children: <Type type={itemValue.type} />,
+              description={{
+                text: 'Type',
               }}
-            />
+            >
+              <Type type={itemValue.type} />
+            </Row>
             <InputValues inputValues={itemValue.args} title="Args:" />
           </Box>
         ))}

@@ -1,10 +1,5 @@
 import { KeyboardArrowDown } from '@mui/icons-material';
-import {
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Typography,
-} from '@mui/material';
+import { ListItem, ListItemButton, ListItemText } from '@mui/material';
 import { useState } from 'react';
 import { FullType } from '@/pages/graphiql-app-page/components/documentationSection/components/types';
 import dataTestId from '@/tests/data-test';
@@ -34,12 +29,12 @@ function RenderListItem({ data }: PropsType) {
         data-testid={dataTestId.documentationListItem}
       >
         <ListItemText sx={{ my: 0 }}>
-          <Typography sx={{ display: 'inline' }} component="span">
-            <Typography sx={itemNameTextSx} component="span">
-              {item.name}
-            </Typography>
-            {`: ${item.kind}`}
-          </Typography>
+          <Row
+            description={{ text: item.name, styles: itemNameTextSx }}
+            wrapperStyles={{ display: 'inline' }}
+          >
+            {item.kind}
+          </Row>
         </ListItemText>
         <KeyboardArrowDown sx={arrowDownSx} />
       </ListItemButton>
@@ -48,12 +43,13 @@ function RenderListItem({ data }: PropsType) {
         <>
           {item.description ? (
             <Row
-              rowData={{
-                desc: 'Description',
-                descriptionSx: bold,
-                children: item.description,
+              description={{
+                text: 'Description',
+                styles: bold,
               }}
-            />
+            >
+              {item.description}
+            </Row>
           ) : null}
           <Fields fields={item.fields} title="Fields:" />
           <InputValues inputValues={item.inputFields} title="Input Fields:" />

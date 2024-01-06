@@ -2,28 +2,26 @@ import { Box, SxProps, Theme, Typography } from '@mui/material';
 import { ReactNode } from 'react';
 
 interface PropsType {
-  rowData: {
-    desc: string;
-    descriptionSx?: SxProps<Theme>;
-    children: ReactNode;
-    childrenSx?: SxProps<Theme>;
+  description: {
+    text: string;
+    styles?: SxProps<Theme>;
   };
-  sx?: SxProps<Theme>;
+  wrapperStyles?: SxProps<Theme>;
+  children: ReactNode;
 }
 
 function Row({
-  rowData: { desc, descriptionSx: sxDesc, children, childrenSx },
-  sx: style = {},
+  description: { text: descriptionText, styles: descriptionStyles = {} },
+  wrapperStyles = {},
+  children,
 }: PropsType) {
   return (
-    <Box sx={style}>
+    <Box sx={wrapperStyles}>
       <Typography component="span">
-        <Typography component="span" sx={sxDesc}>
-          {`${desc}: `}
+        <Typography component="span" sx={descriptionStyles}>
+          {descriptionText}:{' '}
         </Typography>
-        <Typography component="span" sx={childrenSx}>
-          {typeof children === 'string' ? `${children}` : children}
-        </Typography>
+        <Typography component="span">{children}</Typography>
       </Typography>
     </Box>
   );

@@ -12,13 +12,14 @@ function Type({ type }: PropsType) {
 
   return (
     <Row
-      rowData={{
-        desc: mapped.name,
-        descriptionSx: italic,
-        children: mapped.type,
+      description={{
+        text: mapped.name,
+        styles: italic,
       }}
-      sx={inline}
-    />
+      wrapperStyles={inline}
+    >
+      {mapped.type}
+    </Row>
   );
 }
 
