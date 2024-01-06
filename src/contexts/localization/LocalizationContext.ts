@@ -3,15 +3,17 @@ import { Locales } from '@/localization/types';
 import { createContext } from 'react';
 import { LocalizationContextType } from './types';
 
-const isLocalStorageLocaleExist = localStorage.getItem('locale') === 'ru';
+const storedLocale = localStorage.getItem('locale') as Locales | null;
+const isLocalStorageLocaleExists =
+  storedLocale && Object.values(Locales).includes(storedLocale);
 
-const defaultLocaleData = isLocalStorageLocaleExist
-  ? await loadLocale(Locales.ru)
+const defaultLocaleData = isLocalStorageLocaleExists
+  ? await loadLocale(Locales[storedLocale])
   : await loadLocale(Locales.en);
 
 const initValue: LocalizationContextType = {
   localeData: defaultLocaleData,
-  locale: isLocalStorageLocaleExist ? Locales.ru : Locales.en,
+  locale: isLocalStorageLocaleExists ? Locales[storedLocale] : Locales.en,
   setLocale: () => Promise.resolve<void>(undefined),
 };
 
