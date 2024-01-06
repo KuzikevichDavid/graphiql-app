@@ -4,7 +4,7 @@ import { useAppSelector } from '@/store/store';
 import { Link } from '@mui/material';
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import SignUpForm from '../../components/sign-up-form/SignUpForm';
+import SignUpForm from '@/components/sign-up-form/SignUpForm';
 
 function SignUpPage() {
   const { localeData } = useContext(LocalizationContext);
