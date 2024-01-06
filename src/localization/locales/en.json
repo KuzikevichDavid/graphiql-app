@@ -58,7 +58,7 @@
   "passwordsMustMatch": "Passwords must match",
   "requiredTermsOfUse": "Required terms of use",
   "successfullSignup": "You have successfully signed up. Now you can sign in",
-  "userAlreadyExists": "User already exists"
+  "userAlreadyExists": "User already exists",
   "docsName": "Name",
   "docsDescription": "Description",
   "docsType": "Type",

@@ -58,7 +58,7 @@
   "passwordsMustMatch": "Пароли должны совпадать",
   "requiredTermsOfUse": "Вы должны принять условия пользования",
   "successfullSignup": "Вы успешно зарегистрировались. Теперь вы можете войти",
-  "userAlreadyExists": "Пользователь уже существует"
+  "userAlreadyExists": "Пользователь уже существует",
   "docsName": "Имя",
   "docsDescription": "Описание",
   "docsType": "Тип",
