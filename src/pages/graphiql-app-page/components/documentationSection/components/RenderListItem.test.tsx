@@ -16,7 +16,11 @@ describe('Render ListItem with fake data', () => {
     const listItemInputValue = screen.getByTestId(
       dataTestId.documentationListItem
     );
+    const listItemEnumValue = screen.getByTestId(
+      dataTestId.docsListItemEnumValue
+    );
     expect(listItemField).toBeInTheDocument();
     expect(listItemInputValue).toBeInTheDocument();
+    expect(listItemEnumValue).toBeInTheDocument();
   });
 });

@@ -8,6 +8,7 @@ import InputValues from './InputValues';
 import Row from './Row';
 import { bold } from './styles';
 import { getListItemStyles, itemNameTextSx } from './listItemStyles';
+import Enums from './EnumValues';
 
 interface PropsType {
   data: FullType;
@@ -53,6 +54,7 @@ function RenderListItem({ data }: PropsType) {
           ) : null}
           <Fields fields={item.fields} title="Fields:" />
           <InputValues inputValues={item.inputFields} title="Input Fields:" />
+          <Enums enums={item.enumValues} title="Enums:" />
         </>
       ) : null}
     </ListItem>

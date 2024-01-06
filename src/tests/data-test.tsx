@@ -17,6 +17,7 @@ const dataTestId: Record<string, string> = {
   documentationListItem: 'documentationListItemId',
   docsListItemField: 'docsListItemFieldId',
   docsListItemInputValue: 'docsListItemInputValueId',
+  docsListItemEnumValue: 'docsListItemEnumValueId',
 };
 
 export default dataTestId;

@@ -21,6 +21,7 @@ export interface FullType {
   description: string;
   fields: Field[] | null;
   inputFields: InputValue[] | null;
+  enumValues: EnumValue[] | null;
 }
 
 export interface Field {
@@ -41,4 +42,9 @@ export interface TypeRef {
   kind: string;
   name: string | null;
   ofType: TypeRef | null;
+}
+
+export interface EnumValue {
+  name: string;
+  description: string;
 }

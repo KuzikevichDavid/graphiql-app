@@ -36,4 +36,5 @@ export const fakeFullTypeData: FullType = {
   name: 'fake name',
   fields: [fakeField],
   inputFields: [fakeField],
+  enumValues: [fakePartialObject],
 };
