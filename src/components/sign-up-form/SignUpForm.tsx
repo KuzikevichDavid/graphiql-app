@@ -14,14 +14,14 @@ import {
   Link,
   TextField,
 } from '@mui/material';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import {
   StyledErrorMessage,
   StyledForm,
   StyledSuccessfullMessage,
 } from '../styled';
-import createSignInSchema from './signUpSchema';
+import createSignUpSchema from './signUpSchema';
 
 interface FormData {
   email: string;
@@ -36,33 +36,21 @@ function SignUpForm() {
   const dispatch = useAppDispatch();
   const signUpError: CustomError | null = useAppSelector(selectSignUpError);
   const signUpStatus: RequestStatus = useAppSelector(selectSignUpStatus);
-  const [signUpErrorMessage, setSignUpErrorMessage] = useState<string | null>(
-    null
-  );
+  const signUpErrorMessage = signUpError?.message
+    ? localeData.userAlreadyExists
+    : localeData.somethingWentWrong;
 
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: yupResolver(createSignInSchema(localeData)),
+    resolver: yupResolver(createSignUpSchema(localeData)),
   });
 
   const onSubmit = async (data: FormData) => {
     await dispatch(signUp(data));
   };
-
-  useEffect(() => {
-    if (signUpError?.message) {
-      setSignUpErrorMessage(localeData.userAlreadyExists);
-    } else {
-      setSignUpErrorMessage(localeData.somethingWentWrong);
-    }
-  }, [
-    localeData.somethingWentWrong,
-    localeData.userAlreadyExists,
-    signUpError?.message,
-  ]);
 
   if (signUpStatus === RequestStatus.COMPLETED) {
     return (

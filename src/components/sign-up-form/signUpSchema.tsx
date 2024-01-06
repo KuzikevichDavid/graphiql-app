@@ -1,7 +1,7 @@
 import { LocaleData } from '@/localization/types';
 import * as Yup from 'yup';
 
-const createSignInSchema = (localeData: LocaleData) =>
+const createSignUpSchema = (localeData: LocaleData) =>
   Yup.object().shape({
     username: Yup.string()
       .required(localeData.userNameRequired)
@@ -28,4 +28,4 @@ const createSignInSchema = (localeData: LocaleData) =>
       .required(localeData.requiredTermsOfUse),
   });
 
-export default createSignInSchema;
+export default createSignUpSchema;

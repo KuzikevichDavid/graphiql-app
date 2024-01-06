@@ -20,7 +20,7 @@ function SignUpPage() {
       <h1>{localeData.signup}</h1>
       <SignUpForm />
       <p>
-        {localeData.signupMessage}{' '}
+        {localeData.signupMessage}
         <Link href="/signin">{localeData.signin}</Link>
       </p>
     </>

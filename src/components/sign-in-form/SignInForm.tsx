@@ -8,16 +8,13 @@ import { useAppDispatch, useAppSelector } from '@/store/store';
 import { CustomError, RequestStatus, SignInData } from '@/types/auth';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, TextField } from '@mui/material';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { StyledErrorMessage, StyledForm } from '../styled';
 import createSignInSchema from './signInSchema';
 
 function SignInForm() {
   const { localeData } = useContext(LocalizationContext);
-  const [signInErrorMessage, setSignInErrorMessage] = useState<string | null>(
-    null
-  );
   const dispatch = useAppDispatch();
   const {
     handleSubmit,
@@ -29,25 +26,17 @@ function SignInForm() {
       localeData,
     },
   });
+
   const signInError: CustomError | null = useAppSelector(selectSignInError);
+  const signInErrorMessage = signInError?.message
+    ? localeData.invalidLoginCredentials
+    : localeData.somethingWentWrong;
   const signInStatus: RequestStatus = useAppSelector(selectSignInStatus);
 
   const onSubmit = async (data: SignInData) => {
     const { email, password } = data;
     await dispatch(signIn({ email, password }));
   };
-
-  useEffect(() => {
-    if (signInError?.message) {
-      setSignInErrorMessage(localeData.invalidLoginCredentials);
-    } else {
-      setSignInErrorMessage(localeData.somethingWentWrong);
-    }
-  }, [
-    localeData.invalidLoginCredentials,
-    localeData.somethingWentWrong,
-    signInError?.message,
-  ]);
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
