@@ -31,6 +31,8 @@
   "VladImage": "Vlad image",
   "notFound_Title": "The page you’re looking for doesn’t exist.",
   "notFound_Button": "Back Home.",
+  "docs_load": "Load docs",
+  "docs_show": "Show docs",
   "appVariables": "Variables",
   "appHeaders": "Headers",
   "documentation": "Documentation",
@@ -57,4 +59,11 @@
   "requiredTermsOfUse": "Required terms of use",
   "successfullSignup": "You have successfully signed up. Now you can sign in",
   "userAlreadyExists": "User already exists"
+  "docsName": "Name",
+  "docsDescription": "Description",
+  "docsType": "Type",
+  "docsArgs": "Arguments",
+  "docsFields": "Fields",
+  "docsInputs": "Input Fields",
+  "docsEnums": "Enums"
 }

@@ -10,6 +10,14 @@ const dataTestId: Record<string, string> = {
   burgerMenuMobile: 'burgerMenuMobileId',
   burgerMenuMobileItems: 'burgerMenuMobileItemsId',
   burgerMenuMobileItem: 'burgerMenuMobileItemId',
+  circularProgress: 'circularProgressId',
+  DownloadForOfflineIcon: 'DownloadForOfflineIcon',
+  docsSchema: 'docsSchemaId',
+  documentationSection: 'documentationSectionId',
+  documentationListItem: 'documentationListItemId',
+  docsListItemField: 'docsListItemFieldId',
+  docsListItemInputValue: 'docsListItemInputValueId',
+  docsListItemEnumValue: 'docsListItemEnumValueId',
 };
 
 export default dataTestId;

@@ -1,4 +1,5 @@
 import { Container, Grid, Paper } from '@mui/material';
+import { useAppSelector } from '@/store/store';
 import ApiInputSection from './components/apiInputSection/ApiInputSection';
 import TabsSection from './components/tabsSection/TabsSection';
 import DocumentationSection from './components/documentationSection/DocumentationSection';
@@ -7,10 +8,17 @@ import ResponseSection from './components/responseSection/ResponseSection';
 import ControlPanel from './components/requestSection/ControlPanel';
 
 function GraphiqlAppPage() {
+  const isDefined = useAppSelector((state) => state.docs.isDefined);
+  const docsEndpoint = useAppSelector((state) => state.docs.endpoint);
+  const curEndpoint = useAppSelector((state) => state.gql.endpoint);
+  const isNewEnpoint = curEndpoint !== docsEndpoint;
+
+  const shouldShowDocumentation = !isNewEnpoint && isDefined;
+
   return (
     <Container sx={{ my: '10px' }}>
       <ApiInputSection />
-      <DocumentationSection />
+      {shouldShowDocumentation ? <DocumentationSection /> : null}
       <Grid container columns={{ xs: 12, md: 12 }} sx={{ maxWidth: '100%' }}>
         <Grid
           item

@@ -31,6 +31,8 @@
   "VladImage": "Фото Влада",
   "notFound_Title": "Страница не существует",
   "notFound_Button": "На главную",
+  "docs_load": "Загрузить документацию",
+  "docs_show": "Показать документацию",
   "appVariables": "Переменные",
   "appHeaders": "Заголовки",
   "documentation": "Документация",
@@ -57,4 +59,11 @@
   "requiredTermsOfUse": "Вы должны принять условия пользования",
   "successfullSignup": "Вы успешно зарегистрировались. Теперь вы можете войти",
   "userAlreadyExists": "Пользователь уже существует"
+  "docsName": "Имя",
+  "docsDescription": "Описание",
+  "docsType": "Тип",
+  "docsArgs": "Агрументы",
+  "docsFields": "Поля",
+  "docsInputs": "Поля ввода",
+  "docsEnums": "Перечиления"
 }
