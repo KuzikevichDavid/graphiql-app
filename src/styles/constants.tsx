@@ -1,0 +1,3 @@
+const HEADER_SCROLL_HEIGHT = 50;
+
+export default HEADER_SCROLL_HEIGHT;
