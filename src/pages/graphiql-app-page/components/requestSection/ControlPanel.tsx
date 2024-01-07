@@ -1,22 +1,11 @@
 import { Paper } from '@mui/material';
 import RequestButton from './RequestButton';
 import PrettifyButton from './PrettifyButton';
+import controlPanelClass from './styles/styles';
 
 export default function ControlPanel() {
   return (
-    <Paper
-      sx={{
-        height: '100%',
-        width: '100%',
-        p: '10px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '10px',
-        justifyContent: 'flex-start',
-        backgroundColor: 'action.disabledBackground',
-      }}
-    >
+    <Paper sx={controlPanelClass}>
       <RequestButton />
       <PrettifyButton />
     </Paper>

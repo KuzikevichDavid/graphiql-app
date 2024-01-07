@@ -1,5 +1,19 @@
+import { Editor } from '@monaco-editor/react';
+
 function HeadersTab() {
-  return 'Headers section';
+  return (
+    <Editor
+      height="300px"
+      defaultLanguage="javascript"
+      value=""
+      options={{
+        minimap: { enabled: false },
+        contextmenu: false,
+        overviewRulerBorder: false,
+        renderLineHighlight: 'none',
+      }}
+    />
+  );
 }
 
 export default HeadersTab;

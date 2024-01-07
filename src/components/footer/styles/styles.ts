@@ -5,6 +5,7 @@ export const gitCard: SxProps<Theme> = {
   display: 'flex',
   width: '100px',
   justifyContent: 'flex-start',
+  padding: '3px',
   '&:hover': {
     border: 'none',
     color: 'primary',
@@ -24,7 +25,6 @@ export const flexGitMobile: SxProps<Theme> = {
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '80px',
 };
 
 export const rsLogo: SxProps<Theme> = {

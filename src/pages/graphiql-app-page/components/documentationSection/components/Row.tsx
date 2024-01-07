@@ -12,7 +12,7 @@ interface PropsType {
 
 function Row({
   description: { text: descriptionText, styles: descriptionStyles = {} },
-  wrapperStyles = {},
+  wrapperStyles = { p: '10px 10px 10px 25px' },
   children,
 }: PropsType) {
   return (

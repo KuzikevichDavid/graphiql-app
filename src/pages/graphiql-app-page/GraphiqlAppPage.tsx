@@ -31,7 +31,7 @@ function GraphiqlAppPage() {
               <Grid item xs={10}>
                 <RequestSection />
               </Grid>
-              <Grid item xs={2}>
+              <Grid item xs={2} sx={{ width: '70px' }}>
                 <ControlPanel />
               </Grid>
             </Grid>

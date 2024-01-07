@@ -8,13 +8,12 @@ const logoAnimation = keyframes`
         transform: rotate(170deg)
     }
     25% {
-        transform: rotate(140deg) ;
+        transform: rotate(140deg) 	;
     }
     30% {
         transform: rotate(170deg) ;
     }
     
-
     45% {
         transform: rotate(0deg) ;
     }
