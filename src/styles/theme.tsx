@@ -1,4 +1,4 @@
-import { alpha, createTheme, darken, Theme } from '@mui/material';
+import { createTheme, alpha, darken, Theme } from '@mui/material';
 import {
   Link as RouterLink,
   LinkProps as RouterLinkProps,
@@ -6,6 +6,7 @@ import {
 import { LinkProps } from '@mui/material/Link';
 import React from 'react';
 import important from '@/utils/muiStyles/important';
+import COLORS from './MUI/colors';
 
 const LinkBehavior = React.forwardRef<
   HTMLAnchorElement,
@@ -15,22 +16,17 @@ const LinkBehavior = React.forwardRef<
   return <RouterLink ref={ref} to={href} {...other} />;
 });
 
-const primaryMain = '#4a5d74';
-const secondaryMain = '#efac56';
-const lightColor = '#fff';
-const headerScrolled = '#757575';
-
 const theme: Theme = createTheme({
   palette: {
     primary: {
-      main: primaryMain,
-      light: lightColor,
+      main: COLORS.primaryMain,
+      light: COLORS.lightColor,
     },
     secondary: {
-      main: secondaryMain,
+      main: COLORS.secondaryMain,
     },
     text: {
-      disabled: headerScrolled,
+      disabled: COLORS.headerScrolled,
     },
   },
   components: {
@@ -42,7 +38,7 @@ const theme: Theme = createTheme({
         root: {
           textDecoration: 'none',
           ':hover': {
-            color: secondaryMain,
+            color: COLORS.secondaryMain,
           },
         },
       },
@@ -55,7 +51,7 @@ const theme: Theme = createTheme({
         root: {
           textDecoration: 'none',
           ':hover': {
-            color: secondaryMain,
+            color: COLORS.secondaryMain,
           },
         },
       },
@@ -64,10 +60,10 @@ const theme: Theme = createTheme({
       styleOverrides: {
         root: {
           '&.Mui-selected': {
-            backgroundColor: important(alpha(primaryMain, 0.8)),
+            backgroundColor: important(alpha(COLORS.primaryMain, 0.8)),
             opacity: 1,
             '&:hover': {
-              backgroundColor: important(darken(primaryMain, 0.3)),
+              backgroundColor: important(darken(COLORS.primaryMain, 0.3)),
               opacity: 1,
             },
           },
