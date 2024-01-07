@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import SaveIcon from '@mui/icons-material/Save';
@@ -9,20 +8,25 @@ import {
   GridRowModesModel,
   GridRowModes,
   DataGrid,
-  GridColDef,
   GridActionsCellItem,
   GridEventListener,
   GridRowId,
   GridRowModel,
   GridRowEditStopReasons,
+  GridRowParams,
+  GridValidRowModel,
 } from '@mui/x-data-grid';
 import { useAppDispatch, useAppSelector } from '@/store/store';
 import { selectMappedHeaders } from '@/store/gql/slice/gqlSelectors';
 import { HeaderIdentityItem } from '@/store/gql/slice/types';
 import { setHeaders } from '@/store/gql/slice/gqlSlice';
+import LocalizationContext from '@/contexts/localization/LocalizationContext';
 import EditToolbar from './EditToolbar';
+import getColumnDefinition from './getColumnDefinition';
+import StyledBox from './StyledBox';
 
 export default function FullFeaturedCrudGrid() {
+  const { localeData } = React.useContext(LocalizationContext);
   const dispatch = useAppDispatch();
   const headers = useAppSelector(selectMappedHeaders);
   const rows: GridRowsProp = headers ?? [];
@@ -83,70 +87,54 @@ export default function FullFeaturedCrudGrid() {
     setRowModesModel(newRowModesModel);
   };
 
-  const columns: GridColDef[] = [
-    { field: 'name', headerName: 'Name', width: 100, editable: true },
-    {
-      field: 'value',
-      headerName: 'Value',
-      width: 180,
-      align: 'left',
-      headerAlign: 'left',
-      editable: true,
-    },
-    {
-      field: 'actions',
-      type: 'actions',
-      headerName: 'Actions',
-      width: 100,
-      cellClassName: 'actions',
-      getActions: ({ id }) => {
-        const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
+  const getActions = ({ id }: GridRowParams<GridValidRowModel>) => {
+    const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
 
-        if (isInEditMode) {
-          return [
-            <GridActionsCellItem
-              key={`${id}Save`}
-              icon={<SaveIcon />}
-              label="Save"
-              sx={{
-                color: 'primary.main',
-              }}
-              onClick={handleSaveClick(id)}
-            />,
-            <GridActionsCellItem
-              key={`${id}Cancel`}
-              icon={<CancelIcon />}
-              label="Cancel"
-              className="textPrimary"
-              onClick={handleCancelClick(id)}
-              color="inherit"
-            />,
-          ];
-        }
+    if (isInEditMode) {
+      return [
+        <GridActionsCellItem
+          key={`${id}Save`}
+          icon={<SaveIcon />}
+          label={localeData.headersSave}
+          sx={{
+            color: 'primary.main',
+          }}
+          onClick={handleSaveClick(id)}
+        />,
+        <GridActionsCellItem
+          key={`${id}Cancel`}
+          icon={<CancelIcon />}
+          label={localeData.headersCancel}
+          className="textPrimary"
+          onClick={handleCancelClick(id)}
+          color="inherit"
+        />,
+      ];
+    }
 
-        return [
-          <GridActionsCellItem
-            key={`${id}Edit`}
-            icon={<EditIcon />}
-            label="Edit"
-            className="textPrimary"
-            onClick={handleEditClick(id)}
-            color="inherit"
-          />,
-          <GridActionsCellItem
-            key={`${id}Delete`}
-            icon={<DeleteIcon />}
-            label="Delete"
-            onClick={handleDeleteClick(id)}
-            color="inherit"
-          />,
-        ];
-      },
-    },
-  ];
+    return [
+      <GridActionsCellItem
+        key={`${id}Edit`}
+        icon={<EditIcon />}
+        label={localeData.headersEdit}
+        className="textPrimary"
+        onClick={handleEditClick(id)}
+        color="inherit"
+      />,
+      <GridActionsCellItem
+        key={`${id}Delete`}
+        icon={<DeleteIcon />}
+        label={localeData.headersDelete}
+        onClick={handleDeleteClick(id)}
+        color="inherit"
+      />,
+    ];
+  };
+
+  const columns = getColumnDefinition({ rows, getActions, localeData });
 
   return (
-    <Box
+    <StyledBox
       sx={{
         height: 300,
         width: '100%',
@@ -166,6 +154,8 @@ export default function FullFeaturedCrudGrid() {
         onRowModesModelChange={handleRowModesModelChange}
         onRowEditStop={handleRowEditStop}
         processRowUpdate={processRowUpdate}
+        density="compact"
+        hideFooterPagination
         slots={{
           toolbar: EditToolbar,
         }}
@@ -173,6 +163,6 @@ export default function FullFeaturedCrudGrid() {
           toolbar: { rows, dispatch, setRowModesModel },
         }}
       />
-    </Box>
+    </StyledBox>
   );
 }

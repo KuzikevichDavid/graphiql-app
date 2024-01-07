@@ -44,5 +44,15 @@
   "docsArgs": "Arguments",
   "docsFields": "Fields",
   "docsInputs": "Input Fields",
-  "docsEnums": "Enums"
+  "docsEnums": "Enums",
+  "headersAddHeader": "Add header",
+  "headersSave": "Save",
+  "headersCancel": "Cancel",
+  "headersDelete": "Delete",
+  "headersEdit": "Edit",
+  "headersName": "Name",
+  "headersValue": "Value",
+  "headersActions": "Actions",
+  "headersNameMessage": "'Name' is required and must be a string without spaces.",
+  "headersNameExistMessage": "is already taken."
 }

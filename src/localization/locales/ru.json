@@ -44,5 +44,15 @@
   "docsArgs": "Агрументы",
   "docsFields": "Поля",
   "docsInputs": "Поля ввода",
-  "docsEnums": "Перечиления"
+  "docsEnums": "Перечиления",
+  "headersAddHeader": "Добавить заголовок",
+  "headersSave": "Сохранить",
+  "headersCancel": "Отмена",
+  "headersDelete": "Удалить",
+  "headersEdit": "Правка",
+  "headersName": "Имя",
+  "headersValue": "Значение",
+  "headersActions": "Действия",
+  "headersNameMessage": "'Имя' является обязательным и должно представлять собой строку без пробелов.",
+  "headersNameExistMessage": "уже присутствует."
 }
