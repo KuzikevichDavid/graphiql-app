@@ -15,6 +15,7 @@ import { useAppSelector } from '@/store/store';
 import { selectIsLoggedInSession } from '@/store/auth/authSelectors';
 import { useLocation } from 'react-router-dom';
 import GraphQlIcon from '../icons/GraphQlIcon';
+import logoStyle from './styles/styles';
 
 interface Page {
   href: string;
@@ -89,7 +90,7 @@ function BurgerMenu() {
         </Menu>
       </Box>
 
-      <GraphQlIcon />
+      <GraphQlIcon sx={logoStyle} />
 
       <Box
         sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
