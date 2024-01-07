@@ -19,6 +19,7 @@ function SelectLang() {
   async function handleChange(event: SelectChangeEvent<Locales>) {
     if (event.target.value !== locale.valueOf()) {
       await setLocale(event.target.value as Locales);
+      localStorage.setItem('locale', event.target.value);
     }
   }
 
