@@ -18,6 +18,13 @@ const dataTestId: Record<string, string> = {
   docsListItemField: 'docsListItemFieldId',
   docsListItemInputValue: 'docsListItemInputValueId',
   docsListItemEnumValue: 'docsListItemEnumValueId',
+  headersAddHeader: 'headersAddHeaderId',
+  headersSave: 'headersSaveId',
+  headersCancel: 'headersCancelId',
+  headersDelete: 'headersDeleteId',
+  headersEdit: 'headersEditId',
+  headersName: 'headersNameId',
+  headersValue: 'headersValueId',
 };
 
 export default dataTestId;

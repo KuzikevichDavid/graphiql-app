@@ -5,6 +5,7 @@ import { randomId } from '@mui/x-data-grid-generator';
 import { setHeaders } from '@/store/gql/slice/gqlSlice';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
 import { useContext } from 'react';
+import dataTestId from '@/tests/data-test';
 import { EditToolbarProps } from './types';
 
 export default function EditToolbar({
@@ -25,7 +26,12 @@ export default function EditToolbar({
 
   return (
     <GridToolbarContainer>
-      <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
+      <Button
+        color="primary"
+        startIcon={<AddIcon />}
+        onClick={handleClick}
+        data-testid={dataTestId.headersAddHeader}
+      >
         {localeData.headersAddHeader}
       </Button>
     </GridToolbarContainer>

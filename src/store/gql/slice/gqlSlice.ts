@@ -31,7 +31,9 @@ const gqlSlice = createSlice({
         payload: {
           headers: new Headers(
             mappedHeaders
-              .filter((header) => header.name.length > 0)
+              .filter(
+                (header) => header.isNew === false && header.name.length > 0
+              )
               .map((header) => [header.name, header.value])
           ),
           mappedHeaders,

@@ -21,11 +21,12 @@ import { selectMappedHeaders } from '@/store/gql/slice/gqlSelectors';
 import { HeaderIdentityItem } from '@/store/gql/slice/types';
 import { setHeaders } from '@/store/gql/slice/gqlSlice';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
+import dataTestId from '@/tests/data-test';
 import EditToolbar from './EditToolbar';
 import getColumnDefinition from './getColumnDefinition';
 import StyledBox from './StyledBox';
 
-export default function FullFeaturedCrudGrid() {
+export default function HeadersTable() {
   const { localeData } = React.useContext(LocalizationContext);
   const dispatch = useAppDispatch();
   const headers = useAppSelector(selectMappedHeaders);
@@ -100,6 +101,7 @@ export default function FullFeaturedCrudGrid() {
             color: 'primary.main',
           }}
           onClick={handleSaveClick(id)}
+          data-testid={dataTestId.headersSave}
         />,
         <GridActionsCellItem
           key={`${id}Cancel`}
@@ -108,6 +110,7 @@ export default function FullFeaturedCrudGrid() {
           className="textPrimary"
           onClick={handleCancelClick(id)}
           color="inherit"
+          data-testid={dataTestId.headersCancel}
         />,
       ];
     }
@@ -120,12 +123,14 @@ export default function FullFeaturedCrudGrid() {
         className="textPrimary"
         onClick={handleEditClick(id)}
         color="inherit"
+        data-testid={dataTestId.headersEdit}
       />,
       <GridActionsCellItem
         key={`${id}Delete`}
         icon={<DeleteIcon />}
         label={localeData.headersDelete}
         onClick={handleDeleteClick(id)}
+        data-testid={dataTestId.headersDelete}
         color="inherit"
       />,
     ];
