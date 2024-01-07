@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
 import LocalizationContext from '@/contexts/localization/LocalizationContext';
+import { Box } from '@mui/material';
 import HeadersTab from './HeadersTab';
 import VariablesTab from './VariablesTab';
 

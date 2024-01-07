@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import HEADER_SCROLL_HEIGHT from '@/styles/constants';
 
 export default function useHeaderScroll(menu?: boolean) {
   const [scroll, setScroll] = useState(false);
@@ -10,7 +11,7 @@ export default function useHeaderScroll(menu?: boolean) {
 
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      if (scrollTop >= 50) {
+      if (scrollTop >= HEADER_SCROLL_HEIGHT) {
         setScroll(Boolean(window.scrollY));
       } else {
         setScroll(false);

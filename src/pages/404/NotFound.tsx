@@ -20,10 +20,10 @@ function NotFoundPage() {
     >
       <Container maxWidth="md">
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Typography variant="h2">{localeData.notFound_Title}</Typography>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <img
               src={notFoundImage}
               alt="source not found"
