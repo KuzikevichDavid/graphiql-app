@@ -1,7 +1,13 @@
 import developersData from '@/pages/welcome/data/data.json';
 import { DeveloperData } from '@/pages/welcome/data/types';
 
-import { Grid, IconButton, Typography, useMediaQuery } from '@mui/material';
+import {
+  Box,
+  Grid,
+  IconButton,
+  Typography,
+  useMediaQuery,
+} from '@mui/material';
 import Divider from '@mui/material/Divider';
 import GitCard from './GitCard';
 import RSSchoolIcon from '../icons/RSSchoolIcon';
@@ -15,7 +21,7 @@ export default function Footer() {
   const isXs = useMediaQuery('(max-width:900px)');
 
   return (
-    <>
+    <Box component="footer">
       <Divider />
       <Grid container sx={flexGitMobile}>
         <Grid item md={4} sm={12} sx={isXs ? flexGitMobile : flexGit}>
@@ -32,6 +38,6 @@ export default function Footer() {
           </IconButton>
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 }
